@@ -1,0 +1,29 @@
+.img1 {
+  height: 60vh;
+  width: 80vw;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+.namess {
+  font-size: 10vh;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+}
+
+@font-face {
+  font-family: "Geist";
+  src: url(./Geist-VariableFont_wght.ttf);
+}
+.fonts {
+  font-family: "Figtree";
+}
+#preloader {
+  /* background: rgb(168, 187, 142); */
+  background-color: black;
+}
