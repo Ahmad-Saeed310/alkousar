@@ -1,15 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+// import { useEffect } from "react";
 
 import Image from "next/image";
-import { Text } from "../Components/text";
-import { Buttons } from "../Components/text";
+// import { Text } from "../Components/text";
+// import { Buttons } from "../Components/text";
 
 import { Words } from "../Components/text";
 import Nav from "../Components/Nav";
+
+import Secondpage from "../Components/Secondpage";
+import ThirsSe from "../Components/ThirsSe";
 
 function Animations() {
   const tl = gsap.timeline();
@@ -45,35 +48,12 @@ function Animations() {
     );
   });
 
-  // Mouse movement animation for .pic element
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      const viewportWidth = window.innerWidth;
-      const halfWidth = viewportWidth * 0.5;
-      
-      // Map cursor position from entire width to image movement within first half only
-      const cursorRatio = e.clientX / viewportWidth; // 0 to 1
-      const maxMovement = halfWidth * 0.5; // Movement range within first half
-      const xoffset = cursorRatio * maxMovement;
-      
-      gsap.to(".pic", {
-        x: xoffset,
-        duration: 0.3,
-        ease: "power2.out"
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
     <>
       <div className="animates h-screen w-full relative   ">
         <div className=" grid grid-cols-2 grid-rows-2  h-full w-full overflow-hidden gap-[1vw]   bg-white">
-        <Nav/>
-          <div className="absolute h-screen w-full  flex items-center p-0 justify-center gap-[5vw] pt-[10vh]">
+          <Nav />
+          <div className="absolute h-screen w-full  flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden">
             <Image
               src="/Home.png"
               width={100}
@@ -127,38 +107,58 @@ function Animations() {
               className="h-[10vh] pics imageani rotate-10"
             />
           </div>
-          <div className="col-span-1  row-start-1 row-span-1 grid grid-rows-7 pt-[10vh] ">
+          <div className="col-span-1  row-start-1 row-span-1 grid grid-rows-7 ">
             <div className="row-start-7 flex items-center justify-center gap-[5vw]">
-
-            {/* <Text type="paragraph" texts="Shahid Manzil"  className="bottom-0 left-50 " />
+              {/* <Text type="paragraph" texts="Shahid Manzil"  className="bottom-0 left-50 " />
             <Text type="paragraph" texts="2025" className={` bottom-0 right-40`} /> */}
             </div>
           </div>
           <div className="col-span-1 row-span-1  flex items-center justify-center flex-col uppercase pt-[15vh] ">
-            <Words typess="heading" textss="Al-Kousar" />
-            <Words typess="heading" textss="Properties" />
-            <Words typess="heading" textss="DHA-BWP" />
+           
+            <Words
+              typess="heading"
+              textss={
+                <>
+                  We build
+                  <br /> trusted addresses
+                </>
+              }
+            />
           </div>
           <div className="col-span-1  row-start-2 row-span-1 relative">
             <Words
-            className={`absolute bottom-0 text-3vw capitalize p-[5vw]`}
+              className={`absolute bottom-0 text-3vw capitalize p-[5vw]`}
               typess="subheading"
-               textss={
-    <>
-      Share your vision, explore  <br /> DHA 
-      Bahawalpur, and your  <br /> legacy   starts here
-    </>
-  }
+              textss={
+                <>
+                  Share your vision, explore <br /> DHA Bahawalpur, and your{" "}
+                  <br /> legacy starts here
+                </>
+              }
             />
           </div>
           <div className="col-span-1 row-span-1 relative z-0 p-[5vw] ">
-            {/* <Buttons type="small" clickeds={() => {console.log("About Us clicked")}} texts="About Us"  className={`absolute bottom-[5vh]`} />
-            <Buttons type="small" clickeds={() => {console.log("Explore More clicked")}} texts="Explore More" className={`absolute bottom-[5vh] right-[5vw]`}  />
-           */}
-            <Words typess="small" clickeds={() => {console.log("About Us clicked")}} textss="About Us"  className={`absolute bottom-[5vh]`} />
-            <Words typess="small" clickeds={() => {console.log("Explore More clicked")}} textss="Explore More" className={`absolute bottom-[5vh] right-[5vw]`}  />
+           
+            <Words
+              typess="small"
+              clickeds={() => {
+                console.log("About Us clicked");
+              }}
+              textss="About Us"
+              className={`absolute bottom-[5vh]`}
+            />
+            <Words
+              typess="small"
+              clickeds={() => {
+                console.log("Explore More clicked");
+              }}
+              textss="Explore More"
+              className={`absolute bottom-[5vh] right-[5vw]`}
+            />
           </div>
         </div>
+        <Secondpage />
+        <ThirsSe />
       </div>
     </>
   );
