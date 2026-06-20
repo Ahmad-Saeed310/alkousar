@@ -101,7 +101,7 @@ function ScrollWords({ textss, typess, className }) {
         trigger: word.current,
         start: "top 50%",
         end:"top 40%",
-        markers: true,
+        // markers: true,
         
         
       },
@@ -143,15 +143,15 @@ function Scrolltexts({ type, texts, className }) {
         xPercent: 100,
       },
       {
-        xPercent: -100,
+        xPercent: -70,
         opacity: 1,
         ease: "none",
 
         scrollTrigger: {
           trigger: ".scroll",
-          start: "top 80%",
+          start: "top 95%",
           end: "top 10%",
-          scrub: 2,
+          scrub: 9,
           // markers: true,
         },
       },

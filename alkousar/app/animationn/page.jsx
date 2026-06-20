@@ -13,6 +13,8 @@ import Nav from "../Components/Nav";
 
 import Secondpage from "../Components/Secondpage";
 import ThirsSe from "../Components/ThirsSe";
+import Forth from "../Components/Forth";
+import LogoMarquee from "../logo/page";
 
 function Animations() {
   const tl = gsap.timeline();
@@ -158,7 +160,9 @@ function Animations() {
           </div>
         </div>
         <Secondpage />
+        <Forth />
         <ThirsSe />
+        <LogoMarquee />
       </div>
     </>
   );
