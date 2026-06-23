@@ -2,7 +2,7 @@
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect, useState } from "react";
+// import { useEffect } from "react";
 
 import Image from "next/image";
 // import { Text } from "../Components/text";
@@ -12,18 +12,13 @@ import { Words } from "../Components/text";
 import Nav from "../Components/Nav";
 
 import Secondpage from "../Components/Secondpage";
-import ThirsSe from "../Components/Listing";
+import ThirsSe from "../Components/ThirsSe";
 import Forth from "../Components/Forth";
 import LogoMarquee from "../logo/page";
 import MapScrollAnimation from "../Components/MapScrollAnimation";
-import { Animateword } from "../Components/text";
-
-import BentoGrid from "../Components/Grid";
 
 function Animations() {
   const tl = gsap.timeline();
-  const [animationsComplete, setAnimationsComplete] = useState(false);
-
   useGSAP(() => {
     tl.from(".imageani", {
       x: "100vw",
@@ -54,71 +49,11 @@ function Animations() {
       },
       "<",
     );
-    
-    // Set flag when animations complete
-    tl.call(() => {
-      setAnimationsComplete(true);
-    });
   });
-
-  // Cursor tracking effect for .pic element
-  useEffect(() => {
-    if (!animationsComplete) return;
-
-    let requestId;
-
-    const updatePosition = (clientX) => {
-      const pic = document.querySelector(".pic");
-      if (!pic) return;
-
-      // Calculate base position in pixels (-30vw)
-      const baseX = (window.innerWidth * -30) / 100;
-      
-      // Half movement across full width
-      // Map cursor position (0 to window width) to half movement
-      const xPercent = clientX / window.innerWidth; // 0 to 1
-      const moveRange = 400; // maximum pixels to move (full range)
-      const xOffset = (xPercent * moveRange) / 2; // Half movement
-
-      // Apply position with smooth easing
-      gsap.to(".pic", {
-        x: baseX + xOffset,
-        duration: 0.15,
-        ease: "sine.out",
-        overwrite: "auto",
-      });
-    };
-
-    const handleMouseMove = (e) => {
-      const heroSection = document.querySelector(".animates");
-      if (!heroSection) return;
-
-      // Check if cursor is within hero section
-      const rect = heroSection.getBoundingClientRect();
-      if (
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom
-      ) {
-        return;
-      }
-
-      // Cancel any pending animation frame and update immediately
-      cancelAnimationFrame(requestId);
-      updatePosition(e.clientX);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      cancelAnimationFrame(requestId);
-    };
-  }, [animationsComplete]);
 
   return (
     <>
-      <div className="animates h-screen w-full relative bg-white   ">
+      <div className="animates h-screen w-full relative   ">
         <div className=" grid grid-cols-2 grid-rows-2  h-full w-full overflow-hidden gap-[1vw]   bg-white">
           <Nav />
           <div className="absolute h-screen w-full  flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden">
@@ -182,6 +117,7 @@ function Animations() {
             </div>
           </div>
           <div className="col-span-1 row-span-1  flex items-center justify-center flex-col uppercase pt-[15vh] ">
+           
             <Words
               typess="heading"
               textss={
@@ -205,6 +141,7 @@ function Animations() {
             />
           </div>
           <div className="col-span-1 row-span-1 relative z-0 p-[5vw] ">
+           
             <Words
               typess="small"
               clickeds={() => {
@@ -224,11 +161,10 @@ function Animations() {
           </div>
         </div>
         <Secondpage />
+        <Forth />
         <ThirsSe />
         <LogoMarquee />
-        <Forth />
-        <MapScrollAnimation />
-        <Animateword text="AL Kousar" typess="heading" />
+         <MapScrollAnimation />
       </div>
     </>
   );

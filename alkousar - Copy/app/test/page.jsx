@@ -4,8 +4,6 @@ import Chars from '../Components/text'
 import { Words } from '../Components/text'
 // import { Hover } from '../Components/text'
 
-import BentoGrid from '../Components/Grid'
-
 
 function Test() {
   return (
@@ -18,7 +16,6 @@ function Test() {
 {/* <Hover type="subheading" texts="Al-Kousar Properties" /> */}
     </div>
     {/* <Hover type="subheading" texts="Al-Kousar Properties" /> */}
-    <BentoGrid />
     </>
   )
 }

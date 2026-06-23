@@ -45,7 +45,7 @@ function Animationchars() {
       >
         Al-Kousar Properties
       </div>
-      {/* <Words typess="subheading" textss="Al-Kousar Properties" /> */}
+      <Words typess="subheading" textss="Al-Kousar Properties" />
     </div>
   );
 }

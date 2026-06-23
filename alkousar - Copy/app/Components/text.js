@@ -24,7 +24,7 @@ function Texts({ type, texts, className }) {
 }
 export { Texts };
 
-function Chars({ type, texts, className }) {
+function Chars({ type, texts }) {
   const refs = useRef(null);
 
   useGSAP(() => {
@@ -33,7 +33,7 @@ function Chars({ type, texts, className }) {
       mask: "chars", // adds extra wrapper element around lines with overflow: clip (v3.13.0+)
     });
 
-    gsap.from(textss.chars, {
+    tl.from(textss.chars, {
       yPercent: 100,
       duration: 0.5,
       opacity: 0,
@@ -43,7 +43,7 @@ function Chars({ type, texts, className }) {
   });
 
   return (
-    <h3 className={`${types[type]} ${className || ""}`} ref={refs}>
+    <h3 className={types[type]} ref={refs}>
       {texts}
     </h3>
   );
@@ -166,46 +166,3 @@ function Scrolltexts({ type, texts, className }) {
 }
 
 export { Scrolltexts };
-
-function Animateword({ text, classname,typess }) {
- const texts = useRef(null);
-
-  const tl = gsap.timeline();
-
-  useGSAP(() => {
-    const split = SplitText.create(texts.current, {
-      type: "chars", // only split into words and lines (not characters)
-      mask: "chars", // adds extra wrapper element around lines with overflow: clip (v3.13.0+)
-    });
-
-    tl.from(split.chars, {
-      yPercent: 100,
-      duration: 1,
-      opacity: 0,
-      ease: "power4.out",
-      stagger: 0.01,
-    });
-    // tl.to(split.chars, {
-    //   y: "-20vw",
-    //   duration: 0.5,
-    //   opacity: 1,
-    //   ease: "power2.in",
-    //   stagger: 0.01,
-    // });
-  });
-
-  return(
-    <>
-    
-    <h3
-        className={`${types[typess]} ${classname || ""}`}
-        ref={texts}
-      >
-        {text}
-      </h3>
-
-    </>
-  )
-}
-
-export { Animateword };
