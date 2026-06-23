@@ -38,7 +38,7 @@ function Forth() {
         start: "top 60%",
         end: "top 50%",
         scrub: 1,
-        markers: true,
+        // markers: true,
       },
     });
   });
@@ -112,12 +112,30 @@ function Forth() {
         <ScrollWords
           textss={
             <>
-              Here are a few deals <br />
+              {/* Here are a few deals <br />
               we have helped <br />
-              clients close
+              clients close */}
+
+              {/* Results Speak Loudest */}
+             Hear from Our Clients
+             
             </>
           }
           typess={"heading"}
+          className={`ml-[5vw] leading-none text-left`}
+        />
+        <ScrollWords
+          textss={
+            <>
+              {/* Here are a few deals <br />
+              we have helped <br />
+              clients close */}
+
+              These aren't just numbers — <br /> they're families settled, investments secured, and futures <br /> built across DHA Bahawalpur.
+            </>
+          }
+          typess={"subheading"}
+          className={`m-[5vw]  leading-none text-left`}
         />
         <div
           ref={container}

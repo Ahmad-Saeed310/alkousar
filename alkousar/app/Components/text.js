@@ -92,6 +92,8 @@ function ScrollWords({ textss, typess, className }) {
     });
 
     gsap.from(wordss.lines, {
+      color: "#fff",
+  stagger: 0.1,
       y: "20vw",
       duration: 1,
       opacity: 0,
@@ -99,7 +101,7 @@ function ScrollWords({ textss, typess, className }) {
       stagger: 0.1,
       scrollTrigger: {
         trigger: word.current,
-        start: "top 50%",
+        start: "top 70%",
         end:"top 40%",
         // markers: true,
         

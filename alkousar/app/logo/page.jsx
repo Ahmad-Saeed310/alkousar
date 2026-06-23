@@ -115,8 +115,8 @@ function Page() {
   });
 
   return( <>
-  <div className="h-screen w-full bg-white overflow-hidden">
-    <div className="h-full w-full flex items-center justify-center text-black gap-[5vw] marquee ">
+  <div className="h-[10vh] w-full bg-white overflow-hidden">
+    <div className="h-full w-full flex  justify-center text-black gap-[5vw] marquee ">
       {[...names, ...names].map((name) => (
         <div key={name.id} className="text-black whitespace-nowrap text-2xl">{name.name}</div>
       ))}

@@ -15,6 +15,7 @@ import Secondpage from "../Components/Secondpage";
 import ThirsSe from "../Components/ThirsSe";
 import Forth from "../Components/Forth";
 import LogoMarquee from "../logo/page";
+import MapScrollAnimation from "../Components/MapScrollAnimation";
 
 function Animations() {
   const tl = gsap.timeline();
@@ -163,6 +164,7 @@ function Animations() {
         <Forth />
         <ThirsSe />
         <LogoMarquee />
+         <MapScrollAnimation />
       </div>
     </>
   );
