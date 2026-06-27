@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useState } from "react";
@@ -17,8 +17,10 @@ import Forth from "../Components/Forth";
 import LogoMarquee from "../logo/page";
 import MapScrollAnimation from "../Components/MapScrollAnimation";
 import { Animateword } from "../Components/text";
+import ToGallery from "../Components/toGallery";
+// import ProjectClient from "../projects/[slug]/project-client";
 
-import BentoGrid from "../Components/Grid";
+// import BentoGrid from "../Components/Grid";
 
 function Animations() {
   const tl = gsap.timeline();
@@ -54,7 +56,7 @@ function Animations() {
       },
       "<",
     );
-    
+
     // Set flag when animations complete
     tl.call(() => {
       setAnimationsComplete(true);
@@ -73,7 +75,7 @@ function Animations() {
 
       // Calculate base position in pixels (-30vw)
       const baseX = (window.innerWidth * -30) / 100;
-      
+
       // Half movement across full width
       // Map cursor position (0 to window width) to half movement
       const xPercent = clientX / window.innerWidth; // 0 to 1
@@ -118,7 +120,7 @@ function Animations() {
 
   return (
     <>
-      <div className="animates h-screen w-full relative bg-white   ">
+      <div className="animates h-auto w-full relative bg-white   ">
         <div className=" grid grid-cols-2 grid-rows-2  h-full w-full overflow-hidden gap-[1vw]   bg-white">
           <Nav />
           <div className="absolute h-screen w-full  flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden">
@@ -144,9 +146,12 @@ function Animations() {
               className="h-[10vh] pics imageani rotate-10"
             />
             <div className="img">
-              <Image
-                src="/Home.png"
+              <video
+                src="/videooffice.mp4"
                 width={100}
+                autoPlay
+                loop 
+                muted
                 height={100}
                 alt=""
                 className="h-[10vh]  imageani pic rotate-350 z-20"
@@ -225,10 +230,11 @@ function Animations() {
         </div>
         <Secondpage />
         <ThirsSe />
-        <LogoMarquee />
+        {/* <LogoMarquee /> */}
         <Forth />
-        <MapScrollAnimation />
+        {/* <MapScrollAnimation /> */}
         <Animateword text="AL Kousar" typess="heading" />
+      <ToGallery />
       </div>
     </>
   );
