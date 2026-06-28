@@ -11,13 +11,13 @@ import Image from "next/image";
 import { Words } from "../Components/text";
 import Nav from "../Components/Nav";
 
-import Secondpage from "../Components/Secondpage";
-import ThirsSe from "../Components/Listing";
-import Forth from "../Components/Forth";
-import LogoMarquee from "../logo/page";
-import MapScrollAnimation from "../Components/MapScrollAnimation";
-import { Animateword } from "../Components/text";
-import ToGallery from "../Components/toGallery";
+// import Secondpage from "../Components/Secondpage";
+// import ThirsSe from "../Components/Listing";
+// import Forth from "../Components/Forth";
+// import LogoMarquee from "../logo/page";
+// import MapScrollAnimation from "../Components/MapScrollAnimation";
+// import { Animateword } from "../Components/text";
+// import ToGallery from "../Components/toGallery";
 // import ProjectClient from "../projects/[slug]/project-client";
 
 // import BentoGrid from "../Components/Grid";
@@ -120,7 +120,7 @@ function Animations() {
 
   return (
     <>
-      <div className="animates h-auto w-full relative bg-white   ">
+      <div className="animates h-screen w-full relative bg-white   ">
         <div className=" grid grid-cols-2 grid-rows-2  h-full w-full overflow-hidden gap-[1vw]   bg-white">
           <Nav />
           <div className="absolute h-screen w-full  flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden">
@@ -218,23 +218,43 @@ function Animations() {
               textss="About Us"
               className={`absolute bottom-[5vh]`}
             />
+
+            {/* Search bar — centered between About Us and Explore More */}
+            {/* <div className="absolute   -translate-x-1/2 flex items-center border border-black/25 rounded-full px-4 py-[0.9vh] gap-2 bg-white/60 backdrop-blur-sm hover:border-black/60 transition-colors duration-300 group">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                className="text-black/40 group-hover:text-black/70 transition-colors duration-300 shrink-0"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.35-4.35" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search properties..."
+                className="bg-transparent outline-none text-black text-[1.8vh] font-light w-[18vw] placeholder:text-black/35"
+              />
+            </div> */}
+
             <Words
               typess="small"
-              clickeds={() => {
-                console.log("Explore More clicked");
-              }}
+              
               textss="Explore More"
               className={`absolute bottom-[5vh] right-[5vw]`}
             />
           </div>
         </div>
-        <Secondpage />
+        {/* <Secondpage />
         <ThirsSe />
-        {/* <LogoMarquee /> */}
+        <LogoMarquee />
         <Forth />
         {/* <MapScrollAnimation /> */}
-        <Animateword text="AL Kousar" typess="heading" />
-      <ToGallery />
+        {/* <Animateword text="AL Kousar" typess="heading" /> */}
+      {/* <ToGallery /> */} 
       </div>
     </>
   );

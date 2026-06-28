@@ -23,7 +23,7 @@ function Forth() {
     //   }
     // };
 
-    el.addEventListener("wheel", { passive: false });
+    el.addEventListener("wheel",  { passive: false });
 
     return () => {
       el.removeEventListener("wheel");
@@ -112,7 +112,7 @@ function Forth() {
 
   return (
     <>
-      <div className="first h-auto w-full bg-white overflow-hidden">
+      <div className="first h-auto w-full bg-white overflow-hidden z-50">
         {/* <div className="1st h-full w-full pt-[8vh]">
           <ScrollWords textss={`About`} typess={`subheading`} />
           <ScrollWords

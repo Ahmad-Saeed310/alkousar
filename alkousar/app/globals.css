@@ -38,3 +38,30 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-track.scroll-down {
+  animation: marquee-ltr 28s linear infinite;
+}
+
+.marquee-track.scroll-up {
+  animation: marquee-rtl 28s linear infinite;
+}
+
+.marquee-track.paused {
+  animation-play-state: paused;
+}

@@ -54,37 +54,30 @@ const spaces = [
   },
 ];
 
-
 export default function BentoGrid({ items = spaces }) {
   const [hoveredId, setHoveredId] = useState(null);
 
   const textRefs = useRef({});
   const splitRefs = useRef({});
 
-
   const showText = (id) => {
     const element = textRefs.current[id];
 
     if (!element) return;
 
-
     gsap.set(element, {
       opacity: 1,
     });
-
 
     if (splitRefs.current[id]) {
       splitRefs.current[id].revert();
     }
 
-
     const split = SplitText.create(element, {
       type: "chars",
     });
 
-
     splitRefs.current[id] = split;
-
 
     gsap.fromTo(
       split.chars,
@@ -102,19 +95,16 @@ export default function BentoGrid({ items = spaces }) {
         duration: 0.8,
         stagger: 0.03,
         ease: "power4.out",
-      }
+      },
     );
   };
-
 
   const hideText = (id) => {
     const split = splitRefs.current[id];
 
     const element = textRefs.current[id];
 
-
     if (!split || !element) return;
-
 
     gsap.to(
       split.chars,
@@ -140,14 +130,12 @@ export default function BentoGrid({ items = spaces }) {
             opacity: 0,
           });
         },
-      }
+      },
     );
   };
 
-
   return (
     <section className="bg-black p-[2vh]">
-
       <div
         className="
           grid
@@ -157,18 +145,12 @@ export default function BentoGrid({ items = spaces }) {
           min-h-[192vh]
         "
       >
-
         {items.map((item) => {
-
           const active = hoveredId === item.id;
 
-          const inactive =
-            hoveredId !== null &&
-            hoveredId !== item.id;
-
+          const inactive = hoveredId !== null && hoveredId !== item.id;
 
           return (
-
             <div
               key={item.id}
               className={`
@@ -178,8 +160,6 @@ export default function BentoGrid({ items = spaces }) {
                 flex-col
               `}
             >
-
-
               {/* HEADER OUTSIDE IMAGE */}
 
               <div
@@ -198,34 +178,22 @@ export default function BentoGrid({ items = spaces }) {
                   mb-[1vh]
                 "
               >
+                <span>{item.content}</span>
 
-                <span>
-                  {item.content}
-                </span>
-
-
-                <span>
-                  {item.year}
-                </span>
-
+                <span>{item.year}</span>
               </div>
-
-
 
               {/* IMAGE */}
 
               <div
-
                 onMouseEnter={() => {
                   setHoveredId(item.id);
                   showText(item.id);
                 }}
-
                 onMouseLeave={() => {
                   hideText(item.id);
                   setHoveredId(null);
                 }}
-
                 className="
                   relative
                   overflow-hidden
@@ -237,14 +205,10 @@ export default function BentoGrid({ items = spaces }) {
                   flex-1
                 "
               >
-
-
                 <Image
                   src={item.img}
                   alt={item.content}
-
                   fill
-
                   className={`
                     object-cover
 
@@ -253,22 +217,12 @@ export default function BentoGrid({ items = spaces }) {
                     ease-out
 
 
-                    ${
-                      inactive
-                        ? "grayscale brightness-60"
-                        : "grayscale-0"
-                    }
+                    ${inactive ? "grayscale brightness-60" : "grayscale-0"}
 
 
-                    ${
-                      active
-                        ? "scale-105"
-                        : "scale-100"
-                    }
+                    ${active ? "scale-105" : "scale-100"}
                   `}
                 />
-
-
 
                 {/* CENTER HOVER TITLE */}
 
@@ -286,43 +240,27 @@ export default function BentoGrid({ items = spaces }) {
                     pointer-events-none
                   "
                 >
-
                   <div
-                    ref={(el) =>
-                      (textRefs.current[item.id] = el)
-                    }
-
+                    ref={(el) => (textRefs.current[item.id] = el)}
                     className="
                       opacity-0
                     "
                   >
-
                     <Text
                       type="heading"
                       texts={item.content}
-
                       className="
                         text-yellow-300
                         text-center
                       "
                     />
-
                   </div>
-
                 </div>
-
-
               </div>
-
-
             </div>
-
           );
-
         })}
-
       </div>
-
     </section>
   );
 }

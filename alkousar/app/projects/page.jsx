@@ -153,7 +153,7 @@ export default function HorizontalScroll() {
       {/* track */}
       <div
         ref={trackRef}
-        className="w-full flex overflow-x-scroll overflow-y-hidden"
+        className="w-full flex overflow-x-scroll overflow-y-hidden bg-red-300"
         style={{
           gap: CARD_GAP,
           paddingLeft: 64,
@@ -221,16 +221,16 @@ export default function HorizontalScroll() {
 
       {/* progress */}
       <div className="w-[20vw] px-16 mt-8 flex items-center gap-4">
-        <div className="flex-1 h-px bg-white/10 relative overflow-hidden rounded-full">
+        <div className="flex-1 h-px bg-black/40 relative overflow-hidden rounded-full">
           <div
-            className="absolute left-0 top-0 h-full bg-white rounded-full"
+            className="absolute left-0 top-0 h-full bg-black rounded-full"
             style={{
               width: `${progress}%`,
               transition: "width 60ms linear",
             }}
           />
         </div>
-        <span className="text-xs font-mono text-white/40 w-10 text-right tabular-nums">
+        <span className="text-xs font-mono text-black/60 w-10 text-right tabular-nums">
           {progress}%
         </span>
       </div>

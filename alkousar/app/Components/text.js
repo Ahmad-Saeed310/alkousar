@@ -81,8 +81,6 @@ function Words({ textss, typess, className }) {
 
 export { Words };
 
-
-
 function ScrollWords({ textss, typess, className }) {
   const word = useRef(null);
   useGSAP(() => {
@@ -93,7 +91,7 @@ function ScrollWords({ textss, typess, className }) {
 
     gsap.from(wordss.lines, {
       color: "#fff",
-  stagger: 0.1,
+      stagger: 0.1,
       y: "20vw",
       duration: 1,
       opacity: 0,
@@ -102,10 +100,8 @@ function ScrollWords({ textss, typess, className }) {
       scrollTrigger: {
         trigger: word.current,
         start: "top 70%",
-        end:"top 40%",
+        end: "top 40%",
         // markers: true,
-        
-        
       },
     });
   });
@@ -167,8 +163,8 @@ function Scrolltexts({ type, texts, className }) {
 
 export { Scrolltexts };
 
-function Animateword({ text, classname,typess }) {
- const texts = useRef(null);
+function Animateword({ text, classname, typess }) {
+  const texts = useRef(null);
 
   const tl = gsap.timeline();
 
@@ -194,18 +190,13 @@ function Animateword({ text, classname,typess }) {
     // });
   });
 
-  return(
+  return (
     <>
-    
-    <h3
-        className={`${types[typess]} ${classname || ""}`}
-        ref={texts}
-      >
+      <h3 className={`${types[typess]} ${classname || ""}`} ref={texts}>
         {text}
       </h3>
-
     </>
-  )
+  );
 }
 
 export { Animateword };

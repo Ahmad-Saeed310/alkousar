@@ -1,3 +1,5 @@
+"use client";
+
 import { Texts } from "./text";
 import { ScrollWords } from "./text";
 import BentoGrid from "./Grid";
@@ -51,11 +53,11 @@ function ThirsSe() {
   });
   useGSAP(() => {
     gsap.from(".width", {
-      scale: .7,
+      scale: 0.7,
       duration: 1,
       transformOrigin: "bottom center",
       ease: "power4.out",
-      scrub:10,
+      scrub: 10,
 
       scrollTrigger: {
         trigger: ".imgwidth",
@@ -89,7 +91,7 @@ function ThirsSe() {
   });
   return (
     <>
-      <div className="h-auto w-full  animate   ">
+      <div className="h-auto w-full  animate bg-white relative   ">
         <div className="h-[190vh] w-full   flex items-start animate  justify-center overflow-hidden">
           <ScrollWords
             textss={

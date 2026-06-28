@@ -1,4 +1,6 @@
-// import { Words } from "./text";
+
+
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -57,7 +59,7 @@ useGSAP(() => {
           </span>
         </Link>
         <Link
-          href="/Gallery"
+          href="/projects"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
