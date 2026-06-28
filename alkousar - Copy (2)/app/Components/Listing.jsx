@@ -1,0 +1,210 @@
+"use client";
+
+import { Texts } from "./text";
+import { ScrollWords } from "./text";
+import BentoGrid from "./Grid";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+
+import Image from "next/image";
+
+function ThirsSe() {
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero",
+        start: "top 20%",
+        end: "+=1000",
+        pin: true,
+        scrub: 2,
+        //   markers: true,
+      },
+    });
+
+    tl.to(".heading", {
+      scale: 0.7,
+      transformOrigin: "center center",
+      delay: 1,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    tl.to(".heading", {
+      scale: 0.7,
+      duration: 2,
+    });
+  });
+
+  useGSAP(() => {
+    gsap.from(".imgwidth", {
+      width: 0,
+      duration: 1,
+      ease: "power4.out",
+
+      scrollTrigger: {
+        trigger: ".imgwidth",
+        start: "top 90%",
+        end: "top 60%",
+        scrub: 1,
+        // markers: true,
+      },
+    });
+  });
+  useGSAP(() => {
+    gsap.from(".width", {
+      scale: 0.7,
+      duration: 1,
+      transformOrigin: "bottom center",
+      ease: "power4.out",
+      scrub: 10,
+
+      scrollTrigger: {
+        trigger: ".imgwidth",
+        start: "top 90%",
+        end: "top 60%",
+        scrub: 1,
+        // markers: true,
+      },
+    });
+    gsap.to(".animate", {
+      backgroundColor: "black",
+
+      scrollTrigger: {
+        trigger: ".animate",
+        start: "top -95%",
+        end: "top -60%",
+        scrub: 2,
+        // markers: true,
+      },
+    });
+    gsap.to(".text", {
+      color: "white",
+      scrollTrigger: {
+        trigger: ".animate",
+        start: "top -95%",
+        end: "top -60%",
+        scrub: 2,
+        // markers: true,
+      },
+    });
+  });
+  return (
+    <>
+      <div className="h-auto w-full  animate bg-white relative   ">
+        <div className="h-[190vh] w-full   flex items-start animate  justify-center overflow-hidden">
+          <ScrollWords
+            textss={
+              <>
+                <span className="text-left block text-black text w-full">
+                  Our
+                </span>{" "}
+                <br />{" "}
+                <span className="  w-full block text text-black text-center">
+                  {" "}
+                  Listings
+                </span>{" "}
+                <br />{" "}
+                <span className="text-right text text-black block  w-full ">
+                  {" "}
+                  Cover
+                </span>
+              </>
+            }
+            typess={`heading`}
+            refss={`words`}
+            className={`text-[12vw]   leading-none   heading hero capitalize flex flex-col  `}
+          />
+        </div>
+        {/* <div className="sec h-[200vh]   grid grid-rows-2 p-[2vh]  ">
+          <div className="2nd  row-span-1  row-start-2 grid grid-cols-4 grid-rows-2 gap-[2vh]   ">
+            <div className="1 bg-amber-200 col-span-2 row-span-2  ">
+              <div className="h-full w-full  bg-yellow-300 ">
+                <Texts type={`heading`} texts={"WE CURATE SPACES"} />
+                </div>
+            </div>
+            <div className="3 bg-green-200 col-span-1 ">h</div>
+            <div className="4 bg-neutral-300 col-span-1 ">h</div>
+          </div>
+        </div>
+        <div className="sec h-screen   grid grid-rows-2 p-[2vh] bg-white ">
+          <div className="2nd  row-span-2  row-start-1 grid grid-cols-4 grid-rows-2 gap-[2vh]   ">
+            <div className="3 bg-green-200 col-span-1 ">h</div>
+            <div className="4 bg-neutral-300 col-span-1 ">h</div>
+            <div className="1 bg-amber-200 col-span-2 row-span-2  ">h</div>
+          </div>
+        </div> */}
+        <BentoGrid />
+
+        {/* <div className="sec h-screen    bg-white "> */}
+
+        <div className="h-screen w-full width bg-white flex flex-col items-center justify-center">
+          <Texts type={`heading`} texts={"WE CURATE SPACES"} />
+          <Texts
+            className={``}
+            type={`heading`}
+            texts={
+              <>
+                <div className="home flex items-center justify-center">
+                  <h3>HOMES</h3>
+                  <div
+                    id="box1"
+                    className=" imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
+                  >
+                    <Image
+                      src="/residence.png"
+                      alt=""
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3>APARTMENTS</h3>{" "}
+                  <div
+                    id="box1"
+                    className=" imgwidth  h-[4vw] w-[8vw] sm:h-[4vw] relative sm:w-[8vw] bg-stone-700  object-contain   my-[1vw] mx-[1vw]"
+                  >
+                    {" "}
+                    <Image
+                      src="/stone.png"
+                      alt=""
+                      fill
+                      className="object-cover "
+                    />
+                  </div>
+                </div>
+                <div className="home flex items-center justify-center">
+                  <h3>COMMERCIAL</h3>{" "}
+                  <div
+                    id="box1"
+                    className=" imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
+                  >
+                    {" "}
+                    <Image
+                      src="/Apartments.png"
+                      alt=""
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <h3>RETAIL</h3>{" "}
+                  {/* <div
+                        id="box1"
+                        class="   h-[4vw] w-[4vw] sm:h-[4vw] sm:w-[4vw] bg-stone-700 rounded-lg bg-cover my-[1vw] mx-[1vw]"
+                      >
+                        {" "}
+                        <img src="/logo.png" alt="" />
+                      </div> */}
+                </div>
+              </>
+            }
+          />
+          <Texts type={`heading`} texts={"FOR YOUR LEGACY"} />
+        </div>
+
+        {/* </div> */}
+      </div>
+    </>
+  );
+}
+
+export default ThirsSe;
