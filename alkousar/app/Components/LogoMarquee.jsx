@@ -3,26 +3,26 @@
 import { useEffect, useRef, useState } from "react";
 
 const logos = [
-  { icon: "⚛️",  label: "React",      bg: "#0ea5e920", color: "#38bdf8" },
-  { icon: "🐍",  label: "Python",     bg: "#eab30820", color: "#facc15" },
-  { icon: "🐙",  label: "GitHub",     bg: "#a78bfa20", color: "#a78bfa" },
-  { icon: "🐳",  label: "Docker",     bg: "#3b82f620", color: "#60a5fa" },
-  { icon: "🎨",  label: "Figma",      bg: "#ec489920", color: "#f472b6" },
-  { icon: "🟦",  label: "TypeScript", bg: "#6366f120", color: "#818cf8" },
-  { icon: "☁️",  label: "AWS",        bg: "#f9731620", color: "#fb923c" },
-  { icon: "📝",  label: "Notion",     bg: "#78716c20", color: "#a8a29e" },
-  { icon: "💬",  label: "Slack",      bg: "#10b98120", color: "#34d399" },
-  { icon: "▲",   label: "Vercel",     bg: "#f1f5f920", color: "#94a3b8" },
-  { icon: "🐘",  label: "Postgres",   bg: "#06b6d420", color: "#67e8f9" },
-  { icon: "🔴",  label: "Redis",      bg: "#ef444420", color: "#f87171" },
-  { icon: "◈",   label: "GraphQL",    bg: "#d946ef20", color: "#e879f9" },
-  { icon: "☸️",  label: "Kubernetes", bg: "#0ea5e920", color: "#38bdf8" },
-  { icon: "💳",  label: "Stripe",     bg: "#6366f120", color: "#818cf8" },
-  { icon: "🔥",  label: "Svelte",     bg: "#f9731620", color: "#fb923c" },
-  { icon: "🌊",  label: "Tailwind",   bg: "#14b8a620", color: "#2dd4bf" },
-  { icon: "💙",  label: "VS Code",    bg: "#3b82f620", color: "#60a5fa" },
-  { icon: "🤖",  label: "OpenAI",     bg: "#84cc1620", color: "#a3e635" },
-  { icon: "📦",  label: "npm",        bg: "#ef444420", color: "#f87171" },
+  { icon: "⚛️",  label: "React",      bg: "white", color: "#38bdf8" },
+  { icon: "🐍",  label: "Python",     bg: "white", color: "#facc15" },
+  { icon: "🐙",  label: "GitHub",     bg: "white", color: "#a78bfa" },
+  { icon: "🐳",  label: "Docker",     bg: "white", color: "#60a5fa" },
+  { icon: "🎨",  label: "Figma",      bg: "white", color: "#f472b6" },
+  { icon: "🟦",  label: "TypeScript", bg: "white", color: "#818cf8" },
+  { icon: "☁️",  label: "AWS",        bg: "white", color: "#fb923c" },
+  { icon: "📝",  label: "Notion",     bg: "white", color: "#a8a29e" },
+  { icon: "💬",  label: "Slack",      bg: "white", color: "#34d399" },
+  { icon: "▲",   label: "Vercel",     bg: "white", color: "#94a3b8" },
+  { icon: "🐘",  label: "Postgres",   bg: "white", color: "#67e8f9" },
+  { icon: "🔴",  label: "Redis",      bg: "white", color: "#f87171" },
+  { icon: "◈",   label: "GraphQL",    bg: "white", color: "#e879f9" },
+  { icon: "☸️",  label: "Kubernetes", bg: "white", color: "#38bdf8" },
+  { icon: "💳",  label: "Stripe",     bg: "white", color: "#818cf8" },
+  { icon: "🔥",  label: "Svelte",     bg: "white", color: "#fb923c" },
+  { icon: "🌊",  label: "Tailwind",   bg: "white", color: "#2dd4bf" },
+  { icon: "💙",  label: "VS Code",    bg: "white", color: "#60a5fa" },
+  { icon: "🤖",  label: "OpenAI",     bg: "white", color: "#a3e635" },
+  { icon: "📦",  label: "npm",        bg: "white", color: "#f87171" },
 ];
 
 const IDLE_SPEED = 1;      // px/frame when not scrolling
@@ -118,8 +118,8 @@ export default function LogoMarquee() {
   }, []);
 
   return (
-    <div className="w-full py-6">
-      <div className="mb-4 flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+    <div className="w-full py-6 bg-stone-100 z-10">
+      {/* <div className="mb-4 flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
         <span>Scroll speed controls marquee speed</span>
         <span
           className={[
@@ -131,7 +131,7 @@ export default function LogoMarquee() {
         >
           {scrollDir === "left" ? "← right to left" : "left to right →"}
         </span>
-      </div>
+      </div> */}
 
       <div className="w-full overflow-hidden">
         <div
@@ -143,14 +143,14 @@ export default function LogoMarquee() {
             logos.map(({ icon, label, bg, color }) => (
               <div
                 key={`${setIdx}-${label}`}
-                className="flex h-[10vh] w-[10vh] min-h-[72px] min-w-[72px] shrink-0 select-none flex-col items-center justify-center gap-1.5 rounded-xl border border-gray-200 transition-colors duration-200 hover:border-gray-400 dark:border-gray-700 dark:hover:border-gray-500"
+                className="flex h-[30vh] w-[30vh] min-h-[10vh] min-w-[10vh] shrink-0 select-none flex items-center justify-center gap-1.5  border border-gray-200 "
                 style={{ background: bg }}
                 aria-hidden={setIdx !== 0}
               >
                 <span className="text-2xl leading-none" style={{ color }}>
                   {icon}
                 </span>
-                <span className="text-[10px] tracking-wide text-gray-400 dark:text-gray-500">
+                <span className="text-[2vw] tracking-tight text-black ">
                   {label}
                 </span>
               </div>

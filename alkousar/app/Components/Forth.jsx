@@ -23,7 +23,7 @@ function Forth() {
     //   }
     // };
 
-    el.addEventListener("wheel",  { passive: false });
+    el.addEventListener("wheel", { passive: false });
 
     return () => {
       el.removeEventListener("wheel");
@@ -112,7 +112,7 @@ function Forth() {
 
   return (
     <>
-      <div className="first h-auto w-full bg-white overflow-hidden z-50">
+      <div className="first h-auto w-full bg-stone-100 overflow-hidden z-50">
         {/* <div className="1st h-full w-full pt-[8vh]">
           <ScrollWords textss={`About`} typess={`subheading`} />
           <ScrollWords
@@ -186,10 +186,9 @@ function Forth() {
               <div className="image">
                 <Image
                   src={property.image}
-                 fill
+                  fill
                   className="z-10 object-cover"
                   alt="Images"
-                  
                 />
               </div>
             </div>

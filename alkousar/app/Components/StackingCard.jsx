@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import ImageRows from "./Award";
+
 export default function StackingCards() {
   const sectionRef = useRef(null);
   const card1Ref = useRef(null);
@@ -66,7 +68,7 @@ export default function StackingCards() {
             className="h-full w-full flex items-center justify-center bg-[#1a1a2e] border border-[#2d2d5a]"
             style={{ willChange: "transform" }}
           >
-            <div className="text-center px-8">
+            {/* <div className="text-center px-8">
               <p className="text-xs tracking-widest uppercase opacity-40 mb-4">01</p>
               <h2 className="text-[clamp(32px,6vw,80px)] font-bold tracking-tight leading-none mb-6">
                 Vision
@@ -74,7 +76,8 @@ export default function StackingCards() {
               <p className="text-base opacity-50 max-w-md mx-auto leading-relaxed">
                 Every great product begins with a clear vision. Define where you are going before you decide how to get there.
               </p>
-            </div>
+            </div> */}
+            <ImageRows />
           </section>
         </div>
 

@@ -28,6 +28,12 @@ body {
 .font{
    font-family: var(--font-google-sans);  
 }
+.fonts{
+   font-family: var(--font-geist-mono);  
+}
+.fontss{
+   font-family: var(--font-geist-sans);  
+}
 
 /* Hide scrollbar */
 .no-scrollbar::-webkit-scrollbar {
@@ -64,4 +70,8 @@ body {
 
 .marquee-track.paused {
   animation-play-state: paused;
+}
+
+.sanss {
+  font-family: var(--font-google-sans);
 }

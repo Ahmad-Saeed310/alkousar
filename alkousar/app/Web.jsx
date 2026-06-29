@@ -15,6 +15,8 @@ import StackingCards from "./Components/StackingCard";
 import ImageRows from "./Components/Award";
 import ScrollMarquee from "./Components/LogoMarquee";
 
+import LogoMarqueeleft from "./Components/LogoMarquee2";
+
 
 
 
@@ -29,10 +31,11 @@ export default function Web() {
         <ThirsSe/>
         <StackingCards/>
         {/* <  Forth/> */}
-        <ScrollMarquee/>
         <MapScrollAnimation/>
         <Animateword/>
         <ImageRows/>
+        <ScrollMarquee/>
+        <LogoMarqueeleft/>
         {/* <ToGallery/> */}
         <Footer/>
         

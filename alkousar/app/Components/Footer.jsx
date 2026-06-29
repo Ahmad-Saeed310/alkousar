@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Texts } from "./text";
+import { Marquee } from "./text";
 
 const navLinks = [
   "Home",
@@ -31,7 +32,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-black h-screen font-sans overflow-hidden relative ">
+    <footer className="bg-stone-100 text-black h-screen font-sans overflow-hidden relative ">
       {/* Top section */}
       <div className="px-8 md:px-16 pt-16 pb-10 grid grid-cols-1  md:grid-cols-3 gap-12  mt-[3vh] ">
         {/* Left — Property image */}
@@ -122,11 +123,12 @@ export default function Footer() {
         >
           AL KOUSAR
         </p> */}
-         <Texts
-          texts="AL-KOUSAR"
-          type="heading"
-          className={` text-[15vw] flex whitespace-nowrap w-full row-span-1 col-span-2 absolute  bottom-0  leading-none`}
-        />
+        {/* <Texts
+              texts="AL-KOUSAR"
+              type="heading"
+              className={` text-[15vw] flex whitespace-nowrap w-full row-span-1 col-span-2 absolute  bottom-0  leading-none`}
+            /> */}
+        <Marquee text="AL-KOUSAR PROPERTIES" speed={30} />
       </div>
     </footer>
   );

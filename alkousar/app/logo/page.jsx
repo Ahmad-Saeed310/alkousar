@@ -1,9 +1,7 @@
-
-
-"use client"
+"use client";
 
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap"
+import gsap from "gsap";
 
 function Page() {
   const names = [
@@ -105,7 +103,7 @@ function Page() {
     },
   ];
 
-    useGSAP(() => {
+  useGSAP(() => {
     gsap.to(".marquee", {
       xPercent: -100,
       duration: 10,
@@ -114,18 +112,22 @@ function Page() {
     });
   });
 
-  return( <>
-  <div className="h-[10vh] w-full bg-white overflow-hidden">
-    <div className="h-full w-full flex  justify-center text-black gap-[5vw] marquee ">
-      {[...names, ...names].map((name) => (
-        <div key={name.id} className="text-black whitespace-nowrap text-2xl">{name.name}</div>
-      ))}
-    </div>
-  </div>
-  
-  
-  
-  </>);
+  return (
+    <>
+      <div className="h-[10vh] w-full bg-stone-100 overflow-hidden">
+        <div className="h-full w-full flex  justify-center text-black gap-[5vw] marquee ">
+          {[...names, ...names].map((name) => (
+            <div
+              key={name.id}
+              className="text-black whitespace-nowrap text-2xl"
+            >
+              {name.name}
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Page;

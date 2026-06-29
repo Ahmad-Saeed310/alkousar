@@ -1,26 +1,115 @@
-
 "use client";
 
-import Image from "next/image"
+import Image from "next/image";
 
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const BASE_PROJECTS = [
- { id: 1,  title: "Al-Kousar Properties", tag: "Real Estate",   img: "/project-1-1.png", href: "/projects/cosmic%20Visualizer4" },
-  { id: 2,  title: "Arch Studio",          tag: "Architecture",  img: "/project-1-2.png", href: "#" },
-  { id: 3,  title: "Verde Living",         tag: "Interior",      img: "/project-1-3.png", href: "#" },
-  { id: 4,  title: "Noir Branding",        tag: "Branding",      img: "/project-1-4.png", href: "#" },
-  { id: 5,  title: "Motion Lab",           tag: "Animation",     img: "/project-1-5.png", href: "#" },
-  { id: 6,  title: "Solis Solar",          tag: "Energy",        img: "/project-2-1.png", href: "#" },
-  { id: 7,  title: "Typeset",              tag: "Typography",    img: "/project-2-2.png", href: "#" },
-  { id: 8,  title: "Pulse Health",         tag: "Healthcare",    img: "/project-2-3.png", href: "#" },
-  { id: 9,  title: "Drift Apparel",        tag: "Fashion",       img: "/project-2-4.png", href: "#" },
-  { id: 10, title: "Lunar Coffee",         tag: "F&B",           img: "/project-2-5.png", href: "#" },
-  { id: 11, title: "Block Chain",          tag: "Web3",          img: "/project-3-1.png", href: "#" },
-  { id: 12, title: "Terrain Maps",         tag: "Data Viz",      img: "/project-3-2.png", href: "#" },
-  { id: 13, title: "Coda Music",           tag: "Music",         img: "/project-3-3.png", href: "#" },
-  { id: 14, title: "Sky Drone",            tag: "Aerial",        img: "/project-3-4.png", href: "#" },
-  { id: 15, title: "Forma Portfolio",      tag: "Portfolio",     img    : "/project-3-5.png", href: "#" },
+  {
+    id: 1,
+    title: "Al-Kousar Properties",
+    tag: "Real Estate",
+    img: "/project-1-1.png",
+    href: "/projects/cosmic%20Visualizer4",
+  },
+  {
+    id: 2,
+    title: "Arch Studio",
+    tag: "Architecture",
+    img: "/project-1-2.png",
+    href: "#",
+  },
+  {
+    id: 3,
+    title: "Verde Living",
+    tag: "Interior",
+    img: "/project-1-3.png",
+    href: "#",
+  },
+  {
+    id: 4,
+    title: "Noir Branding",
+    tag: "Branding",
+    img: "/project-1-4.png",
+    href: "#",
+  },
+  {
+    id: 5,
+    title: "Motion Lab",
+    tag: "Animation",
+    img: "/project-1-5.png",
+    href: "#",
+  },
+  {
+    id: 6,
+    title: "Solis Solar",
+    tag: "Energy",
+    img: "/project-2-1.png",
+    href: "#",
+  },
+  {
+    id: 7,
+    title: "Typeset",
+    tag: "Typography",
+    img: "/project-2-2.png",
+    href: "#",
+  },
+  {
+    id: 8,
+    title: "Pulse Health",
+    tag: "Healthcare",
+    img: "/project-2-3.png",
+    href: "#",
+  },
+  {
+    id: 9,
+    title: "Drift Apparel",
+    tag: "Fashion",
+    img: "/project-2-4.png",
+    href: "#",
+  },
+  {
+    id: 10,
+    title: "Lunar Coffee",
+    tag: "F&B",
+    img: "/project-2-5.png",
+    href: "#",
+  },
+  {
+    id: 11,
+    title: "Block Chain",
+    tag: "Web3",
+    img: "/project-3-1.png",
+    href: "#",
+  },
+  {
+    id: 12,
+    title: "Terrain Maps",
+    tag: "Data Viz",
+    img: "/project-3-2.png",
+    href: "#",
+  },
+  {
+    id: 13,
+    title: "Coda Music",
+    tag: "Music",
+    img: "/project-3-3.png",
+    href: "#",
+  },
+  {
+    id: 14,
+    title: "Sky Drone",
+    tag: "Aerial",
+    img: "/project-3-4.png",
+    href: "#",
+  },
+  {
+    id: 15,
+    title: "Forma Portfolio",
+    tag: "Portfolio",
+    img: "/project-3-5.png",
+    href: "#",
+  },
 ];
 
 // Triple the list: [copy] [original] [copy]
@@ -31,20 +120,20 @@ const PROJECTS = [
   ...BASE_PROJECTS.map((p) => ({ ...p, uid: `c-${p.id}` })),
 ];
 
-const CARD_W   = 320;
+const CARD_W = 320;
 const CARD_GAP = 20;
 const CARD_STRIDE = CARD_W + CARD_GAP;
-const SET_WIDTH   = BASE_PROJECTS.length * CARD_STRIDE; // width of one set
+const SET_WIDTH = BASE_PROJECTS.length * CARD_STRIDE; // width of one set
 
 export default function HorizontalScroll() {
-  const trackRef  = useRef(null);
-  const [hovered, setHovered]  = useState(null);
+  const trackRef = useRef(null);
+  const [hovered, setHovered] = useState(null);
   const [progress, setProgress] = useState(0);
   // track cumulative scroll for progress (not raw scrollLeft which jumps on teleport)
   const totalScrolled = useRef(0);
   const lastScrollLeft = useRef(0);
   const isJumping = useRef(false);
-  const didDrag   = useRef(false);
+  const didDrag = useRef(false);
 
   // Jump back to center copy silently (no visible flicker)
   const teleport = useCallback((track) => {
@@ -119,17 +208,20 @@ export default function HorizontalScroll() {
     let didDragLocal = false;
 
     function onMouseDown(e) {
-      dragging     = true;
+      dragging = true;
       didDragLocal = false;
       didDrag.current = false;
-      startX    = e.pageX;
+      startX = e.pageX;
       startLeft = track.scrollLeft;
       track.style.cursor = "grabbing";
     }
     function onMouseMove(e) {
       if (!dragging) return;
       const dx = e.pageX - startX;
-      if (Math.abs(dx) > 4) { didDragLocal = true; didDrag.current = true; }
+      if (Math.abs(dx) > 4) {
+        didDragLocal = true;
+        didDrag.current = true;
+      }
       track.scrollLeft = startLeft - dx;
     }
     function onMouseUp() {
@@ -137,19 +229,18 @@ export default function HorizontalScroll() {
       track.style.cursor = "grab";
     }
 
-    track.addEventListener("mousedown",  onMouseDown);
+    track.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseup",   onMouseUp);
+    window.addEventListener("mouseup", onMouseUp);
     return () => {
-      track.removeEventListener("mousedown",  onMouseDown);
+      track.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mousemove", onMouseMove);
-      window.removeEventListener("mouseup",   onMouseUp);
+      window.removeEventListener("mouseup", onMouseUp);
     };
   }, []);
 
   return (
     <section className="h-screen w-full flex flex-col items-center justify-center bg-stone-300 overflow-hidden select-none">
-
       {/* track */}
       <div
         ref={trackRef}
@@ -169,7 +260,9 @@ export default function HorizontalScroll() {
             href={p.href}
             onMouseEnter={() => setHovered(p.uid)}
             onMouseLeave={() => setHovered(null)}
-            onClick={(e) => { if (didDrag.current) e.preventDefault(); }}
+            onClick={(e) => {
+              if (didDrag.current) e.preventDefault();
+            }}
             className="relative overflow-hidden relative"
             style={{
               flexShrink: 0,
@@ -177,14 +270,16 @@ export default function HorizontalScroll() {
               height: 420,
               textDecoration: "none",
             }}
-
           >
             <Image
               src={p.img}
               alt={p.title}
               className="w-full h-full object-cover"
               style={{
-                filter:    hovered === p.uid ? "grayscale(100%) brightness(0.5)" : "none",
+                filter:
+                  hovered === p.uid
+                    ? "grayscale(100%) brightness(0.5)"
+                    : "none",
                 transform: hovered === p.uid ? "scale(1.05)" : "scale(1)",
                 transition: "filter 0.4s ease, transform 0.4s ease",
               }}
@@ -196,7 +291,7 @@ export default function HorizontalScroll() {
             <div
               className="absolute inset-0 flex flex-col justify-end p-6"
               style={{
-                opacity:    hovered === p.uid ? 1 : 0,
+                opacity: hovered === p.uid ? 1 : 0,
                 transition: "opacity 0.35s ease",
               }}
             >
@@ -221,9 +316,9 @@ export default function HorizontalScroll() {
 
       {/* progress */}
       <div className="w-[20vw] px-16 mt-8 flex items-center gap-4">
-        <div className="flex-1 h-px bg-white/10 relative overflow-hidden rounded-full">
+        <div className="flex-1 h-px bg-stone-100/10 relative overflow-hidden rounded-full">
           <div
-            className="absolute left-0 top-0 h-full bg-white rounded-full"
+            className="absolute left-0 top-0 h-full bg-stone-100 rounded-full"
             style={{
               width: `${progress}%`,
               transition: "width 60ms linear",

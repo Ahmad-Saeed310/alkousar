@@ -12,11 +12,12 @@ const tl = gsap.timeline();
 
 const types = {
   heading:
-    " text-[6vw]  font-bold font  text-black leading-[10vh] tracking-tight",
+    " text-[6vw]  font-black  sanss   text-black leading-[10vh] tracking-tight",
   subheading: "text-[5vh] font-light text-black leading-none tracking-tight",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",
   paragraph2: "text-[1.5vw ] font-light text-black",
+  link: " text-[2vh] font-light text-black ",
 };
 
 function Texts({ type, texts, className }) {
@@ -200,3 +201,34 @@ function Animateword({ text, classname, typess }) {
 }
 
 export { Animateword };
+
+export function Marquee({ text = "Your marquee text goes here ", speed = 10 }) {
+  const repeated = Array(10).fill(text);
+
+  return (
+    <div className="w-full overflow-hidden whitespace-nowrap bg-stone-100 ">
+      <div
+        className="inline-flex gap-16"
+        style={{
+          animation: `marquee ${speed}s linear infinite`,
+        }}
+      >
+        {repeated.map((t, i) => (
+          <span
+            key={i}
+            className="text-[10vw] font-semibold tracking-tight text-black shrink-0"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <style>{`
+        @keyframes marquee {
+          from { transform: translateX(0); }
+          to   { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  );
+}

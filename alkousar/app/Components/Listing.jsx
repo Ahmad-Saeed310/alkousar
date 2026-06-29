@@ -91,23 +91,23 @@ function ThirsSe() {
   });
   return (
     <>
-      <div className="h-auto w-full  animate bg-white relative   ">
+      <div className="h-auto w-full  animate bg-[#ba975d] relative   ">
         <div className="h-[190vh] w-full   flex items-start animate  justify-center overflow-hidden">
           <ScrollWords
             textss={
               <>
-                <span className="text-left block text-black text w-full">
-                  Our
+                <span className="text-center sanss  block  text-black text w-full">
+                  SELECTED
                 </span>{" "}
                 <br />{" "}
-                <span className="  w-full block text text-black text-center">
+                <span className="  w-full sanss  block text text-black text-center">
                   {" "}
-                  Listings
+                  wORKS
                 </span>{" "}
                 <br />{" "}
                 <span className="text-right text text-black block  w-full ">
                   {" "}
-                  Cover
+                  (2019-2026)
                 </span>
               </>
             }
@@ -127,7 +127,7 @@ function ThirsSe() {
             <div className="4 bg-neutral-300 col-span-1 ">h</div>
           </div>
         </div>
-        <div className="sec h-screen   grid grid-rows-2 p-[2vh] bg-white ">
+        <div className="sec h-screen   grid grid-rows-2 p-[2vh] bg-stone-100 ">
           <div className="2nd  row-span-2  row-start-1 grid grid-cols-4 grid-rows-2 gap-[2vh]   ">
             <div className="3 bg-green-200 col-span-1 ">h</div>
             <div className="4 bg-neutral-300 col-span-1 ">h</div>
@@ -136,9 +136,9 @@ function ThirsSe() {
         </div> */}
         <BentoGrid />
 
-        {/* <div className="sec h-screen    bg-white "> */}
+        {/* <div className="sec h-screen    bg-stone-100 "> */}
 
-        <div className="h-screen w-full width bg-white flex flex-col items-center justify-center">
+        <div className="h-screen w-full width bg-stone-100 flex flex-col items-center justify-center">
           <Texts type={`heading`} texts={"WE CURATE SPACES"} />
           <Texts
             className={``}

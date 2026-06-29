@@ -9,7 +9,7 @@ import { Scrolltexts } from "./text";
 function Secondpage() {
   return (
     <>
-      <div className="h-[80vh] w-full overflow-hidden sticky  grid grid-cols-2 grid-rows-3 bg-white overflow-hidden">
+      <div className="h-[80vh] w-full overflow-hidden sticky  grid grid-cols-2 grid-rows-3 bg-stone-100 overflow-hidden">
         <Scrolltexts
           texts="AL-KOUSAR-PROPERTIES"
           type="heading"
@@ -29,7 +29,6 @@ function Secondpage() {
                 <br /> and rewarding.
               </>
             }
-            
             typess={`paragraph2`}
             className={`text-[1.4vw] wordd leading-none mt-[2vw]`}
           />
