@@ -7,6 +7,9 @@ import { TextPlugin } from "gsap/TextPlugin";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import Link from "next/link";
+
+
 gsap.registerPlugin(TextPlugin, SplitText, ScrollTrigger);
 const tl = gsap.timeline();
 
@@ -53,7 +56,7 @@ function Chars({ type, texts, className }) {
 export default Chars;
 export { Hover };
 
-function Words({ textss, typess, className }) {
+function Words({ textss, typess, className,link }) {
   const word = useRef(null);
   useGSAP(() => {
     const wordss = SplitText.create(word.current, {
@@ -71,11 +74,15 @@ function Words({ textss, typess, className }) {
     });
   });
 
+
+  console.log("link:", link);
   return (
     <>
+    <Link href={link}>
       <h3 className={`${types[typess]} ${className || ""}`} ref={word}>
         {textss}
       </h3>
+      </Link>
     </>
   );
 }

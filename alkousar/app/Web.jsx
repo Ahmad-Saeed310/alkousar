@@ -33,7 +33,7 @@ export default function Web() {
         {/* <  Forth/> */}
         <MapScrollAnimation/>
         <Animateword/>
-        <ImageRows/>
+        
         <ScrollMarquee/>
         <LogoMarqueeleft/>
         {/* <ToGallery/> */}

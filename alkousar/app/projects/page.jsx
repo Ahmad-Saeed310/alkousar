@@ -153,7 +153,7 @@ export default function HorizontalScroll() {
       {/* track */}
       <div
         ref={trackRef}
-        className="w-full flex overflow-x-scroll overflow-y-hidden bg-red-300"
+        className="w-full flex overflow-x-scroll overflow-y-hidden bg-red-500"
         style={{
           gap: CARD_GAP,
           paddingLeft: 64,

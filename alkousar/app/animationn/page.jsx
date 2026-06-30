@@ -627,6 +627,7 @@ function Animations() {
                   in DHA-BWP
                 </>
               }
+              link=""
             />
           </div>
 
@@ -640,6 +641,7 @@ function Animations() {
                   <br /> legacy starts here
                 </>
               }
+              link="/about"
             />
           </div>
 
@@ -649,11 +651,14 @@ function Animations() {
               clickeds={() => console.log("About Us clicked")}
               textss="About Us"
               className="absolute bottom-[5vh]"
+              link="/about"
             />
             <Words
               typess="link"
               textss="Explore More"
               className="absolute bottom-[5vh] right-[5vw]"
+              link="/projects"
+
             />
           </div>
         </div>

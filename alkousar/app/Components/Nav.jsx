@@ -18,13 +18,15 @@ function Nav() {
 
   return (
     <div className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference ">
+      <Link href="#">
       <Image
         src="/logoBlack.png"
         width={100}
         height={100}
         alt="Logo"
         className="h-[4vh] w-auto bg-stone-100 mix-blend-difference"
-      />
+        
+      /></Link>
 
       <div className="elems flex items-center gap-[5vw] uppercase text-sm text-white mix-blend-difference">
         <Link
