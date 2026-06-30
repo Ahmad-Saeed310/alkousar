@@ -42,6 +42,18 @@ function Nav() {
           </span>
         </Link>
         <Link
+          href="/Images"
+          className="group relative block overflow-hidden h-[1.2em] w-fit mix-blend-difference"
+        >
+          <span className="mix-blend-difference block transition-transform duration-500 ease-out group-hover:-translate-y-full">
+            Image
+          </span>
+
+          <span className="mix-blend-difference pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
+            Image
+          </span>
+        </Link>
+        <Link
           href="/contact"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
