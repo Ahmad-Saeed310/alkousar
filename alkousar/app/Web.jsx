@@ -1,5 +1,4 @@
-import Animations from "./animationn/page";
-
+import Animations from "./Components/animationn/page";
 
 import Secondpage from "./Components/Secondpage";
 import ThirsSe from "./Components/Listing";
@@ -17,28 +16,22 @@ import ScrollMarquee from "./Components/LogoMarquee";
 
 import LogoMarqueeleft from "./Components/LogoMarquee2";
 
-
-
-
 export default function Web() {
+  return (
+    <>
+      <Animations />
+      <Secondpage />
+      {/* <HorizontalScroll/> */}
+      <ThirsSe />
+      <StackingCards />
+      {/* <  Forth/> */}
+      <MapScrollAnimation />
+      <Animateword />
 
-    return(
-        <>
-        
-        <Animations/>
-        <Secondpage/>
-        {/* <HorizontalScroll/> */}
-        <ThirsSe/>
-        <StackingCards/>
-        {/* <  Forth/> */}
-        <MapScrollAnimation/>
-        <Animateword/>
-        
-        <ScrollMarquee/>
-        <LogoMarqueeleft/>
-        {/* <ToGallery/> */}
-        <Footer/>
-        
-        </>
-    )
+      <ScrollMarquee />
+      <LogoMarqueeleft />
+      {/* <ToGallery/> */}
+      <Footer />
+    </>
+  );
 }

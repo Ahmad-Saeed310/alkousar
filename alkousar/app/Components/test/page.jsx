@@ -4,13 +4,13 @@ import React from "react";
 
 import Image from "next/image";
 
-import { useProjects } from "../../adminImages/ContentGrid";
+import { useProjects } from "../../../adminImages/ContentGrid";
 
-import Chars from "../Components/text";
+import Chars from "../text";
 // import { Words } from '../Components/text'
 // import { Hover } from '../Components/text'
 
-import BentoGrid from "../Components/Grid";
+import BentoGrid from "../Grid";
 
 function Test() {
   const { projects, ProjectImage, loading } = useProjects();

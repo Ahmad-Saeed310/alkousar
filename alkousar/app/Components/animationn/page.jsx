@@ -283,8 +283,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { Words } from "../Components/text";
-import Nav from "../Components/Nav";
+import { Words } from "../text";
+import Nav from "../Nav";
 
 function Animations() {
   const tl = gsap.timeline();
@@ -584,8 +584,6 @@ function Animations() {
             <div className="img">
               <video
                 ref={smallVideoRef}
-
-                
                 autoPlay
                 loop
                 muted
@@ -593,10 +591,13 @@ function Animations() {
                 onClick={openVideo}
                 className="h-[10vh] imageani pic rotate-350 z-20"
                 style={{ cursor: "zoom-in", objectFit: "cover" }}
-              > <source
-    src="https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4"
-    type="video/mp4"
-  /></video>
+              >
+                {" "}
+                <source
+                  src="https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4"
+                  type="video/mp4"
+                />
+              </video>
             </div>
 
             <Image
@@ -662,7 +663,6 @@ function Animations() {
               textss="Explore More"
               className="absolute bottom-[5vh] right-[5vw]"
               link="/projects"
-
             />
           </div>
         </div>

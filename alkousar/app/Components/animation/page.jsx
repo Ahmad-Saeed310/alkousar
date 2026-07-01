@@ -1,6 +1,6 @@
 "use client";
 
-import { Words } from "../Components/text";
+import { Words } from "../text";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";

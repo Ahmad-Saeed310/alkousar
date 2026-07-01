@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
+import TransitionLink from "../../animates/TransitionLink";
+
 function Nav() {
   useGSAP(() => {
     gsap.from(".elems", {
@@ -29,8 +31,7 @@ function Nav() {
       /></Link>
 
       <div className="elems flex items-center gap-[5vw] uppercase text-sm text-white mix-blend-difference">
-        <Link
-          href="/about"
+        <TransitionLink href="/about"
           className="group relative block overflow-hidden h-[1.2em] w-fit mix-blend-difference"
         >
           <span className="mix-blend-difference block transition-transform duration-500 ease-out group-hover:-translate-y-full">
@@ -40,9 +41,8 @@ function Nav() {
           <span className="mix-blend-difference pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             About Us
           </span>
-        </Link>
-        <Link
-          href="/Images"
+        </TransitionLink>
+        <TransitionLink href="/Images"
           className="group relative block overflow-hidden h-[1.2em] w-fit mix-blend-difference"
         >
           <span className="mix-blend-difference block transition-transform duration-500 ease-out group-hover:-translate-y-full">
@@ -52,9 +52,8 @@ function Nav() {
           <span className="mix-blend-difference pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Image
           </span>
-        </Link>
-        <Link
-          href="/contact"
+         </TransitionLink>
+          <TransitionLink href="/contact"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
@@ -64,9 +63,8 @@ function Nav() {
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Contact
           </span>
-        </Link>
-        <Link
-          href="/projects"
+        </TransitionLink>
+        <TransitionLink href="/projects"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
@@ -76,8 +74,8 @@ function Nav() {
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Gallery
           </span>
-        </Link>
-        <Link
+        </TransitionLink>
+        <TransitionLink
           href="/Services"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
@@ -88,7 +86,7 @@ function Nav() {
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Services
           </span>
-        </Link>
+        </TransitionLink>
       </div>
     </div>
   );
