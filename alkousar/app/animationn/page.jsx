@@ -584,7 +584,8 @@ function Animations() {
             <div className="img">
               <video
                 ref={smallVideoRef}
-                src="/Dha.mp4"
+
+                
                 autoPlay
                 loop
                 muted
@@ -592,7 +593,10 @@ function Animations() {
                 onClick={openVideo}
                 className="h-[10vh] imageani pic rotate-350 z-20"
                 style={{ cursor: "zoom-in", objectFit: "cover" }}
-              />
+              > <source
+    src="https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4"
+    type="video/mp4"
+  /></video>
             </div>
 
             <Image
