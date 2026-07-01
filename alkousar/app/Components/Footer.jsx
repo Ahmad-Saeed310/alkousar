@@ -68,7 +68,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="w-[10vh] h-[10vh]   overflow-hidden flex items-center justify-center relative">
             <Image
-              src="/LogoBlack.png"
+              src="/LogoBlack.webp"
               alt="Al-Kousar Properties logo"
               width={88}
               height={88}
