@@ -22,7 +22,7 @@ function Nav() {
     <div className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference ">
       <Link href="#">
       <Image
-        src="/logoBlack.png"
+        src="/logoBlack.webp"
         width={100}
         height={100}
         alt="Logo"

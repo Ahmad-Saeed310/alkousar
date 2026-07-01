@@ -268,6 +268,8 @@
 
 "use client";
 
+import Nav from "../Components/Nav";
+
 import { useProjects } from "../../adminImages/ContentGrid";
 import Image from "next/image";
 import { useEffect, useRef, useState, useMemo } from "react";
@@ -410,7 +412,9 @@ export default function HorizontalScroll() {
   }
 
   return (
-    <section className="h-screen w-full flex flex-col items-center justify-center bg-stone-300 overflow-hidden select-none">
+    <section className="h-screen w-full  bg-stone-100 ">
+      <Nav  />
+      <div className="h-screen w-full flex flex-col pt-[10vh] items-center justify-center  overflow-hidden select-none">
       <div
         ref={trackRef}
         className="w-full flex overflow-x-scroll overflow-y-hidden"
@@ -492,6 +496,7 @@ export default function HorizontalScroll() {
       </div>
 
       <style>{`div::-webkit-scrollbar{display:none}`}</style>
+      </div>
     </section>
   );
 }

@@ -39,7 +39,7 @@ export default function Footer() {
         <div className="flex items-start ">
           <div className="w-full h-full overflow-hidden  relative ">
             <Image
-              src="/Apartments.png"
+              src="/Apartments.webp"
               alt="Al-Kousar property"
               fill
               className="object-cover"
