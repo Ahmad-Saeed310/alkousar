@@ -139,21 +139,21 @@
 //           <Nav />
 //           <div className="absolute h-screen w-full  flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden">
 //             <Image
-//               src="/Home.png"
+//               src="/Home.webp"
 //               width={100}
 //               height={100}
 //               alt=""
 //               className="h-[10vh] pics  imageani rotate-10"
 //             />
 //             <Image
-//               src="/project-4-1.png"
+//               src="/project-4-1.webp"
 //               width={100}
 //               height={100}
 //               alt=""
 //               className="h-[10vh] pics imageani rotate-350"
 //             />
 //             <Image
-//               src="/project-4-2.png"
+//               src="/project-4-2.webp"
 //               width={100}
 //               height={100}
 //               alt=""
@@ -173,21 +173,21 @@
 //               {/* <Text type="heading" texts="Shahid Manzil" /> */}
 //             </div>
 //             <Image
-//               src="/project-4-3.png"
+//               src="/project-4-3.webp"
 //               width={100}
 //               height={100}
 //               alt=""
 //               className="h-[10vh] pics imageani rotate-10"
 //             />
 //             <Image
-//               src="/project-4-4.png"
+//               src="/project-4-4.webp"
 //               width={100}
 //               height={100}
 //               alt=""
 //               className="h-[10vh] pics imageani rotate-350"
 //             />
 //             <Image
-//               src="/project-4-5.png"
+//               src="/project-4-5.webp"
 //               width={100}
 //               height={100}
 //               alt=""
@@ -560,21 +560,21 @@ function Animations() {
 
           <div className="absolute h-screen w-full flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden ">
             <Image
-              src="/Home.png"
+              src="/Home.webp"
               width={100}
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-10"
             />
             <Image
-              src="/project-4-1.png"
+              src="/project-4-1.webp"
               width={100}
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-350"
             />
             <Image
-              src="/project-4-2.png"
+              src="/project-4-2.webp"
               width={100}
               height={100}
               alt=""
@@ -601,14 +601,14 @@ function Animations() {
             </div>
 
             <Image
-              src="/project-4-3.png"
+              src="/project-4-3.webp"
               width={100}
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-10"
             />
             <Image
-              src="/project-4-4.png"
+              src="/project-4-4.webp"
               width={100}
               height={100}
               alt=""
