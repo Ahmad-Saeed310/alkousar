@@ -152,7 +152,7 @@ function ThirsSe() {
                     className=" imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
                   >
                     <Image
-                      src="/residence.png"
+                      src="/residence.webp"
                       alt=""
                       fill
                       className="object-cover"
@@ -165,7 +165,7 @@ function ThirsSe() {
                   >
                     {" "}
                     <Image
-                      src="/stone.png"
+                      src="/stone.webp"
                       alt=""
                       fill
                       className="object-cover "
@@ -180,7 +180,7 @@ function ThirsSe() {
                   >
                     {" "}
                     <Image
-                      src="/Apartments.png"
+                      src="/Apartments.webp"
                       alt=""
                       fill
                       className="object-cover"
