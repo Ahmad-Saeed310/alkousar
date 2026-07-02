@@ -35,20 +35,13 @@
 //         />
 //     );
 // }
-
-
 "use client";
-
 import { useParams } from "next/navigation";
-import { useProjectData } from "../../projects";
+import { useProjectData } from "../../projects"; // adjust path to match File 1's real location
 import ProjectClient from "./project-client";
 
 export default function ProjectPage() {
-  // useParams is the client-side equivalent of the server `params` prop —
-  // `await params` only works in async server components, which can't
-  // also be "use client", so this replaces that.
   const { slug } = useParams();
-
   const { projects, loading } = useProjectData();
 
   if (loading) {

@@ -9,14 +9,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Link from "next/link";
 
-
 gsap.registerPlugin(TextPlugin, SplitText, ScrollTrigger);
 const tl = gsap.timeline();
 
 const types = {
   heading:
     " text-[6vw]  font-black  sanss   text-black leading-[10vh] tracking-tight",
-  subheading: "text-[5vh] font-light text-black leading-none tracking-tight",
+  subheading: "text-[2vw] font-light text-black leading-none tracking-tight",
+  page: "text-[1.1vw] font-light text-black leading-none tracking-tight",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",
   paragraph2: "text-[1.5vw ] font-light text-black",
@@ -56,7 +56,7 @@ function Chars({ type, texts, className }) {
 export default Chars;
 export { Hover };
 
-function Words({ textss, typess, className,link }) {
+function Words({ textss, typess, className, link }) {
   const word = useRef(null);
   useGSAP(() => {
     const wordss = SplitText.create(word.current, {
@@ -74,20 +74,49 @@ function Words({ textss, typess, className,link }) {
     });
   });
 
-
   console.log("link:", link);
   return (
     <>
-    <Link href={link}>
-      <h3 className={`${types[typess]} ${className || ""}`} ref={word}>
-        {textss}
-      </h3>
+      <Link href={link}>
+        <h3 ref={word} className={`${types[typess]} ${className}`}>
+          {textss}
+        </h3>
       </Link>
     </>
   );
 }
 
 export { Words };
+function GalleryWords({ textss, typess, className, link }) {
+  const word = useRef(null);
+  useGSAP(() => {
+    const wordss = SplitText.create(word.current, {
+      type: "lines", // only split into words and lines (not characters)
+      mask: "lines", // adds extra wrapper element around lines with overflow: clip (v3.13.0+)
+    });
+
+    gsap.from(wordss.lines, {
+      y: "20vw",
+      duration: 1,
+      opacity: 0,
+      ease: "power4.out",
+      stagger: 0.01,
+    });
+  });
+
+  console.log("link:", link);
+  return (
+    <>
+      <Link href={link}>
+        <h3 ref={word} className={`${types[typess]} ${className}`}>
+          {textss}
+        </h3>
+      </Link>
+    </>
+  );
+}
+
+export { GalleryWords };
 
 function ScrollWords({ textss, typess, className }) {
   const word = useRef(null);

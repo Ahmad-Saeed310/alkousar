@@ -20,6 +20,7 @@ function emptyImage(): DraftImage {
     description: '',
     extra_text: '',
     layout: 'square',
+    orientation: 'landscape',
   }
 }
 
@@ -29,6 +30,30 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
   const [title, setTitle] = useState(editProject?.title || '')
   const [description, setDescription] = useState(editProject?.description || '')
   const [published, setPublished] = useState(editProject?.published ?? true)
+
+  // ── New project detail fields ──────────────────────────────
+  const [projectType, setProjectType] = useState(editProject?.project_type || '')
+  const [buildTime, setBuildTime] = useState(editProject?.build_time || '')
+  const [deliveredAt, setDeliveredAt] = useState(editProject?.delivered_at || '')
+  const [scale, setScale] = useState(editProject?.scale || '')
+  const [location, setLocation] = useState(editProject?.location || '')
+  const [teamMembers, setTeamMembers] = useState<string[]>(
+    editProject?.team_members?.length ? editProject.team_members : ['']
+  )
+
+  function updateTeamMember(index: number, value: string) {
+    setTeamMembers(prev => prev.map((m, i) => (i === index ? value : m)))
+  }
+
+  function addTeamMember() {
+    setTeamMembers(prev => [...prev, ''])
+  }
+
+  function removeTeamMember(index: number) {
+    setTeamMembers(prev => (prev.length > 1 ? prev.filter((_, i) => i !== index) : prev))
+  }
+  // ────────────────────────────────────────────────────────────
+
   const [images, setImages] = useState<DraftImage[]>(() => {
     if (editProject?.project_images?.length) {
       return editProject.project_images
@@ -43,6 +68,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
           description: img.description || '',
           extra_text: img.extra_text || '',
           layout: img.layout,
+          orientation: img.orientation || 'landscape',
         }))
     }
     return [emptyImage()]
@@ -51,7 +77,6 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  // How many image slots the admin wants (1-20)
   function setImageCount(count: number) {
     setImages(prev => {
       const next = [...prev]
@@ -96,16 +121,31 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
     try {
       let projectId = editProject?.id
 
+      // Clean team members: drop empty strings
+      const cleanedTeamMembers = teamMembers.map(m => m.trim()).filter(Boolean)
+
+      const projectPayload = {
+        title,
+        description,
+        published,
+        project_type: projectType || null,
+        build_time: buildTime || null,
+        delivered_at: deliveredAt || null,
+        scale: scale || null,
+        location: location || null,
+        team_members: cleanedTeamMembers,
+      }
+
       if (isEditing && projectId) {
         const { error } = await supabase
           .from('projects')
-          .update({ title, description, published })
+          .update(projectPayload)
           .eq('id', projectId)
         if (error) throw error
       } else {
         const { data, error } = await supabase
           .from('projects')
-          .insert([{ title, description, published }])
+          .insert([projectPayload])
           .select()
           .single()
         if (error) throw error
@@ -142,6 +182,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               description: img.description,
               extra_text: img.extra_text,
               layout: img.layout,
+              orientation: img.orientation,
               sort_order: img.sort_order,
             })
             .eq('id', img.id)
@@ -156,6 +197,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               description: img.description,
               extra_text: img.extra_text,
               layout: img.layout,
+              orientation: img.orientation,
               sort_order: img.sort_order,
             }])
           if (error) throw error
@@ -166,6 +208,12 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
       setTitle('')
       setDescription('')
       setPublished(true)
+      setProjectType('')
+      setBuildTime('')
+      setDeliveredAt('')
+      setScale('')
+      setLocation('')
+      setTeamMembers([''])
       setImages([emptyImage()])
       onSuccess()
     } catch (err: any) {
@@ -201,17 +249,121 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
         </div>
+
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Project Details
+            Project Story / Detail
           </label>
           <textarea
             value={description}
             onChange={e => setDescription(e.target.value)}
-            placeholder="Overall description of this project..."
-            rows={3}
+            placeholder="The full story behind this project — vision, challenges, approach..."
+            rows={4}
             className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
           />
+        </div>
+
+        {/* Type / Build time / Delivered / Scale / Location grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Type
+            </label>
+            <input
+              type="text"
+              value={projectType}
+              onChange={e => setProjectType(e.target.value)}
+              placeholder="e.g. Residential, Commercial, Interior"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Build Time
+            </label>
+            <input
+              type="text"
+              value={buildTime}
+              onChange={e => setBuildTime(e.target.value)}
+              placeholder="e.g. 8 months"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Delivered (Year / Date)
+            </label>
+            <input
+              type="text"
+              value={deliveredAt}
+              onChange={e => setDeliveredAt(e.target.value)}
+              placeholder="e.g. 2025 or March 2025"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Scale / Area
+            </label>
+            <input
+              type="text"
+              value={scale}
+              onChange={e => setScale(e.target.value)}
+              placeholder="e.g. 5,200 sq ft"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+
+          <div className="sm:col-span-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
+              Location
+            </label>
+            <input
+              type="text"
+              value={location}
+              onChange={e => setLocation(e.target.value)}
+              placeholder="e.g. Sector C, DHA Bahawalpur"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            />
+          </div>
+        </div>
+
+        {/* Team members — dynamic list */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">
+            Team Members
+          </label>
+          <div className="space-y-2">
+            {teamMembers.map((member, idx) => (
+              <div key={idx} className="flex gap-2">
+                <input
+                  type="text"
+                  value={member}
+                  onChange={e => updateTeamMember(idx, e.target.value)}
+                  placeholder={`Team member ${idx + 1} name`}
+                  className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                />
+                <button
+                  type="button"
+                  onClick={() => removeTeamMember(idx)}
+                  disabled={teamMembers.length === 1}
+                  className="px-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-500 disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+          <button
+            type="button"
+            onClick={addTeamMember}
+            className="mt-2 text-sm font-medium text-indigo-600 hover:text-indigo-700"
+          >
+            + Add team member
+          </button>
         </div>
 
         {/* Publish toggle */}
