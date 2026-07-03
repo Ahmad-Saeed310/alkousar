@@ -42,7 +42,7 @@ function Nav() {
             About Us
           </span>
         </TransitionLink>
-        <TransitionLink href="/Images"
+        {/* <TransitionLink href="/Images"
           className="group relative block overflow-hidden h-[1.2em] w-fit mix-blend-difference"
         >
           <span className="mix-blend-difference block transition-transform duration-500 ease-out group-hover:-translate-y-full">
@@ -52,18 +52,7 @@ function Nav() {
           <span className="mix-blend-difference pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Image
           </span>
-         </TransitionLink>
-          <TransitionLink href="/contact"
-          className="group relative block overflow-hidden h-[1.2em] w-fit"
-        >
-          <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-            Contact
-          </span>
-
-          <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-            Contact
-          </span>
-        </TransitionLink>
+         </TransitionLink> */}
         <TransitionLink href="/projects"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
@@ -75,7 +64,7 @@ function Nav() {
             BUY/SELL
           </span>
         </TransitionLink>
-        <TransitionLink
+        {/* <TransitionLink
           href="/Services"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
@@ -85,6 +74,29 @@ function Nav() {
 
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Services
+          </span>
+        </TransitionLink> */}
+        <TransitionLink
+          href="/blog"
+          className="group relative block overflow-hidden h-[1.2em] w-fit"
+        >
+          <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
+            Blog
+          </span>
+
+          <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
+            Blog
+          </span>
+        </TransitionLink>
+          <TransitionLink href="/contact"
+          className="group relative block overflow-hidden h-[1.2em] w-fit"
+        >
+          <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
+            Contact
+          </span>
+
+          <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
+            Contact
           </span>
         </TransitionLink>
       </div>

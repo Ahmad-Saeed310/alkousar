@@ -38,6 +38,20 @@ export type Project = {
   project_images?: ProjectImage[]
 }
 
+export type BlogPost = {
+  id: string
+  slug: string
+  title: string
+  excerpt: string | null
+  content: string
+  cover_image_url: string | null
+  author: string | null
+  tags: string[]
+  published: boolean
+  created_at: string
+  published_at: string | null
+}
+
   // Used while building a project in the admin form, before saving
   export type DraftImage = {
     tempId: string          // local-only id for React keys before saving
