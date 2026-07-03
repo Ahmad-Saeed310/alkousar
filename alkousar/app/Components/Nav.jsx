@@ -68,11 +68,11 @@ function Nav() {
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-            Gallery
+            BUY/SELL
           </span>
 
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-            Gallery
+            BUY/SELL
           </span>
         </TransitionLink>
         <TransitionLink
