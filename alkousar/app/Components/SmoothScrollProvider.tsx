@@ -1,4 +1,4 @@
-// components/SmoothScrollProvider.jsx
+// app/Components/SmoothScrollProvider.tsx
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -8,11 +8,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SmoothScrollProvider({ children }) {
+export default function SmoothScrollProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const lenisRef = useRef(null);
 
   useEffect(() => {
-    function update(time) {
+    function update(time: number) {
       lenisRef.current?.lenis?.raf(time * 1000);
     }
     gsap.ticker.add(update);
@@ -22,11 +26,7 @@ export default function SmoothScrollProvider({ children }) {
   }, []);
 
   return (
-    <ReactLenis
-      root
-      ref={lenisRef}
-      onScroll={ScrollTrigger.update} // keep ScrollTrigger in sync with every Lenis scroll tick
-    >
+    <ReactLenis root ref={lenisRef} onScroll={ScrollTrigger.update}>
       {children}
     </ReactLenis>
   );
