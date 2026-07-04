@@ -14,6 +14,7 @@ import StackingCards from "./Components/StackingCard";
 import ImageRows from "./Components/Award";
 import ScrollMarquee from "./Components/LogoMarquee";
 
+
 import LogoMarqueeleft from "./Components/LogoMarquee2";
 
 export default function Web() {
@@ -27,7 +28,7 @@ export default function Web() {
       {/* <  Forth/> */}
       <MapScrollAnimation />
       <Animateword />
-
+      
       <ScrollMarquee />
       <LogoMarqueeleft />
       {/* <ToGallery/> */}
