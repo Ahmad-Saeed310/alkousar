@@ -74,23 +74,19 @@ export default function HorizontalScroll() {
     return () => track.removeEventListener("scroll", onScroll);
   }, [SET_WIDTH]);
 
-  // Wheel → horizontal scroll, but ONLY for genuinely horizontal gestures.
-  // Vertical wheel/trackpad scrolling is left completely untouched so the
-  // page can still scroll normally.
+  // Wheel → horizontal scroll, responding to EITHER vertical or horizontal
+  // wheel/trackpad input. This is a horizontal-only gallery with nothing to
+  // reveal by scrolling the page, so any scroll gesture — up/down or
+  // left/right — moves the card track sideways instead.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     function onWheel(e) {
-      const isHorizontalIntent = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-
-      if (!isHorizontalIntent) {
-        // Vertical gesture — do nothing, let the browser scroll the page.
-        return;
-      }
-
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      if (delta === 0) return;
       e.preventDefault();
-      track.scrollLeft += e.deltaX;
+      track.scrollLeft += delta;
     }
 
     track.addEventListener("wheel", onWheel, { passive: false });
