@@ -284,7 +284,7 @@ import gsap from "gsap";
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { Words } from "../text";
-import Nav from "../Nav"
+import Nav from "../Nav";
 
 function Animations() {
   const tl = gsap.timeline();

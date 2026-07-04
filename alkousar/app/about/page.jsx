@@ -70,35 +70,57 @@ const reasons = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-screen w-full overflow-hidden bg-black">
-        <Image
-          src="/House2.webp"
-          alt="Al-Kousar Properties, DHA Bahawalpur"
-          fill
-          priority
-          className="object-cover opacity-70"
-        />
-        <div className="absolute inset-0 bg-black/40" />
+      {/* Hero — same 2x2 grid skeleton as animationn/page.jsx (the homepage
+          hero) and the /contact hero: Nav as a non-visual first child, then
+          content split across the four quadrants. */}
+      <section className="h-screen w-full relative bg-stone-100 overflow-hidden">
+        <div className="grid grid-cols-2 grid-rows-2 h-full w-full gap-[1vw]">
+          <Nav />
 
-        <Nav />
+          <div className="col-span-1 row-span-1 flex flex-col justify-center pl-[5vw]">
+            <Animateword
+              text="About Us"
+              typess="page"
+              classname="text-black/50 uppercase tracking-widest"
+            />
+            <Chars
+              type="heading"
+              texts="Al-Kousar Properties"
+              className="text-black text-[9vw] md:text-[5vw]"
+            />
+          </div>
 
-        <div className="relative z-10 flex h-full w-full flex-col justify-end px-[5vw] pb-[10vh]">
-          <Animateword
-            text="About Us"
-            typess="page"
-            classname="text-white/70 uppercase tracking-widest"
-          />
-          <Chars
-            type="heading"
-            texts="Al-Kousar Properties"
-            className="text-white text-[9vw] md:text-[6vw]"
-          />
-          <ScrollWords
-            textss="DHA Bahawalpur's Authorised Dealer — Reg # 222"
-            typess="page"
-            className="text-white/80 mt-[2vh] text-[3vw] md:text-[1.1vw]"
-          />
+          <div className="col-span-1 row-span-1 relative">
+            <ScrollWords
+              textss="DHA Bahawalpur's Authorised Dealer — Reg # 222, and one of the leading real estate agencies in the community."
+              typess="subheading"
+              className="absolute bottom-[10vh] left-[5vw] right-[5vw] text-black/70 text-[4.5vw] md:text-[2vw] leading-snug"
+            />
+          </div>
+
+          <div className="col-span-1 row-span-1 relative pl-[5vw]">
+            <div className="absolute bottom-[8vh] flex flex-col gap-[1vh]">
+              <span className="text-black text-[8vw] md:text-[2.6vw] font-black sanss leading-none">
+                1st Position
+              </span>
+              <span className="text-black/50 text-[3vw] md:text-[1vw]">
+                DHA Bahawalpur Dealers Ranking, 2025
+              </span>
+            </div>
+          </div>
+
+          <div className="col-span-1 row-span-1 relative pr-[5vw]">
+            <div className="absolute bottom-[8vh] right-[5vw] text-right flex flex-col gap-[1vh] items-end">
+              <Texts
+                type="page"
+                texts="100% Recommend"
+                className="text-black/70 text-right"
+              />
+              <span className="text-black/40 text-[3vw] md:text-[0.9vw] uppercase tracking-widest">
+                26 Client Reviews
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 

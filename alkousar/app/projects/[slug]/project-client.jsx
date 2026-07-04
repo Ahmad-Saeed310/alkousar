@@ -4,7 +4,7 @@ import "../../gallery.css";
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ProjectImageGrid from "../../Components/ImageGrid";
@@ -20,8 +20,14 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
   const footerRef = useRef(null);
   const nextProjectProgressRef = useRef(null);
 
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [shouldUpdateProgress, setShouldUpdateProgress] = useState(true);
+  // ✅ refs, not state — mutating these must NOT re-run the effect below.
+  // They previously lived in useState, which meant every time onUpdate
+  // called setIsTransitioning/setShouldUpdateProgress mid-scroll, this
+  // whole effect tore down (killing every ScrollTrigger app-wide) and
+  // rebuilt itself from scratch — that's what was corrupting layout/text
+  // both on this page and bleeding into every other page.
+  const isTransitioningRef = useRef(false);
+  const shouldUpdateProgressRef = useRef(true);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -80,7 +86,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
       pinSpacing: true,
 
       onEnter: () => {
-        if (!isTransitioning) {
+        if (!isTransitioningRef.current) {
           gsap.to(projectNavRef.current, {
             y: -100,
             duration: 0.5,
@@ -90,7 +96,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
       },
 
       onLeaveBack: () => {
-        if (!isTransitioning) {
+        if (!isTransitioningRef.current) {
           gsap.to(projectNavRef.current, {
             y: 0,
             duration: 0.5,
@@ -100,16 +106,16 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
       },
 
       onUpdate: (self) => {
-        if (nextProjectProgressRef.current && shouldUpdateProgress) {
+        if (nextProjectProgressRef.current && shouldUpdateProgressRef.current) {
           gsap.set(nextProjectProgressRef.current, {
             scaleX: self.progress,
             transformOrigin: "left center",
           });
         }
 
-        if (self.progress >= 1 && !isTransitioning) {
-          setShouldUpdateProgress(false);
-          setIsTransitioning(true);
+        if (self.progress >= 1 && !isTransitioningRef.current) {
+          shouldUpdateProgressRef.current = false;
+          isTransitioningRef.current = true;
 
           const tl = gsap.timeline();
 
@@ -136,9 +142,10 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
       },
     });
 
-    // ✅ cleanup: kill triggers, then reset any inline styles GSAP wrote —
-    // filtering out nulls since refs may already be cleared by the time
-    // this runs (e.g. on fast navigation/unmount)
+    // ✅ cleanup: kill only THIS page's two triggers, then reset only the
+    // inline styles this effect itself wrote. No more blanket
+    // ScrollTrigger.getAll().forEach(kill) — that was killing triggers
+    // belonging to other components/pages too.
     return () => {
       navScrollTrigger.kill();
       footerScrollTrigger.kill();
@@ -153,10 +160,8 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
       if (targets.length) {
         gsap.set(targets, { clearProps: "all" });
       }
-
-      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
-  }, [nextProject.slug, isTransitioning, shouldUpdateProgress]);
+  }, [nextProject.slug]); // ✅ only re-runs on an actual project change
 
   console.log(project.images[0]);
 
@@ -167,11 +172,9 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
           <span>&larr;&nbsp;</span>
           <Link href={`/projects/${prevProject.slug}`}>Previous</Link>
         </div>
-       
 
         <div className="project-page-scroll-progress">
           <p className="name">{project.title}</p>
-
           <div
             ref={progressBarRef}
             className="project-page-scroll-progress-bar"
@@ -295,7 +298,3 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
     </div>
   );
 }
-
-
-
-
