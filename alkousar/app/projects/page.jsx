@@ -75,15 +75,27 @@ export default function HorizontalScroll() {
   }, [SET_WIDTH]);
 
   // Wheel → horizontal scroll, responding to EITHER vertical or horizontal
-  // wheel/trackpad input. This is a horizontal-only gallery with nothing to
-  // reveal by scrolling the page, so any scroll gesture — up/down or
-  // left/right — moves the card track sideways instead.
+  // wheel/trackpad input. Mouse wheels and trackpads report scroll amounts
+  // in different units (deltaMode): trackpads use pixels (mode 0, large
+  // numbers), while many mouse wheels use "lines" (mode 1, tiny numbers
+  // like 3) or occasionally "pages" (mode 2). Without normalizing this,
+  // mouse-wheel scrolling barely moves the track at all while trackpad
+  // swipes work fine — normalize everything to a comparable pixel scale.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
+    function normalize(value, mode) {
+      if (mode === 1) return value * 16; // line mode → approx px per line
+      if (mode === 2) return value * window.innerWidth; // page mode
+      return value; // already pixels
+    }
+
     function onWheel(e) {
-      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+      const deltaX = normalize(e.deltaX, e.deltaMode);
+      const deltaY = normalize(e.deltaY, e.deltaMode);
+      const delta = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
+
       if (delta === 0) return;
       e.preventDefault();
       track.scrollLeft += delta;
