@@ -98,7 +98,8 @@ const heroAssets = [
   "project-4-1.webp",
   "project-4-2.webp",
   "project-4-3.webp",
-  "project-4-4.webp"
+  "project-4-4.webp",
+  "logo.png"
 
 ];
 
