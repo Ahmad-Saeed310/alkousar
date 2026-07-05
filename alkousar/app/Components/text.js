@@ -16,7 +16,7 @@ const types = {
   heading:
     " text-[6vw]  font-black  sanss   text-black leading-[10vh] tracking-tight",
   subheading: "text-[2vw] font-light text-black leading-none tracking-tight",
-  page: "text-[1.1vw] font-light text-black leading-none tracking-tight",
+  page: "text-[1.1vw] font-light text-black leading-none tracking-tight break-keep",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",
   paragraph2: "text-[1.5vw ] font-light text-black",

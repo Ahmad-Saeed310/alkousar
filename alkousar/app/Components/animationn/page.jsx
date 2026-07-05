@@ -567,7 +567,7 @@ function Animations({ startIntro }) {
       {/* ── page ────────────────────────────────────────────────────────────── */}
       <div className="animates h-screen w-full relative bg-stone-100">
         <div className="grid grid-cols-2 grid-rows-2 h-full w-full overflow-hidden gap-[1vw] bgAnimate bg-stone-100">
-          <Nav />
+          
 
           <div className="absolute h-screen w-full flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden ">
             <Image

@@ -90,6 +90,7 @@ import ScrollMarquee from "./Components/LogoMarquee";
 import Animationchars from "./animation/page";
 import LogoMarqueeleft from "./Components/LogoMarquee2";
 import { useAssetPreload } from "./hooks/useAssetPreload"; // adjust path
+import Nav from "./Components/Nav";
 
 const heroAssets = [
   
@@ -116,6 +117,7 @@ export default function Web() {
         />
       )}
       <main>
+        <Nav />
         <Animations startIntro={loaderDone}  />
         <Secondpage />
         <ThirsSe />

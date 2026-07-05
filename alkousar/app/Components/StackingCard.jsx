@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import ImageRows from "./Award";
+import Cards from "./Cards";
 
 export default function StackingCards() {
   const sectionRef = useRef(null);
@@ -88,15 +89,9 @@ export default function StackingCards() {
             className="h-full w-full flex items-center justify-center bg-[#1a2e1a] border border-[#2d5a2d]"
             style={{ willChange: "transform" }}
           >
-            <div className="text-center px-8">
-              <p className="text-xs tracking-widest uppercase opacity-40 mb-4">02</p>
-              <h2 className="text-[clamp(32px,6vw,80px)] font-bold tracking-tight leading-none mb-6">
-                Design
-              </h2>
-              <p className="text-base opacity-50 max-w-md mx-auto leading-relaxed">
-                Shape ideas into interfaces. Pixel-perfect execution starts with understanding what your users actually need.
-              </p>
-            </div>
+            <Cards text="(01)"   title="Title Image" Images={`/project-4-1.webp`} details="We kick off with a site visit and creative consultation to define your vision, style, and functional needs. We'll also uncover new opportunities and potential limitations. Based on this, we craft a series of hand-drawn design sketches to provide an initial visual concept that reflects your brief. Through collaboration and refinement, we shape the concept to align with your goals, timeline, and budget." />
+              
+          
           </section>
         </div>
 
