@@ -286,8 +286,8 @@ import Image from "next/image";
 import { Words } from "../text";
 import Nav from "../Nav";
 
-function Animations() {
-  const tl = gsap.timeline();
+function Animations({ startIntro }) {
+  const tlRef = useRef(null);
   const [animationsComplete, setAnimationsComplete] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const [playing, setPlaying] = useState(true);
@@ -308,7 +308,7 @@ function Animations() {
   // ── bg colour scroll ──────────────────────────────────────────────────────
   useGSAP(() => {
     gsap.to(".bgAnimate", {
-      backgroundColor: "#e7e5e4",
+      backgroundColor: "gray",
       ease: "power1.out",
       scrollTrigger: {
         trigger: ".bgAnimate",
@@ -320,7 +320,10 @@ function Animations() {
   });
 
   // ── intro timeline ────────────────────────────────────────────────────────
+  
   useGSAP(() => {
+    const tl = gsap.timeline({ paused: true }); // <-- paused
+    tlRef.current = tl;
     tl.from(".imageani", {
       x: "100vw",
       duration: 1,
@@ -349,6 +352,14 @@ function Animations() {
     );
     tl.call(() => setAnimationsComplete(true));
   });
+
+
+  // ── play the intro only once the loader hands off ──────────────────────
+  useEffect(() => {
+    if (startIntro && tlRef.current) {
+      tlRef.current.play();
+    }
+  }, [startIntro]);
 
   // ── cursor parallax ───────────────────────────────────────────────────────
   useEffect(() => {
@@ -581,7 +592,7 @@ function Animations() {
               className="h-[10vh] pics imageani rotate-10"
             />
 
-            <div className="img">
+            <div className="img imageani pic rotate-350 relative z-20 inline-block">
               <video
                 ref={smallVideoRef}
                 autoPlay
@@ -589,7 +600,7 @@ function Animations() {
                 muted
                 playsInline
                 onClick={openVideo}
-                className="h-[10vh] imageani pic rotate-350 z-20"
+                className="h-[10vh] block"
                 style={{ cursor: "zoom-in", objectFit: "cover" }}
               >
                 {" "}
@@ -598,6 +609,13 @@ function Animations() {
                   type="video/mp4"
                 />
               </video>
+              <Words
+                className="absolute left-0 top-full uppercase  text-[.3vw] tracking-tighter whitespace-nowrap transition-opacity duration-500"
+                style={{ opacity: animationsComplete ? 1 : 0 }}
+              link=""
+              typess=""
+               textss={"Defence Housing Authority "} 
+              />
             </div>
 
             <Image
@@ -652,16 +670,16 @@ function Animations() {
 
           <div className="col-span-1 row-span-1 relative z-0 p-[5vw]">
             <Words
-              typess="link"
+              typess="paragraph2"
               clickeds={() => console.log("About Us clicked")}
               textss="About Us"
-              className="absolute bottom-[5vh]"
+              className="absolute bottom-[5vh]  text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline" 
               link="/about"
             />
             <Words
               typess="link"
               textss="Explore More"
-              className="absolute bottom-[5vh] right-[5vw]"
+              className="absolute bottom-[5vh] text-[2vw] right-[5vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline"
               link="/projects"
             />
           </div>

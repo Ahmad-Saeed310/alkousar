@@ -75,3 +75,51 @@ body {
 .sanss {
   font-family: var(--font-google-sans);
 }
+
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  z-index: 9999;
+}
+
+.logo {
+  color: white;
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+
+.track {
+  position: relative;
+  width: 300px;
+  height: 2px;
+  background: rgba(255,255,255,.2);
+}
+
+.progress {
+  width: 100%;
+  height: 100%;
+  background: white;
+  transform: scaleX(0);
+}
+
+.circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+  background: white;
+
+  top: 50%;
+  left: 0;
+
+  transform: translate(-50%, -50%);
+}

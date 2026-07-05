@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono,Google_Sans } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "@/context/TransitionContext";
-import TransitionOverlay from "../animates/TransitionOverlay";
+// import TransitionOverlay from "../animates/TransitionOverlay";
 import LayoutContent from "../animates/LayoutContent";
 import SmoothScrollProvider from "./Components/SmoothScrollProvider"; // adjust path to match your project
 
+import Loader from "./Components/Loader";
 
 // import Transition from "./Components/common/Transition"
 
@@ -46,6 +47,7 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <TransitionProvider>
             <LayoutContent>
+                <Loader/>
               {children}
             </LayoutContent>
           </TransitionProvider>
