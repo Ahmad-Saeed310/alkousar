@@ -22,7 +22,7 @@ function Nav() {
     <div className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference  ">
       <TransitionLink href="/" className="h-[4vh] w-auto bg-stone-100  mix-blend-normal ">
       <Image
-        src="/Logo.png"
+        src="/logo.png"
         width={100}
         height={100}
         alt="Logo"
