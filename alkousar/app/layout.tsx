@@ -6,7 +6,7 @@ import { TransitionProvider } from "@/context/TransitionContext";
 import LayoutContent from "../animates/LayoutContent";
 import SmoothScrollProvider from "./Components/SmoothScrollProvider"; // adjust path to match your project
 
-import Loader from "./Components/Loader";
+
 
 // import Transition from "./Components/common/Transition"
 
@@ -47,7 +47,7 @@ export default function RootLayout({
         <SmoothScrollProvider>
           <TransitionProvider>
             <LayoutContent>
-                <Loader/>
+                
               {children}
             </LayoutContent>
           </TransitionProvider>

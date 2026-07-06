@@ -7,6 +7,7 @@ import Footer from "../Components/Footer";
 import Chars from "../Components/text";
 import { ScrollWords, Animateword, Texts } from "../Components/text";
 import ProcessStack from "../Components/ProcessStack";
+import StackingCard from "../Components/Stackcard";
 
 const stats = [
   {
@@ -264,8 +265,9 @@ export default function AboutPage() {
       </section>
       <ProcessStack />
 
+
       {/* Why choose us */}
-      <section className="w-full bg-black px-[5vw] py-[14vh]">
+      <section className="w-full bg-black px-[5vw] py-[14vh] z-[100]">
         <ScrollWords
           textss="Why Choose Al-Kousar"
           typess="heading"

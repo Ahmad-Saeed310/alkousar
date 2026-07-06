@@ -2,30 +2,31 @@
 
 import Image from "next/image";
 import { useEffect, useRef } from "react";
+import Cards from "./Cards";
 
 const steps = [
   {
     id: "01",
     title: "Consultation",
-    desc: "Tell us your budget, purpose, and preferred sector — we shortlist plots and properties that actually fit.",
+    desc: "Tell us your budget, purpose, and preferred sector — whether you're buying to build, to invest, or to resell later. We factor in your timeline too, then shortlist only the plots and properties in DHA Bahawalpur that genuinely match, instead of sending you options that were never right for you in the first place.",
     img: "/Home.webp",
   },
   {
     id: "02",
     title: "Site Visit",
-    desc: "We arrange a guided visit to every shortlisted option in DHA Bahawalpur, so you see exactly what you're buying.",
+    desc:" We arrange a guided visit to every shortlisted option in DHA Bahawalpur, walking you through the plot boundaries, nearby development, and access roads in person. You see exactly what you're buying — not just photos and a listing sheet — so there are no surprises once the paperwork starts.",
     img: "/House1.webp",
   },
   {
     id: "03",
     title: "Documentation",
-    desc: "We verify ownership, prepare transfer paperwork, and handle DHA formalities on your behalf.",
+    desc: "We verify ownership, prepare transfer paperwork, and handle DHA formalities on your behalf — chain of title, NOC status, and any outstanding dues get checked before you sign anything. You get a clean, DHA-recognised transfer, without having to chase departments or paperwork yourself.",
     img: "/Apartments.webp",
   },
   {
     id: "04",
     title: "Handover",
-    desc: "Once payment and paperwork are complete, we hand over your file and stay reachable for anything after.",
+    desc: "Once payment and paperwork are complete, we hand over your file — ownership documents, DHA correspondence, everything — and stay reachable long after that. If a question comes up six months later about your plot or your file, you can still call us.",
     img: "/residence.webp",
   },
 ];
@@ -83,7 +84,7 @@ export default function ProcessStack() {
             className="relative h-full w-full overflow-hidden flex items-center"
             style={{ willChange: "transform" }}
           >
-            <Image
+            {/* <Image
               src={step.img}
               alt={step.title}
               fill
@@ -101,7 +102,13 @@ export default function ProcessStack() {
               <p className="text-white/70 text-[4vw] md:text-[1.3vw] leading-snug max-w-[90vw] md:max-w-[38vw]">
                 {step.desc}
               </p>
-            </div>
+            </div> */}
+          <Cards
+            text={`(${step.id})`}
+            title={step.title}
+            Images={step.img}
+            details={step.desc}
+          />
           </div>
         </div>
       ))}

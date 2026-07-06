@@ -19,7 +19,7 @@ const types = {
   page: "text-[1.1vw] font-light text-black leading-none tracking-tight break-keep",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",
-  paragraph2: "text-[1.5vw ] font-light text-black",
+  paragraph2: "text-[1.2vw ] font-regular text-black",
   link: " text-[2vh] font-light text-black ",
 };
 
