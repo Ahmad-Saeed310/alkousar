@@ -286,7 +286,24 @@ import Image from "next/image";
 import { Words } from "../text";
 import Nav from "../Nav";
 
-function Animations({ startIntro }) {
+function Animations({  startIntro }) {
+
+
+
+
+// const [loadedAssets, setLoadedAssets] = useState(0);
+
+// const assetLoaded = () => {
+//   setLoadedAssets((prev) => prev + 1);
+// };
+
+// useEffect(() => {
+//   if (loadedAssets === TOTAL_ASSETS) {
+//     onReady?.();
+//   }
+// }, [loadedAssets, onReady]);
+
+
   const tlRef = useRef(null);
   const [animationsComplete, setAnimationsComplete] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -576,6 +593,8 @@ function Animations({ startIntro }) {
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-10"
+               priority
+                 loading="eager"
             />
             <Image
               src="/project-4-1.webp"
@@ -583,6 +602,9 @@ function Animations({ startIntro }) {
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-350"
+              priority
+             
+               loading="eager"
             />
             <Image
               src="/project-4-2.webp"
@@ -590,6 +612,9 @@ function Animations({ startIntro }) {
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-10"
+              priority
+               
+               loading="eager"
             />
 
             <div className="img imageani pic rotate-350 relative z-20 inline-block">
@@ -602,10 +627,12 @@ function Animations({ startIntro }) {
                 onClick={openVideo}
                 className="h-[10vh] block"
                 style={{ cursor: "zoom-in", objectFit: "cover" }}
+                 
               >
                 {" "}
                 <source
                   src="https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4"
+                  
                   type="video/mp4"
                 />
               </video>
@@ -615,6 +642,8 @@ function Animations({ startIntro }) {
               link=""
               typess=""
                textss={"Defence Housing Authority "} 
+            
+                loading="eager"
               />
             </div>
 
@@ -624,6 +653,9 @@ function Animations({ startIntro }) {
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-10"
+              priority
+               
+               loading="eager"
             />
             <Image
               src="/project-4-4.webp"
@@ -631,7 +663,11 @@ function Animations({ startIntro }) {
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-350"
+              priority
+             
+               loading="eager"
             />
+           
           </div>
 
           <div className="col-span-1 row-start-1 row-span-1 grid grid-rows-7">

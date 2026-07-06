@@ -2,6 +2,9 @@
 "use client";
 import { useEffect, useState } from "react";
 
+// const isVideo = (src) => /\.(mp4|webm|mov)$/i.test(src);
+const isVideo = (src) => /\.(mp4|webm|mov)(\?.*)?$/i.test(src);
+
 export function useAssetPreload(assetPaths = [], minDuration = 1200) {
   const [progress, setProgress] = useState(0);
   const [isDone, setIsDone] = useState(false);
@@ -20,7 +23,6 @@ export function useAssetPreload(assetPaths = [], minDuration = 1200) {
       loadedCount += 1;
       const pct = Math.round((loadedCount / assetPaths.length) * 100);
       setProgress(pct);
-
       if (loadedCount === assetPaths.length) {
         const elapsed = Date.now() - startTime;
         const remaining = Math.max(minDuration - elapsed, 0);
@@ -29,10 +31,29 @@ export function useAssetPreload(assetPaths = [], minDuration = 1200) {
     };
 
     assetPaths.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-      img.onload = updateProgress;
-      img.onerror = updateProgress; // don't hang the loader if one 404s
+      if (isVideo(src)) {
+        const vid = document.createElement("video");
+        vid.src = src;
+        vid.preload = "auto";
+        vid.oncanplaythrough = updateProgress;
+        vid.onloadeddata = updateProgress; // fires first, guards slow networks
+        vid.onerror = updateProgress;
+        // avoid double-count if both events fire
+        let fired = false;
+        const once = () => {
+          if (fired) return;
+          fired = true;
+          updateProgress();
+        };
+        vid.oncanplaythrough = once;
+        vid.onloadeddata = once;
+        vid.onerror = once;
+      } else {
+        const img = new Image();
+        img.src = src;
+        img.onload = updateProgress;
+        img.onerror = updateProgress;
+      }
     });
   }, [assetPaths, minDuration]);
 
