@@ -286,9 +286,33 @@ import Image from "next/image";
 import { Words } from "../text";
 import Nav from "../Nav";
 
-function Animations({  startIntro }) {
 
 
+import { getCachedVideoUrl, preloadVideoAsBlob } from "../../../utils/VideoCache";
+
+const VIDEO_SRC = "https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4";
+
+function Animations({ startIntro, playIntro = true }) {
+  // const smallVideoRef = useRef(null);
+  // const fullVideoRef = useRef(null);
+  const [videoSrc, setVideoSrc] = useState(() => getCachedVideoUrl(VIDEO_SRC) || VIDEO_SRC);
+
+  useEffect(() => {
+    let cancelled = false;
+    // if not already cached, fetch once and swap the src to the blob URL
+    if (!getCachedVideoUrl(VIDEO_SRC)) {
+      preloadVideoAsBlob(VIDEO_SRC).then((blobUrl) => {
+        if (!cancelled) setVideoSrc(blobUrl);
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+// function Animations({ startIntro, playIntro = true }) {
+  // const tlRef = useRef(null);
+  // const [animationsComplete, setAnimationsComplete] = useState(false);
 
 
 // const [loadedAssets, setLoadedAssets] = useState(0);
@@ -338,8 +362,48 @@ function Animations({  startIntro }) {
 
   // ── intro timeline ────────────────────────────────────────────────────────
   
+  // useGSAP(() => {
+  //   const tl = gsap.timeline({ paused: true }); // <-- paused
+  //   tlRef.current = tl;
+  //   tl.from(".imageani", {
+  //     x: "100vw",
+  //     duration: 1,
+  //     opacity: 0,
+  //     ease: "power1.out",
+  //     stagger: 0.01,
+  //   });
+  //   tl.to(".pic", {
+  //     delay: 1,
+  //     rotation: 0,
+  //     scale: 3.5,
+  //     duration: 1,
+  //     ease: "power3.inOut",
+  //     x: "-30vw",
+  //     y: "-22vh",
+  //   });
+  //   tl.to(
+  //     ".pics",
+  //     {
+  //       duration: 1,
+  //       opacity: 0,
+  //       ease: "power3.inOut",
+  //       stagger: 0.01,
+  //     },
+  //     "<",
+  //   );
+  //   tl.call(() => setAnimationsComplete(true));
+  // });
+
+
+  // // ── play the intro only once the loader hands off ──────────────────────
+  // useEffect(() => {
+  //   if (startIntro && tlRef.current) {
+  //     tlRef.current.play();
+  //   }
+  // }, [startIntro]);
+
   useGSAP(() => {
-    const tl = gsap.timeline({ paused: true }); // <-- paused
+    const tl = gsap.timeline({ paused: true });
     tlRef.current = tl;
     tl.from(".imageani", {
       x: "100vw",
@@ -357,26 +421,34 @@ function Animations({  startIntro }) {
       x: "-30vw",
       y: "-22vh",
     });
-    tl.to(
-      ".pics",
-      {
-        duration: 1,
-        opacity: 0,
-        ease: "power3.inOut",
-        stagger: 0.01,
-      },
-      "<",
-    );
+    tl.to(".pics", {
+      duration: 1,
+      opacity: 0,
+      ease: "power3.inOut",
+      stagger: 0.01,
+    }, "<");
+    tl.to(".animate__words", {
+      duration: 1,
+      opacity: 1,
+      ease: "power3.inOut",
+    });
     tl.call(() => setAnimationsComplete(true));
   });
 
-
-  // ── play the intro only once the loader hands off ──────────────────────
+  // ── play the intro only on first visit; otherwise jump straight to end state ──
   useEffect(() => {
-    if (startIntro && tlRef.current) {
+    if (!startIntro || !tlRef.current) return;
+
+    if (playIntro) {
       tlRef.current.play();
+    } else {
+      tlRef.current.progress(1); // instantly apply final state, no animation
+      setAnimationsComplete(true);
     }
-  }, [startIntro]);
+  }, [startIntro, playIntro]);
+
+  // ...rest of component unchanged
+
 
   // ── cursor parallax ───────────────────────────────────────────────────────
   useEffect(() => {
@@ -509,19 +581,14 @@ function Animations({  startIntro }) {
           }}
         >
           <video
-            ref={fullVideoRef}
-            src="/Dha.mp4"
-            loop
-            muted={false}
-            playsInline
-            onClick={togglePlay}
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
-            }}
-          />
+        ref={fullVideoRef}
+        src={videoSrc}
+        loop
+        muted={false}
+        playsInline
+        onClick={togglePlay}
+        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+      />
 
           {/* play/pause indicator */}
           <div
@@ -619,23 +686,16 @@ function Animations({  startIntro }) {
 
             <div className="img imageani pic rotate-350 relative z-20 inline-block">
               <video
-                ref={smallVideoRef}
-                autoPlay
-                loop
-                muted
-                playsInline
-                onClick={openVideo}
-                className="h-[10vh] block"
-                style={{ cursor: "zoom-in", objectFit: "cover" }}
-                 
-              >
-                {" "}
-                <source
-                  src="https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4"
-                  
-                  type="video/mp4"
-                />
-              </video>
+        ref={smallVideoRef}
+        autoPlay
+        loop
+        muted
+        playsInline
+        onClick={openVideo}
+        className="h-[10vh] block"
+        style={{ cursor: "zoom-in", objectFit: "cover" }}
+        src={videoSrc}
+      />
               <Words
                 className="absolute left-0 top-full uppercase  text-[.3vw] tracking-tighter whitespace-nowrap transition-opacity duration-500"
                 style={{ opacity: animationsComplete ? 1 : 0 }}
@@ -687,6 +747,9 @@ function Animations({  startIntro }) {
                 </>
               }
               link=""
+              playIntro={playIntro}
+              // className={`${playIntro ? "delay-2400" : "delay-0"}`}
+              
             />
           </div>
 
@@ -694,6 +757,7 @@ function Animations({  startIntro }) {
             <Words
               className="absolute bottom-0 text-3vw capitalize p-[5vw]"
               typess="subheading"
+              playIntro={playIntro}
               textss={
                 <>
                   Share your vision, explore <br /> DHA Bahawalpur, and your{" "}
@@ -707,6 +771,7 @@ function Animations({  startIntro }) {
           <div className="col-span-1 row-span-1 relative z-0 p-[5vw]">
             <Words
               typess="paragraph2"
+              playIntro={playIntro}
               clickeds={() => console.log("About Us clicked")}
               textss="About Us"
               className="absolute bottom-[5vh]  text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline" 
@@ -714,6 +779,7 @@ function Animations({  startIntro }) {
             />
             <Words
               typess="link"
+              playIntro={playIntro}
               textss="Explore More"
               className="absolute bottom-[5vh] text-[2vw] right-[5vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline"
               link="/projects"

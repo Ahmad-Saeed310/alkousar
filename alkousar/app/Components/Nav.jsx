@@ -7,16 +7,17 @@ import gsap from "gsap";
 
 import TransitionLink from "../../animates/TransitionLink";
 
-function Nav() {
+function Nav(  { playIntro = true } = {} ) {
   useGSAP(() => {
     gsap.from(".elems", {
       yPercent: 50,
-      delay: 2.6,
+     delay: playIntro ? 2.4 : 0,
       duration: 1,
       opacity: 0,
       ease: "power4.out",
+
     });
-  });
+  },[playIntro]);
 
   return (
     <div className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference  ">

@@ -56,29 +56,29 @@ function Chars({ type, texts, className }) {
 export default Chars;
 export { Hover };
 
-function Words({ textss, typess, className, link }) {
+function Words({ textss, typess, className, link, playIntro = true }) {
   const word = useRef(null);
+
   useGSAP(() => {
     const wordss = SplitText.create(word.current, {
-      type: "lines", // only split into words and lines (not characters)
-      mask: "lines", // adds extra wrapper element around lines with overflow: clip (v3.13.0+)
+      type: "lines",
+      mask: "lines",
     });
 
     gsap.from(wordss.lines, {
       y: "20vw",
-      delay: 2.4,
       duration: 1,
       opacity: 0,
       ease: "power4.out",
       stagger: 0.01,
+      delay: playIntro ? 2.4 : 0,
     });
-  });
+  }, [playIntro]);
 
-  console.log("link:", link);
   return (
     <>
       <Link href={link}>
-        <h3 ref={word} className={`${types[typess]} ${className}`}>
+        <h3 ref={word} className={`${types[typess]} ${className || ""}`}>
           {textss}
         </h3>
       </Link>
