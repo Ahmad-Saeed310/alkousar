@@ -1,82 +1,70 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-
 import TransitionLink from "../../animates/TransitionLink";
 
-function Nav(  { playIntro = true } = {} ) {
-  useGSAP(() => {
-    gsap.from(".elems", {
-      yPercent: 50,
-     delay: playIntro ? 2.4 : 0,
-      duration: 1,
-      opacity: 0,
-      ease: "power4.out",
+function Nav({ playIntro = true } = {}) {
+  const navRef = useRef(null);
 
-    });
-  },[playIntro]);
+  useGSAP(
+    () => {
+      gsap.from(".elems", {
+        yPercent: 50,
+        delay: playIntro ? 2.4 : 0,
+        duration: 1,
+        opacity: 0,
+        ease: "power4.out",
+      });
+    },
+    { scope: navRef, dependencies: [playIntro] }
+  );
 
   return (
-    <div className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference  ">
-      <TransitionLink href="/" className="h-[4vh] w-auto bg-stone-100  mix-blend-normal ">
-      <Image
-        src="/logo.png"
-        width={100}
-        height={100}
-        alt="Logo"
-        className="h-[4vh] w-auto bg-stone-100  mix-blend-normal "
-        
-      /></TransitionLink>
+    <div
+      ref={navRef}
+      className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference"
+    >
+      <TransitionLink
+        href="/"
+        className="h-[4vh] w-auto bg-stone-100 mix-blend-normal"
+      >
+        <Image
+          src="/logo.png"
+          width={100}
+          height={100}
+          alt="Logo"
+          className="h-[4vh] w-auto bg-stone-100 mix-blend-normal"
+        />
+      </TransitionLink>
 
-      <div className="elems flex items-center gap-[5vw] uppercase text-sm text-white ">
-        <TransitionLink href="/about"
-          className="group relative block overflow-hidden h-[1.2em] w-fit "
+      <div className="elems flex items-center gap-[5vw] uppercase text-sm text-white">
+        <TransitionLink
+          href="/about"
+          className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
-          <span className=" block transition-transform duration-500 ease-out group-hover:-translate-y-full ">
+          <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
             About Us
           </span>
-
-          <span className=" pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
+          <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             About Us
           </span>
         </TransitionLink>
-        {/* <TransitionLink href="/Images"
-          className="group relative block overflow-hidden h-[1.2em] w-fit "
-        >
-          <span className=" block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-            Image
-          </span>
 
-          <span className=" pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-            Image
-          </span>
-         </TransitionLink> */}
-        <TransitionLink href="/projects"
+        <TransitionLink
+          href="/projects"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
             BUY/SELL
           </span>
-
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             BUY/SELL
           </span>
         </TransitionLink>
-        {/* <TransitionLink
-          href="/Services"
-          className="group relative block overflow-hidden h-[1.2em] w-fit"
-        >
-          <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-            Services
-          </span>
 
-          <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-            Services
-          </span>
-        </TransitionLink> */}
         <TransitionLink
           href="/blog"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
@@ -84,18 +72,18 @@ function Nav(  { playIntro = true } = {} ) {
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
             Blog
           </span>
-
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Blog
           </span>
         </TransitionLink>
-          <TransitionLink href="/contact"
+
+        <TransitionLink
+          href="/contact"
           className="group relative block overflow-hidden h-[1.2em] w-fit"
         >
           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
             Contact
           </span>
-
           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
             Contact
           </span>
