@@ -15,8 +15,8 @@ const tl = gsap.timeline();
 
 const types = {
   heading:
-    " text-[6vw]  font-bold  text-semibold leading-[10vh] tracking-tight ",
-  subheading: "text-[2vw] figtree font-light  leading-none tracking-tight",
+    " text-[6vw]  font-bold text-black text-semibold leading-[10vh] tracking-tight ",
+  subheading: "text-[2vw] figtree font-light text-black  leading-none tracking-tight",
   page: "text-[1.1vw] font-light text-black leading-none tracking-tight break-keep",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",

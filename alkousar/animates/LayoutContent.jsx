@@ -19,12 +19,7 @@ export default function LayoutContent({ children }) {
   const { overlayRef } = useTransition();
   const lenis = useLenis();
 
-  // Reset scroll on both sides of a navigation: in the outgoing page's
-  // cleanup (fires before the next page's components mount, in the common
-  // case where React batches both in one commit) AND again in the new
-  // page's own setup (belt-and-suspenders — Next's router doesn't
-  // guarantee the old page's unmount and the new page's mount land in the
-  // same synchronous commit, e.g. across a Suspense/streaming boundary).
+
   useLayoutEffect(() => {
     lenis?.scrollTo(0, { immediate: true });
     window.scrollTo(0, 0);
@@ -57,6 +52,25 @@ export default function LayoutContent({ children }) {
     },
     { dependencies: [pathname], revertOnUpdate: true }
   );
+
+  useGSAP(() => {
+    // Snap the single app-wide Lenis instance back to the top for every new
+    // page. Otherwise its scroll target carries over from whatever page we
+    // came from (e.g. a tall project detail page), so a shorter page like
+    // /projects renders as if already scrolled down and everything looks
+    // shifted/clamped.
+    lenis?.scrollTo(0, { immediate: true });
+    window.scrollTo(0, 0);
+
+    if (!overlayRef.current) return;
+    gsap
+      .timeline()
+      .to(".stair", { y: "100%", stagger: -0.08, duration: 0.35, ease: "power2.out" })
+      .set(overlayRef.current, { display: "none" })
+      .set(".stair", { y: 0 })
+      .call(() => ScrollTrigger.refresh()); // ✅ recalc trigger positions for the new page
+  }, [pathname, lenis]);
+
 
   return (
     <>

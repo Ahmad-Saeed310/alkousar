@@ -306,7 +306,7 @@ export default function AboutPage() {
               <span className="text-white/30 font-mono text-[3vw] md:text-[1vw] w-[3vw] shrink-0">
                 {String(i + 1).padStart(2, "0")}
               </span>
-              <span className="text-white text-[4.5vw] md:text-[1.8vw] font-medium flex-1 md:ml-[3vw]">
+              <span className="text-white text  -[4.5vw] md:text-[1.8vw] font-medium flex-1 md:ml-[3vw]">
                 {r.title}
               </span>
               <span className="text-white/50 text-[3.2vw] md:text-[0.95vw] md:max-w-[26vw] md:text-right">
