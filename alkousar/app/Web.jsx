@@ -1,80 +1,4 @@
-// "use client";
-// import { useState, useEffect } from "react";
-// import Animations from "./Components/animationn/page";
-// import Secondpage from "./Components/Secondpage";
-// import ThirsSe from "./Components/Listing";
-// import Forth from "./Components/Forth";
-// import MapScrollAnimation from "./Components/MapScrollAnimation";
-// import { Animateword } from "./Components/text";
-// import ToGallery from "./Components/toGallery";
-// import Footer from "./Components/Footer";
-// import StackingCards from "./Components/StackingCard";
-// import ImageRows from "./Components/Award";
-// import ScrollMarquee from "./Components/LogoMarquee";
-// import Animationchars from "./animation/page";
-// import LogoMarqueeleft from "./Components/LogoMarquee2";
-// import { useAssetPreload } from "./hooks/useAssetPreload";
-// import Nav from "./Components/Nav";
 
-// const heroAssets = [
-//   "/Home.webp",
-//   "project-4-1.webp",
-//   "project-4-2.webp",
-//   "project-4-3.webp",
-//   "project-4-4.webp",
-//   "logo.png",
-//   "https://res.cloudinary.com/h79vc2ot/video/upload/Dha_a7nfo4.mp4",
-// ];
-
-// const LOADER_KEY = "hasSeenLoader";
-
-// export default function Web() {
-//   const { progress, isDone } = useAssetPreload(heroAssets);
-//   const [loaderDone, setLoaderDone] = useState(false);
-//   const [checkedSession, setCheckedSession] = useState(false);
-
-//   useEffect(() => {
-//     const alreadyLoaded = sessionStorage.getItem(LOADER_KEY);
-//     if (alreadyLoaded) {
-//       setLoaderDone(true);
-//     }
-//     setCheckedSession(true);
-//   }, []);
-
-//   const handleLoaderComplete = () => {
-//     sessionStorage.setItem(LOADER_KEY, "true");
-//     setLoaderDone(true);
-//   };
-
-//   // avoid flashing the loader for a frame before sessionStorage check resolves
-//   if (!checkedSession) return null;
-
-//   return (
-//     <>
-//       {!loaderDone && (
-//         <Animationchars
-//           progress={progress}
-//           assetsReady={isDone}
-//           onComplete={handleLoaderComplete}
-//         />
-//       )}
-//       {loaderDone && (
-//         <main>
-//           <Nav />
-//           <Animations startIntro={loaderDone} />
-//           <Secondpage />
-//           <ThirsSe />
-//           <StackingCards />
-//           <MapScrollAnimation />
-//           <Animateword />
-//           <ScrollMarquee />
-//           <LogoMarqueeleft />
-//           <Footer />
-//         </main>
-//       )}
-//     </>
-//   );
-// }
 "use client";
 
 
@@ -94,6 +18,8 @@ import Animationchars from "./animation/page";
 import LogoMarqueeleft from "./Components/LogoMarquee2";
 import { useAssetPreload } from "./hooks/useAssetPreload";
 import Nav from "./Components/Nav";
+
+import Design from "./Components/Design";
 
 const heroAssets = [
   "/Home.webp",
@@ -138,7 +64,7 @@ export default function Web() {
         />
       )}
       {loaderDone && (
-        <main>
+        <main >
           <Nav playIntro={isFirstVisit} />
           <Animations startIntro={loaderDone} playIntro={isFirstVisit} />
           <Secondpage />
@@ -149,6 +75,7 @@ export default function Web() {
           <ScrollMarquee />
           <LogoMarqueeleft />
           <Footer />
+          <Design />
         </main>
       )}
     </>

@@ -15,7 +15,7 @@ function ThirsSe() {
       scrollTrigger: {
         trigger: ".hero",
         start: "top 20%",
-        end: "+=1000",
+          end: () => `+=${window.innerHeight * 1.3}`,
         pin: true,
         scrub: 2,
         //   markers: true,
@@ -116,24 +116,7 @@ function ThirsSe() {
             className={`text-[12vw]   leading-none   heading hero capitalize flex flex-col  `}
           />
         </div>
-        {/* <div className="sec h-[200vh]   grid grid-rows-2 p-[2vh]  ">
-          <div className="2nd  row-span-1  row-start-2 grid grid-cols-4 grid-rows-2 gap-[2vh]   ">
-            <div className="1 bg-amber-200 col-span-2 row-span-2  ">
-              <div className="h-full w-full  bg-yellow-300 ">
-                <Texts type={`heading`} texts={"WE CURATE SPACES"} />
-                </div>
-            </div>
-            <div className="3 bg-green-200 col-span-1 ">h</div>
-            <div className="4 bg-neutral-300 col-span-1 ">h</div>
-          </div>
-        </div>
-        <div className="sec h-screen   grid grid-rows-2 p-[2vh] bg-stone-100 ">
-          <div className="2nd  row-span-2  row-start-1 grid grid-cols-4 grid-rows-2 gap-[2vh]   ">
-            <div className="3 bg-green-200 col-span-1 ">h</div>
-            <div className="4 bg-neutral-300 col-span-1 ">h</div>
-            <div className="1 bg-amber-200 col-span-2 row-span-2  ">h</div>
-          </div>
-        </div> */}
+       
         <BentoGrid />
 
         {/* <div className="sec h-screen    bg-stone-100 "> */}

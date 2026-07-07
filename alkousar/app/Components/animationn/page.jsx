@@ -348,8 +348,11 @@ function Animations({ startIntro, playIntro = true }) {
 
   // ── bg colour scroll ──────────────────────────────────────────────────────
   useGSAP(() => {
+     gsap.set(".bgAnimate", {
+    backgroundColor: "#f5f5f4", // or your actual starting color
+  });
     gsap.to(".bgAnimate", {
-      backgroundColor: "gray",
+      backgroundColor: "#e7e5e4",
       ease: "power1.out",
       scrollTrigger: {
         trigger: ".bgAnimate",

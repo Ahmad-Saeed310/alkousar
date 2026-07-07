@@ -34,6 +34,9 @@ body {
 .fontss{
    font-family: var(--font-geist-sans);  
 }
+.figtree{
+   font-family: var(--font-figtree);  
+}
 
 /* Hide scrollbar */
 .no-scrollbar::-webkit-scrollbar {

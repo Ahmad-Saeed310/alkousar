@@ -7,26 +7,28 @@ import Footer from "../Components/Footer";
 import Chars from "../Components/text";
 import { ScrollWords, Animateword, Texts } from "../Components/text";
 import ProcessStack from "../Components/ProcessStack";
-import StackingCard from "../Components/Stackcard";
 
 const stats = [
   {
     id: "01",
     value: "1st",
     label: "Position",
-    detail: "DHA Bahawalpur Dealers Ranking, 2025",
+    headline: "Ranked 1st in DHA Bahawalpur, 2025",
+    body: "DHA Bahawalpur reviews its authorised dealers every year on trust, professionalism, and how well they serve the community. For 2025, Al-Kousar Properties was ranked 1st among every dealer in DHA Bahawalpur — recognition earned through consistent, honest service to the families and investors we work with, not just sales numbers. It's a standard we intend to keep earning every year, not something we consider settled.",
   },
   {
     id: "02",
     value: "100%",
     label: "Recommend",
-    detail: "Across 26 verified client reviews",
+    headline: "A 100% Recommend Rating",
+    body: "Every one of our 26 verified client reviews recommends Al-Kousar Properties — not most of them, all of them. That comes from being upfront about pricing and timelines from the first conversation, showing up for site visits in person, and staying reachable long after a deal has closed. We'd rather close a sale slower and honestly than fast and at the cost of someone's trust.",
   },
   {
     id: "03",
     value: "222",
     label: "Reg #",
-    detail: "Officially Authorised DHA Bahawalpur Dealer",
+    headline: "Officially Registered — Dealer Reg # 222",
+    body: "Al-Kousar Properties is registered with DHA Bahawalpur as an Authorised Dealer under Reg # 222. Every transaction we handle runs through recognised channels, with ownership verification and paperwork backed by DHA itself — not just our word for it. It's the reason clients can hand us a deal and not have to double-check it themselves.",
   },
 ];
 
@@ -153,36 +155,58 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Achievements */}
-      <section className="w-full bg-black px-[5vw] py-[12vh]">
-        <ScrollWords
-          textss="Recognised Across DHA Bahawalpur"
-          typess="subheading"
-          className="text-white/60 mb-[8vh] text-[4.5vw] md:text-[2vw]"
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[6vh] md:gap-[3vw]">
-          {stats.map((s) => (
-            <div
-              key={s.id}
-              className="border-t border-white/20 pt-[3vh] flex flex-col gap-[1vh]"
+      {/* Achievements — one full section per stat, alternating background */}
+      {stats.map((s, i) => (
+        <section
+          key={s.id}
+          className={`w-full px-[5vw] py-[12vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw] items-center ${
+            i % 2 === 0 ? "bg-black" : "bg-stone-100"
+          }`}
+        >
+          <div>
+            <span
+              className={`font-mono text-[4vw] md:text-[1.1vw] ${
+                i % 2 === 0 ? "text-white/30" : "text-black/30"
+              }`}
             >
-              <span className="text-white/30 text-[3vw] md:text-[1vw] font-mono">
-                {s.id}
-              </span>
-              <span className="text-white text-[10vw] md:text-[4vw] font-black leading-none sanss">
+              {s.id}
+            </span>
+            <div className="flex flex-col mt-[1vh]">
+              <span
+                className={`font-black leading-none sanss text-[16vw] md:text-[7vw] ${
+                  i % 2 === 0 ? "text-white" : "text-black"
+                }`}
+              >
                 {s.value}
               </span>
-              <span className="text-white text-[3.5vw] md:text-[1.2vw] font-medium">
+              <span
+                className={`text-[4vw] md:text-[1.4vw] font-medium mt-[1vh] ${
+                  i % 2 === 0 ? "text-white/70" : "text-black/70"
+                }`}
+              >
                 {s.label}
               </span>
-              <span className="text-white/50 text-[3vw] md:text-[0.95vw]">
-                {s.detail}
-              </span>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+
+          <div>
+            <ScrollWords
+              textss={s.headline}
+              typess="heading"
+              className={`text-[7vw] md:text-[2.6vw] leading-tight mb-[2vh] ${
+                i % 2 === 0 ? "text-white" : "text-black"
+              }`}
+            />
+            <ScrollWords
+              textss={s.body}
+              typess="paragraph2"
+              className={`text-[4vw] md:text-[1.2vw] leading-snug ${
+                i % 2 === 0 ? "text-white/70" : "text-black/70"
+              }`}
+            />
+          </div>
+        </section>
+      ))}
 
       {/* Leadership */}
       <section className="w-full bg-stone-100 px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw] items-center">
@@ -265,9 +289,8 @@ export default function AboutPage() {
       </section>
       <ProcessStack />
 
-
       {/* Why choose us */}
-      <section className="w-full bg-black px-[5vw] py-[14vh] z-[100]">
+      <section className="w-full bg-black px-[5vw] py-[14vh]">
         <ScrollWords
           textss="Why Choose Al-Kousar"
           typess="heading"

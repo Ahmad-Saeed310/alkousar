@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono,Google_Sans } from "next/font/google";
+import { Geist, Geist_Mono,Google_Sans,Figtree } from "next/font/google";
 import "./globals.css";
 import { TransitionProvider } from "@/context/TransitionContext";
 // import TransitionOverlay from "../animates/TransitionOverlay";
@@ -9,6 +9,11 @@ import SmoothScrollProvider from "./Components/SmoothScrollProvider"; // adjust 
 
 
 // import Transition from "./Components/common/Transition"
+
+const figtree = Figtree({
+  variable: "--font-figtree",
+  subsets: ["latin"],
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${Sans.variable} ${geistMono.variable}  antialiased`}
+      className={`${geistSans.variable} ${Sans.variable} ${geistMono.variable} ${figtree.variable} antialiased`}
     >
       <body>
         <SmoothScrollProvider>

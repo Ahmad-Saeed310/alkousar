@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { TextPlugin } from "gsap/TextPlugin";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 import Link from "next/link";
 
@@ -14,8 +15,8 @@ const tl = gsap.timeline();
 
 const types = {
   heading:
-    " text-[6vw]  font-black  sanss   text-black leading-[10vh] tracking-tight",
-  subheading: "text-[2vw] font-light text-black leading-none tracking-tight",
+    " text-[6vw]  font-bold  text-semibold leading-[10vh] tracking-tight ",
+  subheading: "text-[2vw] figtree font-light  leading-none tracking-tight",
   page: "text-[1.1vw] font-light text-black leading-none tracking-tight break-keep",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",
@@ -127,6 +128,8 @@ function ScrollWords({ textss, typess, className }) {
     });
 
     gsap.from(wordss.lines, {
+      display: "block",
+      width: "100%",
       color: "#fff",
       stagger: 0.1,
       y: "20vw",
@@ -268,3 +271,32 @@ export function Marquee({ text = "Your marquee text goes here ", speed = 10 }) {
     </div>
   );
 }
+
+export const ImageAnimation = ({ source, description, classname }) => {
+  const imageRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(imageRef.current, {
+      scaleY: 0,
+    transformOrigin: "top",
+    duration: .8,
+    ease: "power4.out",
+    scrollTrigger: {
+      trigger: imageRef.current,
+      start: "top 90%",
+      end: "top 70%",
+      },
+    });
+  });
+
+  return (
+    <div ref={imageRef} className={classname}>
+      <Image
+        src={source}
+        alt={description}
+        fill
+        className="object-cover"
+      />
+    </div>
+  );
+};
