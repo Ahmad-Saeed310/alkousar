@@ -105,15 +105,15 @@ function ThirsSe() {
                   wORKS
                 </span>{" "}
                 <br />{" "}
-                <span className="text-right text text-black block  w-full ">
+                <span className="text-center  sanss text text-black block  w-full ">
                   {" "}
                   (2019-2026)
                 </span>
               </>
             }
-            typess={`heading`}
+            typess={``}
             refss={`words`}
-            className={`text-[12vw]   leading-none   heading hero capitalize flex flex-col  `}
+            className={`text-[10vw] font-semibold leading-none w-full   heading hero capitalize flex flex-col  `}
           />
         </div>
        

@@ -55,10 +55,10 @@ const data = [
 export default function Design() {
     return (
         <>
-            <div className="design h-screen  w-full relative">
+            <div className="design h-auto  w-full relative">
                 {
                     data.map((item) => (
-                        <div key={item.id} className="design-content bg-stone-100  h-full w-full grid grid-cols-6 grid-rows-5 gap-[1vw] p-[2vw] ">
+                        <div key={item.id} className="design-content bg-stone-100  h-screen w-full grid grid-cols-6 grid-rows-5 gap-[1vw] p-[2vw] ">
                             <ScrollWords className={` font-bold figtree  text-[5vw]  self-end ${item.layout.heading}`} textss={item.heading} />
                             <ScrollWords className={`text-[1.7vw] wrap-normal leading-none tracking-tight  ${item.layout.content} `} textss={item.content} />
                             {item.img.map((src, index) => (
