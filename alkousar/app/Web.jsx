@@ -69,7 +69,7 @@ export default function Web() {
           <Animations startIntro={loaderDone} playIntro={isFirstVisit} />
           <Secondpage />
           <ThirsSe />
-          {/* <Design /> */}
+          <Design />
           <StackingCards />
           <MapScrollAnimation />
           <Animateword />

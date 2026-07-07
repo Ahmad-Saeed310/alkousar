@@ -55,7 +55,7 @@ const data = [
 export default function Design() {
     return (
         <>
-            <div className="design h-auto  w-full relative">
+            <div className="design h-[300vh]  w-full relative">
                 {
                     data.map((item) => (
                         <div key={item.id} className="design-content bg-stone-100  h-screen w-full grid grid-cols-6 grid-rows-5 gap-[1vw] p-[2vw] ">
