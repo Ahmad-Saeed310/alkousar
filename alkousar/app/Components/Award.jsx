@@ -91,8 +91,8 @@ export default function ImageRows() {
 
   return (
     <div className="h-screen bg-stone-100 w-full relative">
-      <div className="text h-[50vh]  flex flex-col   md:flex-row items-center bg-green-500   justify-center md:grid md:grid-cols-2 ">
-        <div className="md:col-span-1 mx-[5vw] w-full bg-red-400 ">
+      <div className="text h-[50vh]  flex flex-col   md:flex-row items-center   justify-center md:grid md:grid-cols-2 ">
+        <div className="md:col-span-1 mx-[5vw] w-full  ">
           <ScrollWords textss={`Awards`} typess={`heading`} />
         </div>
         <ScrollWords textss={ 
