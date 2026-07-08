@@ -18,6 +18,7 @@ import Animationchars from "./animation/page";
 import LogoMarqueeleft from "./Components/LogoMarquee2";
 import { useAssetPreload } from "./hooks/useAssetPreload";
 import Nav from "./Components/Nav";
+import Awards from "./Components/Award";
 
 import Design from "./Components/Design";
 
@@ -70,7 +71,8 @@ export default function Web() {
           <Secondpage />
           <ThirsSe />
           <Design />
-          <StackingCards />
+          <Awards />
+          {/* <StackingCards /> */}
           <MapScrollAnimation />
           <Animateword />
           <ScrollMarquee />

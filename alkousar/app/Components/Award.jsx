@@ -91,25 +91,25 @@ export default function ImageRows() {
 
   return (
     <div className="h-screen bg-stone-100 w-full relative">
-      <div className="text h-[50vh]  flex items-center justify-center grid grid-cols-2 ">
-        <div className="col-span-1 mx-[5vw] w-full ">
+      <div className="text h-[50vh]  flex flex-col   md:flex-row items-center bg-green-500   justify-center md:grid md:grid-cols-2 ">
+        <div className="md:col-span-1 mx-[5vw] w-full bg-red-400 ">
           <ScrollWords textss={`Awards`} typess={`heading`} />
         </div>
         <ScrollWords textss={ 
           <>
-          Behind every award is a client who trusted us with their most <br/> 
-          important investment. We are deeply grateful for every recognition,<br/> 
-          but more grateful for every family we helped settle, every investor <br/> 
+          Behind every award is a client who trusted us with their most  
+          important investment. We are deeply grateful for every recognition, 
+          but more grateful for every family we helped settle, every investor  
           we guided, and every deal we closed with integrity.
-          </>} typess={`paragraph2`} />
+          </>} typess={`paragraph`}
+          className="md:col-span-1 h-[20vh] mx-[5vw] items-center md:pt-0 pt-[2vh] "  />
       </div>
       <div className=" h-[50vh] absolute bottom-0 w-full bg-stone-100 overflow-hidden">
         {/* Fixed preview — bottom right */}
         <div
-          className="fixed bottom-8 right-8 z-10 pointer-events-none overflow-hidden"
+          className="fixed bottom-8 right-8 z-10 pointer-events-none overflow-hidden w-[60vw] h-[40vw] md:w-[35vw] md:h-[45vh] bg-stone-100"
           style={{
-            width: "35vw",
-            height: "45vh",
+            
             opacity: active ? 1 : 0,
             transition: "opacity 0.35s ease",
           }}

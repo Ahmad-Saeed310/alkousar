@@ -120,7 +120,7 @@ export default function MapJourney() {
 
   return (
     <div ref={containerRef}>
-      <section id="journey" className="relative h-[300vh]  z-50 bg-amber-400 overflow-x-hidden ">
+      <section id="journey" className="relative h-[300vh]  z-50 bg-stone-100 overflow-x-hidden ">
         
         <svg
           className="map absolute inset-0 h-screen w-screen cursor-pointer"

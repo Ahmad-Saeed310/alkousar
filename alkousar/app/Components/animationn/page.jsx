@@ -733,7 +733,7 @@ function Animations({ startIntro, playIntro = true }) {
 
           </div>
 
-          <div className="col-span-1 row-start-1 row-span-1 grid grid-rows-7 bg-green-300 hidden sm:flex">
+          <div className="col-span-1 row-start-1 row-span-1 grid grid-rows-7  hidden sm:flex">
             <div className="row-start-7 flex items-center justify-center gap-[5vw]" />
           </div>
 
