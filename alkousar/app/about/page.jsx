@@ -51,22 +51,28 @@ const services = [
   },
 ];
 
-const reasons = [
+// Fuller "why us" pitch — replaces the old thin title+desc row list with
+// numbered headline+paragraph pairs, same shape as the client's reference copy.
+const pitch = [
   {
-    title: "Authorised & Registered",
-    desc: "Reg # 222 — officially recognised as a dealer by DHA Bahawalpur.",
+    id: "01",
+    title: "Fast-Track Your Move Into DHA Bahawalpur",
+    body: "From your first call to keys in hand, we move at your pace — not paperwork's. Plot selection, site visits, and documentation happen in parallel, not one slow step after another, so you're not left waiting on us.",
   },
   {
-    title: "Proven Track Record",
-    desc: "Ranked among the top dealers in DHA Bahawalpur, 1st position in 2025.",
+    id: "02",
+    title: "Built For First-Time Buyers, Scaled For Investors",
+    body: "Whether it's your first plot or your fifth investment property, our approach adjusts to you. First-time buyers get the same patient, step-by-step walkthroughs that repeat investors get fast, direct numbers.",
   },
   {
-    title: "Trusted By Clients",
-    desc: "A 100% recommend rating built across 26 client reviews.",
+    id: "03",
+    title: "One Team for Everything DHA Bahawalpur",
+    body: "Plot sales, investment consultancy, home construction, and DHA paperwork — handled by one team, not passed between agents and contractors. You deal with one point of contact from search to handover.",
   },
   {
-    title: "Full-Service Partner",
-    desc: "From plot selection to construction, we manage the entire journey.",
+    id: "04",
+    title: "Fast Answers, On Your Timeline",
+    body: "We know DHA deadlines and payment schedules don't wait. Site visits get arranged within days, not weeks, and you're kept updated at every step — so you're never the one chasing a status update.",
   },
 ];
 
@@ -127,13 +133,14 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Who we are */}
-      <section className="w-full bg-stone-100 px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw]">
+      {/* Who we are — now black, so it's actually distinct from the stone-100
+          hero directly above it instead of running into it with no break. */}
+      <section className="w-full bg-black px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw]">
         <div>
           <ScrollWords
             textss="Who We Are"
             typess="heading"
-            className="text-black text-[9vw] md:text-[3.6vw] leading-none"
+            className="text-white text-[9vw] md:text-[3.6vw] leading-none"
           />
         </div>
         <div>
@@ -150,23 +157,25 @@ export default function AboutPage() {
               </>
             }
             typess="paragraph2"
-            className="text-black text-[4vw] md:text-[1.4vw] leading-snug"
+            className="text-white/80 text-[4vw] md:text-[1.4vw] leading-snug"
           />
         </div>
       </section>
 
-      {/* Achievements — one full section per stat, alternating background */}
+      {/* Achievements — one full section per stat. Parity flipped so this
+          opens on stone-100 (Who We Are above is now black) and alternates
+          cleanly from there: stone, black, stone. */}
       {stats.map((s, i) => (
         <section
           key={s.id}
           className={`w-full px-[5vw] py-[12vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw] items-center ${
-            i % 2 === 0 ? "bg-black" : "bg-stone-100"
+            i % 2 !== 0 ? "bg-black" : "bg-stone-100"
           }`}
         >
           <div>
             <span
               className={`font-mono text-[4vw] md:text-[1.1vw] ${
-                i % 2 === 0 ? "text-white/30" : "text-black/30"
+                i % 2 !== 0 ? "text-white/30" : "text-black/30"
               }`}
             >
               {s.id}
@@ -174,14 +183,14 @@ export default function AboutPage() {
             <div className="flex flex-col mt-[1vh]">
               <span
                 className={`font-black leading-none sanss text-[16vw] md:text-[7vw] ${
-                  i % 2 === 0 ? "text-white" : "text-black"
+                  i % 2 !== 0 ? "text-white" : "text-black"
                 }`}
               >
                 {s.value}
               </span>
               <span
                 className={`text-[4vw] md:text-[1.4vw] font-medium mt-[1vh] ${
-                  i % 2 === 0 ? "text-white/70" : "text-black/70"
+                  i % 2 !== 0 ? "text-white/70" : "text-black/70"
                 }`}
               >
                 {s.label}
@@ -194,38 +203,40 @@ export default function AboutPage() {
               textss={s.headline}
               typess="heading"
               className={`text-[7vw] md:text-[2.6vw] leading-tight mb-[2vh] ${
-                i % 2 === 0 ? "text-white" : "text-black"
+                i % 2 !== 0 ? "text-white" : "text-black"
               }`}
             />
             <ScrollWords
               textss={s.body}
               typess="paragraph2"
               className={`text-[4vw] md:text-[1.2vw] leading-snug ${
-                i % 2 === 0 ? "text-white/70" : "text-black/70"
+                i % 2 !== 0 ? "text-white/70" : "text-black/70"
               }`}
             />
           </div>
         </section>
       ))}
 
-      {/* Leadership */}
-      <section className="w-full bg-stone-100 px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw] items-center">
-        <div className="relative h-[45vh] md:h-[55vh] w-full bg-black flex items-center justify-center overflow-hidden">
-          <span className="text-white text-[16vw] md:text-[7vw] font-black sanss">
+      {/* Leadership — now black (was stone-100, which repeated the achievement
+          section right before it with zero separation). KR panel flipped to
+          a white card so it still reads clearly against the dark section. */}
+      <section className="w-full bg-black px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw] items-center">
+        <div className="relative h-[45vh] md:h-[55vh] w-full bg-white flex items-center justify-center overflow-hidden">
+          <span className="text-black text-[16vw] md:text-[7vw] font-black sanss">
             KR
           </span>
         </div>
 
         <div>
-          <ScrollWords
-            textss="Leadership"
+          <Animateword
+            text="Leadership"
             typess="page"
-            className="text-black/50 uppercase tracking-widest text-[3vw] md:text-[1.1vw] mb-[1vh]"
+            classname="text-white/50 uppercase tracking-widest"
           />
           <ScrollWords
             textss="Kashif Rehmat"
             typess="heading"
-            className="text-black text-[8vw] md:text-[3.5vw] leading-none mb-[2vh]"
+            className="text-white text-[8vw] md:text-[3.5vw] leading-none mt-[1vh] mb-[2vh]"
           />
           <ScrollWords
             textss={
@@ -240,12 +251,13 @@ export default function AboutPage() {
               </>
             }
             typess="paragraph2"
-            className="text-black text-[4vw] md:text-[1.3vw] leading-snug"
+            className="text-white/80 text-[4vw] md:text-[1.3vw] leading-snug"
           />
         </div>
       </section>
 
-      {/* What we offer */}
+      {/* What we offer — unchanged stone-100, now correctly follows the
+          black Leadership section above instead of repeating it. */}
       <section className="w-full bg-stone-100 px-[5vw] py-[14vh]">
         <ScrollWords
           textss="What We Offer"
@@ -276,74 +288,88 @@ export default function AboutPage() {
 
       {/* Our process — scroll-driven stacking cards */}
       <section className="w-full bg-black px-[5vw] pt-[14vh] pb-[6vh]">
-        <ScrollWords
-          textss="Our Process"
+        <Animateword
+          text="Our Process"
           typess="page"
-          className="text-white/50 uppercase tracking-widest text-[3vw] md:text-[1.1vw] mb-[1vh]"
+          classname="text-white/50 uppercase tracking-widest"
         />
         <ScrollWords
           textss="How We Work"
           typess="heading"
-          className="text-white text-[9vw] md:text-[3.6vw] leading-none"
+          className="text-white text-[9vw] md:text-[3.6vw] leading-none mt-[1vh]"
         />
       </section>
       <ProcessStack />
 
-      {/* Why choose us */}
-      <section className="w-full bg-black px-[5vw] py-[14vh]">
+      {/* Why Al-Kousar — the richer numbered pitch, replacing the old thin
+          title+desc row list. Stone-100 so it breaks cleanly from the black
+          Process section right above it. */}
+      <section className="w-full bg-stone-100 px-[5vw] py-[14vh]">
+        <Animateword
+          text="Why Al-Kousar"
+          typess="page"
+          classname="text-black/50 uppercase tracking-widest"
+        />
         <ScrollWords
-          textss="Why Choose Al-Kousar"
+          textss="What Working With Us Feels Like"
           typess="heading"
-          className="text-white text-[9vw] md:text-[3.6vw] leading-none mb-[7vh]"
+          className="text-black text-[9vw] md:text-[3.6vw] leading-none mt-[1vh] mb-[6vh]"
         />
 
-        <div className="flex flex-col">
-          {reasons.map((r, i) => (
+        <div className="flex flex-col divide-y divide-black/10">
+          {pitch.map((p) => (
             <div
-              key={r.title}
-              className="flex flex-col md:flex-row md:items-center gap-[1.5vh] md:gap-0 justify-between py-[3vh] border-b border-white/15"
+              key={p.id}
+              className="grid grid-cols-1 md:grid-cols-[8vw_1fr] gap-[2vh] md:gap-[3vw] py-[5vh]"
             >
-              <span className="text-white/30 font-mono text-[3vw] md:text-[1vw] w-[3vw] shrink-0">
-                {String(i + 1).padStart(2, "0")}
+              <span className="text-black/30 font-mono text-[4vw] md:text-[1.2vw]">
+                ({p.id})
               </span>
-              <span className="text-white text  -[4.5vw] md:text-[1.8vw] font-medium flex-1 md:ml-[3vw]">
-                {r.title}
-              </span>
-              <span className="text-white/50 text-[3.2vw] md:text-[0.95vw] md:max-w-[26vw] md:text-right">
-                {r.desc}
-              </span>
+              <div>
+                <ScrollWords
+                  textss={p.title}
+                  typess="subheading"
+                  className="text-black text-[5.5vw] md:text-[2.2vw] leading-tight font-medium mb-[1.5vh]"
+                />
+                <ScrollWords
+                  textss={p.body}
+                  typess="paragraph2"
+                  className="text-black/70 text-[4vw] md:text-[1.2vw] leading-snug max-w-[90vw] md:max-w-[45vw]"
+                />
+              </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Visit us */}
-      <section className="relative w-full h-[70vh] bg-stone-100 flex items-center justify-center px-[5vw] overflow-hidden">
+      {/* Visit us — now black (was stone-100, repeating the pitch section
+          above it). Closes on a dark note right before the light Footer. */}
+      <section className="relative w-full h-[70vh] bg-black flex items-center justify-center px-[5vw] overflow-hidden">
         <Image
           src="/AlKousarMap.png"
           alt="DHA Bahawalpur map"
           fill
-          className="object-cover opacity-15"
+          className="object-cover opacity-10 invert"
         />
 
         <div className="relative z-10 flex flex-col items-center gap-[2vh] text-center">
           <Texts
             type="page"
             texts="Visit Us"
-            className="text-black/50 uppercase tracking-widest text-[3vw] md:text-[1.1vw]"
+            className="text-white/50 uppercase tracking-widest text-[3vw] md:text-[1.1vw]"
           />
           <Texts
             type="heading"
             texts="Office# 03, Alpha Avenue, Sector-B, DHA Bahawalpur"
-            className="text-black text-[6vw] md:text-[2.8vw] leading-tight max-w-[85vw] md:max-w-[50vw]"
+            className="text-white text-[6vw] md:text-[2.8vw] leading-tight max-w-[85vw] md:max-w-[50vw]"
           />
           <a
             href="tel:+923477246576"
-            className="text-black text-[4vw] md:text-[1.6vw] font-medium underline underline-offset-4 mt-[1vh]"
+            className="text-white text-[4vw] md:text-[1.6vw] font-medium underline underline-offset-4 mt-[1vh]"
           >
             +92 347 7246576
           </a>
-          <span className="text-black/50 text-[3vw] md:text-[0.9vw] uppercase tracking-widest mt-[1vh]">
+          <span className="text-white/50 text-[3vw] md:text-[0.9vw] uppercase tracking-widest mt-[1vh]">
             Always Open
           </span>
         </div>

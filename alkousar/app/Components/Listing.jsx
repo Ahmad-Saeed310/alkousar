@@ -6,8 +6,36 @@ import BentoGrid from "./Grid";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Animateword } from "./text";
 
 import Image from "next/image";
+
+const pitch = [
+  {
+    id: "01",
+    class: "md:col-span-1 md:row-span-1 col-start-1 row-start-2  ",
+    title: "Fast-Track Your Move Into DHA Bahawalpur",
+    body: "From your first call to keys in hand, we move at your pace — not paperwork's. Plot selection, site visits, and documentation happen in parallel, not one slow step after another, so you're not left waiting on us.",
+  },
+  {
+    class: "md:col-span-1 md:row-span-1 md:col-start-2 row-start-2  ",
+    id: "02",
+    title: "Built For First-Time Buyers, Scaled For Investors",
+    body: "Whether it's your first plot or your fifth investment property, our approach adjusts to you. First-time buyers get the same patient, step-by-step walkthroughs that repeat investors get fast, direct numbers.",
+  },
+  {
+    id: "03",
+    class: "md:col-span-1 md:row-span-1 col-start-1 row-start-3 ",
+    title: "One Team for Everything DHA Bahawalpur",
+    body: "Plot sales, investment consultancy, home construction, and DHA paperwork — handled by one team, not passed between agents and contractors. You deal with one point of contact from search to handover.",
+  },
+  {
+    id: "04",
+    class: "md:col-span-1 md:row-span-1 col-start-2 row-start-3  ",
+    title: "Fast Answers, On Your Timeline",
+    body: "We know DHA deadlines and payment schedules don't wait. Site visits get arranged within days, not weeks, and you're kept updated at every step — so you're never the one chasing a status update.",
+  },
+];
 
 function ThirsSe() {
   useGSAP(() => {
@@ -15,7 +43,7 @@ function ThirsSe() {
       scrollTrigger: {
         trigger: ".hero",
         start: "top 20%",
-          end: () => `+=${window.innerHeight * 1.3}`,
+        end: () => `+=${window.innerHeight * 1.3}`,
         pin: true,
         scrub: 2,
         //   markers: true,
@@ -116,20 +144,20 @@ function ThirsSe() {
             className={`md:text-[10vw] text-[15vw] md:font-semibold font-black geist leading-none w-full   heading hero capitalize flex flex-col  `}
           />
         </div>
-       
+
         <BentoGrid />
 
         {/* <div className="sec h-screen    bg-stone-100 "> */}
 
-        <div className="h-screen w-screen width bg-stone-100 flex flex-col md:items-center items-start   md:justify-center">
-          <Texts type={`heading`} texts={"WE CURATE SPACES"} className={`text-[3vw]`} />
+        <div className="md:h-auto w-screen width bg-stone-100 flex flex-col md:items-center  pt-[10vh]    md:justify-center">
+          <Texts type={`display`} texts={"WE CURATE SPACES"} className={` text-center`} />
           <Texts
             className={``}
-            type={`heading`}
+            type={`display`}
             texts={
               <>
-                <div className="home flex items-center justify-center">
-                  <h3>HOMES</h3>
+                <div className="home flex items-center w-screen justify-center">
+                  <h3>HOMES,</h3>
                   <div
                     id="box1"
                     className=" hidden md:block imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
@@ -141,7 +169,7 @@ function ThirsSe() {
                       className="object-cover "
                     />
                   </div>
-                  <h3>APARTMENTS</h3>{" "}
+                  <h3>APARTMENTS,</h3>{" "}
                   <div
                     id="box1"
                     className="hidden md:block imgwidth  h-[4vw] w-[8vw] sm:h-[4vw] relative sm:w-[8vw] bg-stone-700  object-contain   my-[1vw] mx-[1vw]"
@@ -155,8 +183,8 @@ function ThirsSe() {
                     />
                   </div>
                 </div>
-                <div className="home flex items-center justify-center">
-                  <h3>COMMERCIAL</h3>{" "}
+                <div className="home flex items-center w-screen justify-center">
+                  <h3>COMMERCIAL,</h3>{" "}
                   <div
                     id="box1"
                     className="hidden md:block imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
@@ -181,8 +209,51 @@ function ThirsSe() {
               </>
             }
           />
-          <Texts type={`heading`} texts={"FOR YOUR LEGACY"} />
+          <Texts type={`display`} texts={"FOR YOUR LEGACY"} className={` text-center `} />
         </div>
+        <section className="w-screen min-h-screen bg-stone-100 md:grid md:grid-cols-2 md:grid-rows-3 px-[2vw] py-[2vh]">
+
+          {/* Heading */}
+          {/* <div className="heading md:col-span-2 md:row-start-1">
+    <Animateword
+      text="Why Al-Kousar"
+      typess="page"
+      classname="text-black/50 uppercase tracking-widest"
+    />
+
+    <ScrollWords
+      textss="What Working With Us Feels Like"
+      typess="heading"
+      className="text-black text-[9vw] md:text-[3.6vw] leading-none mt-[1vh] mb-[6vh]"
+    />
+  </div> */}
+
+          {/* Cards */}
+          {pitch.map((p) => (
+            <div
+              key={p.id}
+              className={`${p.class} grid grid-cols-1 md:grid-cols-[8vw_1fr] gap-[2vh] md:gap-[3vw] py-[5vh]`}
+            >
+              <span className="text-black/30 font-mono text-[4vw] md:text-[1.2vw]">
+                ({p.id})
+              </span>
+
+              <div>
+                <ScrollWords
+                  textss={p.title}
+                  typess="subheading"
+                  className="text-black text-[5.5vw] md:text-[2.2vw] leading-tight font-medium mb-[1.5vh]"
+                />
+
+                <ScrollWords
+                  textss={p.body}
+                  typess="paragraph2"
+                  className="text-black/70 text-[4vw] md:text-[1.2vw] leading-snug max-w-[90vw] md:max-w-[45vw]"
+                />
+              </div>
+            </div>
+          ))}
+        </section>
 
         {/* </div> */}
       </div>
