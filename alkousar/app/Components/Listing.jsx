@@ -121,7 +121,7 @@ function ThirsSe() {
 
         {/* <div className="sec h-screen    bg-stone-100 "> */}
 
-        <div className="h-screen w-full width bg-stone-100 flex flex-col items-center justify-center">
+        <div className="h-screen w-screen width bg-stone-100 flex flex-col md:items-center items-start   md:justify-center">
           <Texts type={`heading`} texts={"WE CURATE SPACES"} className={`text-[3vw]`} />
           <Texts
             className={``}

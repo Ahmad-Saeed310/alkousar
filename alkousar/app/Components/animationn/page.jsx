@@ -310,22 +310,22 @@ function Animations({ startIntro, playIntro = true }) {
     };
   }, []);
 
-// function Animations({ startIntro, playIntro = true }) {
+  // function Animations({ startIntro, playIntro = true }) {
   // const tlRef = useRef(null);
   // const [animationsComplete, setAnimationsComplete] = useState(false);
 
 
-// const [loadedAssets, setLoadedAssets] = useState(0);
+  // const [loadedAssets, setLoadedAssets] = useState(0);
 
-// const assetLoaded = () => {
-//   setLoadedAssets((prev) => prev + 1);
-// };
+  // const assetLoaded = () => {
+  //   setLoadedAssets((prev) => prev + 1);
+  // };
 
-// useEffect(() => {
-//   if (loadedAssets === TOTAL_ASSETS) {
-//     onReady?.();
-//   }
-// }, [loadedAssets, onReady]);
+  // useEffect(() => {
+  //   if (loadedAssets === TOTAL_ASSETS) {
+  //     onReady?.();
+  //   }
+  // }, [loadedAssets, onReady]);
 
 
   const tlRef = useRef(null);
@@ -348,9 +348,9 @@ function Animations({ startIntro, playIntro = true }) {
 
   // ── bg colour scroll ──────────────────────────────────────────────────────
   useGSAP(() => {
-     gsap.set(".bgAnimate", {
-    backgroundColor: "#f5f5f4", // or your actual starting color
-  });
+    gsap.set(".bgAnimate", {
+      backgroundColor: "#f5f5f4", // or your actual starting color
+    });
     gsap.to(".bgAnimate", {
       backgroundColor: "#e7e5e4",
       ease: "power1.out",
@@ -364,7 +364,7 @@ function Animations({ startIntro, playIntro = true }) {
   });
 
   // ── intro timeline ────────────────────────────────────────────────────────
-  
+
   // useGSAP(() => {
   //   const tl = gsap.timeline({ paused: true }); // <-- paused
   //   tlRef.current = tl;
@@ -584,14 +584,14 @@ function Animations({ startIntro, playIntro = true }) {
           }}
         >
           <video
-        ref={fullVideoRef}
-        src={videoSrc}
-        loop
-        muted={false}
-        playsInline
-        onClick={togglePlay}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-      />
+            ref={fullVideoRef}
+            src={videoSrc}
+            loop
+            muted={false}
+            playsInline
+            onClick={togglePlay}
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
 
           {/* play/pause indicator */}
           <div
@@ -652,9 +652,9 @@ function Animations({ startIntro, playIntro = true }) {
       </div>
 
       {/* ── page ────────────────────────────────────────────────────────────── */}
-      <div className="animates h-screen w-full relative bg-stone-100">
+      <div className="animates h-[100svh] w-full relative bg-stone-100">
         <div className="grid grid-cols-2 grid-rows-2 h-full w-full overflow-hidden gap-[1vw] bgAnimate bg-stone-100">
-          
+
 
           <div className="absolute hidden sm:flex h-screen w-full flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden ">
             <Image
@@ -663,8 +663,8 @@ function Animations({ startIntro, playIntro = true }) {
               height={100}
               alt=""
               className="h-[10vh] pics imageani rotate-10"
-               priority
-                 loading="eager"
+              priority
+              loading="eager"
             />
             <Image
               src="/project-4-1.webp"
@@ -673,8 +673,8 @@ function Animations({ startIntro, playIntro = true }) {
               alt=""
               className="h-[10vh] pics imageani rotate-350"
               priority
-             
-               loading="eager"
+
+              loading="eager"
             />
             <Image
               src="/project-4-2.webp"
@@ -683,29 +683,29 @@ function Animations({ startIntro, playIntro = true }) {
               alt=""
               className="h-[10vh] pics imageani rotate-10"
               priority
-               
-               loading="eager"
+
+              loading="eager"
             />
 
             <div className="img imageani pic rotate-350 relative z-20 inline-block">
               <video
-        ref={smallVideoRef}
-        autoPlay
-        loop
-        muted
-        playsInline
-        onClick={openVideo}
-        className="h-[10vh] block"
-        style={{ cursor: "zoom-in", objectFit: "cover" }}
-        src={videoSrc}
-      />
+                ref={smallVideoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onClick={openVideo}
+                className="h-[10vh] block"
+                style={{ cursor: "zoom-in", objectFit: "cover" }}
+                src={videoSrc}
+              />
               <Words
                 className="absolute left-0 top-full uppercase  text-[.3vw] tracking-tighter whitespace-nowrap transition-opacity duration-500"
                 style={{ opacity: animationsComplete ? 1 : 0 }}
-              link=""
-              typess=""
-               textss={"Defence Housing Authority "} 
-            
+                link=""
+                typess=""
+                textss={"Defence Housing Authority "}
+
                 loading="eager"
               />
             </div>
@@ -717,8 +717,8 @@ function Animations({ startIntro, playIntro = true }) {
               alt=""
               className="h-[10vh] pics imageani rotate-10"
               priority
-               
-               loading="eager"
+
+              loading="eager"
             />
             <Image
               src="/project-4-4.webp"
@@ -727,10 +727,10 @@ function Animations({ startIntro, playIntro = true }) {
               alt=""
               className="h-[10vh] pics imageani rotate-350"
               priority
-             
-               loading="eager"
+
+              loading="eager"
             />
-           
+
           </div>
 
           <div className="col-span-1 row-start-1 row-span-1 grid grid-rows-7 bg-green-300 hidden sm:flex">
@@ -752,8 +752,8 @@ function Animations({ startIntro, playIntro = true }) {
               link=""
               playIntro={playIntro}
               className={` `}
-              // className={`${playIntro ? "delay-2400" : "delay-0"}`}
-              
+            // className={`${playIntro ? "delay-2400" : "delay-0"}`}
+
             />
           </div>
 
@@ -778,7 +778,7 @@ function Animations({ startIntro, playIntro = true }) {
               playIntro={playIntro}
               clickeds={() => console.log("About Us clicked")}
               textss="About Us"
-              className="absolute md:bottom-[5vh] text-[2.5vh] bottom-[2vh]  md:text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline" 
+              className="absolute md:bottom-[5vh] text-[2.5vh] bottom-[2vh]  md:text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline"
               link="/about"
             />
             <Words
