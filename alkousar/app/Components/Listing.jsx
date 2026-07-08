@@ -91,12 +91,12 @@ function ThirsSe() {
   });
   return (
     <>
-      <div className="h-auto w-full  animate bg-[#ba975d] relative   ">
-        <div className="h-[190vh] w-full   flex items-start animate  justify-center overflow-hidden">
+      <div className="h-auto w-full bg-stone-100 animate relative   ">
+        <div className="md:h-[190vh] h-[160vh] w-full    flex items-start  animate  justify-center overflow-hidden">
           <ScrollWords
             textss={
               <>
-                <span className="text-center sanss  block  text-black text w-full">
+                <span className="text-center sanss  block  text-black text  w-full">
                   SELECTED
                 </span>{" "}
                 <br />{" "}
@@ -113,7 +113,7 @@ function ThirsSe() {
             }
             typess={``}
             refss={`words`}
-            className={`text-[10vw] font-semibold leading-none w-full   heading hero capitalize flex flex-col  `}
+            className={`md:text-[10vw] text-[15vw] md:font-semibold font-black geist leading-none w-full   heading hero capitalize flex flex-col  `}
           />
         </div>
        
@@ -122,7 +122,7 @@ function ThirsSe() {
         {/* <div className="sec h-screen    bg-stone-100 "> */}
 
         <div className="h-screen w-full width bg-stone-100 flex flex-col items-center justify-center">
-          <Texts type={`heading`} texts={"WE CURATE SPACES"} />
+          <Texts type={`heading`} texts={"WE CURATE SPACES"} className={`text-[3vw]`} />
           <Texts
             className={``}
             type={`heading`}
@@ -132,19 +132,19 @@ function ThirsSe() {
                   <h3>HOMES</h3>
                   <div
                     id="box1"
-                    className=" imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
+                    className=" hidden md:block imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
                   >
                     <Image
                       src="/residence.webp"
                       alt=""
                       fill
-                      className="object-cover"
+                      className="object-cover "
                     />
                   </div>
                   <h3>APARTMENTS</h3>{" "}
                   <div
                     id="box1"
-                    className=" imgwidth  h-[4vw] w-[8vw] sm:h-[4vw] relative sm:w-[8vw] bg-stone-700  object-contain   my-[1vw] mx-[1vw]"
+                    className="hidden md:block imgwidth  h-[4vw] w-[8vw] sm:h-[4vw] relative sm:w-[8vw] bg-stone-700  object-contain   my-[1vw] mx-[1vw]"
                   >
                     {" "}
                     <Image
@@ -159,7 +159,7 @@ function ThirsSe() {
                   <h3>COMMERCIAL</h3>{" "}
                   <div
                     id="box1"
-                    className=" imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
+                    className="hidden md:block imgwidth relative  h-[4vw] w-[8vw] sm:h-[4vw] sm:w-[8vw] bg-stone-700  bg-cover my-[1vw] mx-[1vw]"
                   >
                     {" "}
                     <Image

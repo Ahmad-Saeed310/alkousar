@@ -656,7 +656,7 @@ function Animations({ startIntro, playIntro = true }) {
         <div className="grid grid-cols-2 grid-rows-2 h-full w-full overflow-hidden gap-[1vw] bgAnimate bg-stone-100">
           
 
-          <div className="absolute h-screen w-full flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden ">
+          <div className="absolute hidden sm:flex h-screen w-full flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden ">
             <Image
               src="/Home.webp"
               width={100}
@@ -733,11 +733,11 @@ function Animations({ startIntro, playIntro = true }) {
            
           </div>
 
-          <div className="col-span-1 row-start-1 row-span-1 grid grid-rows-7">
+          <div className="col-span-1 row-start-1 row-span-1 grid grid-rows-7 bg-green-300 hidden sm:flex">
             <div className="row-start-7 flex items-center justify-center gap-[5vw]" />
           </div>
 
-          <div className="col-span-1 row-span-1 flex items-center justify-center flex-col uppercase pt-[15vh]">
+          <div className="md:col-span-1 col-span-2 row-span-1 flex md:items-center md:justify-center md:flex-col uppercase md:pt-[15vh] pt-[15vh] pl-[5vw] md:pl-0 w-full h-full ">
             <Words
               typess="heading"
               textss={
@@ -751,14 +751,15 @@ function Animations({ startIntro, playIntro = true }) {
               }
               link=""
               playIntro={playIntro}
+              className={` `}
               // className={`${playIntro ? "delay-2400" : "delay-0"}`}
               
             />
           </div>
 
-          <div className="col-span-1 row-start-2 row-span-1 relative">
+          <div className="md:col-span-1 col-span-2 row-start-2 row-span-1 relative">
             <Words
-              className="absolute bottom-0 text-3vw capitalize p-[5vw]"
+              className="absolute md:bottom-0 bottom-10 leading-none md:text-3vw text-[3vh] font-medium capitalize pl-[5vw] md:p-[5vw]"
               typess="subheading"
               playIntro={playIntro}
               textss={
@@ -771,20 +772,20 @@ function Animations({ startIntro, playIntro = true }) {
             />
           </div>
 
-          <div className="col-span-1 row-span-1 relative z-0 p-[5vw]">
+          <div className="md:col-span-1 col-span-2 row-span-1 relative z-0 p-[5vw]">
             <Words
               typess="paragraph2"
               playIntro={playIntro}
               clickeds={() => console.log("About Us clicked")}
               textss="About Us"
-              className="absolute bottom-[5vh]  text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline" 
+              className="absolute md:bottom-[5vh] text-[2.5vh] bottom-[2vh]  md:text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline" 
               link="/about"
             />
             <Words
-              typess="link"
+              typess=""
               playIntro={playIntro}
               textss="Explore More"
-              className="absolute bottom-[5vh] text-[2vw] right-[5vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline"
+              className="absolute md:bottom-[5vh] bottom-[2vh] md:text-[2vw] text-[2.5vh]  md:right-[5vw] right-10 transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline"
               link="/projects"
             />
           </div>
