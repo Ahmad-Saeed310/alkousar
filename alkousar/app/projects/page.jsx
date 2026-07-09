@@ -1,3 +1,4 @@
+
 // "use client";
 
 // import Nav from "../Components/Nav";
@@ -7,7 +8,25 @@
 // import Image from "next/image";
 // import { useEffect, useRef, useState, useMemo } from "react";
 
-// export default function HorizontalScroll() {
+// /**
+//  * Same functionality as HorizontalScroll (native scrollLeft-driven infinite
+//  * horizontal gallery, wheel + drag support, wraparound loop) but hardened to
+//  * run completely independently of the app's global Lenis smooth-scroll
+//  * wrapper (SmoothScrollProvider / ReactLenis).
+//  *
+//  * Two changes vs. the Lenis-adjacent version:
+//  *   1. `data-lenis-prevent` on the scroll track — Lenis's own convention for
+//  *      "don't hijack scroll/wheel input inside this element," so if this
+//  *      component is ever rendered inside a Lenis-wrapped layout, Lenis won't
+//  *      compete with the manual wheel handler below for the same event.
+//  *   2. `e.stopPropagation()` in the wheel handler, so the event can't bubble
+//  *      up to any ancestor Lenis instance at all — this component owns wheel
+//  *      input on this track outright, whether or not Lenis exists on the page.
+//  *
+//  * Everything else — infinite triple-list wrap, wheel deltaMode normalization,
+//  * drag-to-scroll, hover state, progress bar — is unchanged.
+//  */
+// export default function HorizontalScrollNoLenis() {
 //   const { projects, loading } = useProjects();
 
 //   const BASE_PROJECTS = useMemo(
@@ -75,12 +94,8 @@
 //   }, [SET_WIDTH]);
 
 //   // Wheel → horizontal scroll, responding to EITHER vertical or horizontal
-//   // wheel/trackpad input. Mouse wheels and trackpads report scroll amounts
-//   // in different units (deltaMode): trackpads use pixels (mode 0, large
-//   // numbers), while many mouse wheels use "lines" (mode 1, tiny numbers
-//   // like 3) or occasionally "pages" (mode 2). Without normalizing this,
-//   // mouse-wheel scrolling barely moves the track at all while trackpad
-//   // swipes work fine — normalize everything to a comparable pixel scale.
+//   // wheel/trackpad input, normalized across deltaMode units, and stopped
+//   // from propagating so no ancestor Lenis instance ever sees this event.
 //   useEffect(() => {
 //     const track = trackRef.current;
 //     if (!track) return;
@@ -92,15 +107,13 @@
 //     }
 
 //     function onWheel(e) {
-
-//   console.log('wheel event fired', e.deltaX, e.deltaY, e.deltaMode);
- 
 //       const deltaX = normalize(e.deltaX, e.deltaMode);
 //       const deltaY = normalize(e.deltaY, e.deltaMode);
 //       const delta = Math.abs(deltaX) > Math.abs(deltaY) ? deltaX : deltaY;
 
 //       if (delta === 0) return;
 //       e.preventDefault();
+//       e.stopPropagation();
 //       track.scrollLeft += delta;
 //     }
 
@@ -167,6 +180,7 @@
 //       <div className="h-screen w-full flex flex-col pt-[10vh] items-center justify-center  overflow-hidden select-none">
 //         <div
 //           ref={trackRef}
+//           data-lenis-prevent
 //           className="w-full flex overflow-x-scroll overflow-y-hidden"
 //           style={{
 //             gap: CARD_GAP,
@@ -263,7 +277,6 @@
 //   );
 // }
 
-
 "use client";
 
 import Nav from "../Components/Nav";
@@ -274,24 +287,22 @@ import Image from "next/image";
 import { useEffect, useRef, useState, useMemo } from "react";
 
 /**
- * Same functionality as HorizontalScroll (native scrollLeft-driven infinite
- * horizontal gallery, wheel + drag support, wraparound loop) but hardened to
- * run completely independently of the app's global Lenis smooth-scroll
- * wrapper (SmoothScrollProvider / ReactLenis).
+ * Responsive version of HorizontalScrollNoLenis.
  *
- * Two changes vs. the Lenis-adjacent version:
- *   1. `data-lenis-prevent` on the scroll track — Lenis's own convention for
- *      "don't hijack scroll/wheel input inside this element," so if this
- *      component is ever rendered inside a Lenis-wrapped layout, Lenis won't
- *      compete with the manual wheel handler below for the same event.
- *   2. `e.stopPropagation()` in the wheel handler, so the event can't bubble
- *      up to any ancestor Lenis instance at all — this component owns wheel
- *      input on this track outright, whether or not Lenis exists on the page.
+ * - Desktop (md and up): unchanged infinite horizontal scroll gallery,
+ *   same wheel/drag/wraparound logic as before.
+ * - Mobile (below md): infinite scroll is dropped entirely. Projects are
+ *   rendered once, in a normal flex-col stack, each one full width and
+ *   flowing after the previous one, using the page's native vertical
+ *   scroll. No wheel hijacking, no wraparound, no drag-to-scroll — mobile
+ *   just gets a simple, standard stacked list.
  *
- * Everything else — infinite triple-list wrap, wheel deltaMode normalization,
- * drag-to-scroll, hover state, progress bar — is unchanged.
+ * Both layouts share the same `useProjects` data. Which one is visible is
+ * controlled purely with Tailwind responsive classes (`hidden md:flex` /
+ * `flex md:hidden`), so there's no layout flash and no JS media-query
+ * logic needed.
  */
-export default function HorizontalScrollNoLenis() {
+export default function HorizontalScrollResponsive() {
   const { projects, loading } = useProjects();
 
   const BASE_PROJECTS = useMemo(
@@ -306,7 +317,36 @@ export default function HorizontalScrollNoLenis() {
     [projects]
   );
 
-  // Triple the list so there's always a buffer to scroll into on either side
+  if (loading) {
+    return (
+      <section className="min-h-screen w-full flex items-center justify-center bg-stone-300">
+        <span className="text-sm text-black/50">Loading projects…</span>
+      </section>
+    );
+  }
+
+  if (!BASE_PROJECTS.length) {
+    return (
+      <section className="min-h-screen w-full flex items-center justify-center bg-stone-300">
+        <span className="text-sm text-black/50">No projects found.</span>
+      </section>
+    );
+  }
+
+  return (
+    <section className="w-full bg-stone-100">
+      <Nav />
+      <DesktopGallery BASE_PROJECTS={BASE_PROJECTS} />
+      <MobileGallery BASE_PROJECTS={BASE_PROJECTS} />
+    </section>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Desktop: infinite scroll, wheel + drag, wraparound (unchanged)      */
+/* ------------------------------------------------------------------ */
+
+function DesktopGallery({ BASE_PROJECTS }) {
   const PROJECTS = useMemo(
     () => [
       ...BASE_PROJECTS.map((p) => ({ ...p, uid: `a-${p.id}` })),
@@ -334,9 +374,6 @@ export default function HorizontalScrollNoLenis() {
   }, [SET_WIDTH]);
 
   // Single scroll listener: update progress bar + silently wrap at edges.
-  // Wrapping only ever moves scrollLeft by exactly one SET_WIDTH, which
-  // native scrollLeft assignment handles instantly with no animation,
-  // so there's nothing to jitter.
   useEffect(() => {
     const track = trackRef.current;
     if (!track || SET_WIDTH === 0) return;
@@ -358,17 +395,15 @@ export default function HorizontalScrollNoLenis() {
     return () => track.removeEventListener("scroll", onScroll);
   }, [SET_WIDTH]);
 
-  // Wheel → horizontal scroll, responding to EITHER vertical or horizontal
-  // wheel/trackpad input, normalized across deltaMode units, and stopped
-  // from propagating so no ancestor Lenis instance ever sees this event.
+  // Wheel → horizontal scroll
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
     function normalize(value, mode) {
-      if (mode === 1) return value * 16; // line mode → approx px per line
-      if (mode === 2) return value * window.innerWidth; // page mode
-      return value; // already pixels
+      if (mode === 1) return value * 16;
+      if (mode === 2) return value * window.innerWidth;
+      return value;
     }
 
     function onWheel(e) {
@@ -423,121 +458,171 @@ export default function HorizontalScrollNoLenis() {
     };
   }, []);
 
-  if (loading) {
-    return (
-      <section className="h-screen w-full flex items-center justify-center bg-stone-300">
-        <span className="text-sm text-black/50">Loading projects…</span>
-      </section>
-    );
-  }
+  return (
+    <div className="hidden md:flex h-screen w-full flex-col pt-[10vh] items-center justify-center overflow-hidden select-none">
+      <div
+        ref={trackRef}
+        data-lenis-prevent
+        className="w-full flex overflow-x-scroll overflow-y-hidden"
+        style={{
+          gap: CARD_GAP,
+          paddingLeft: 64,
+          paddingRight: 64,
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          cursor: "grab",
+          overscrollBehaviorX: "contain",
+        }}
+      >
+        {PROJECTS.map((p) => (
+          <a
+            key={p.uid}
+            href={p.href}
+            onMouseEnter={() => setHovered(p.uid)}
+            onMouseLeave={() => setHovered(null)}
+            onClick={(e) => {
+              if (didDrag.current) e.preventDefault();
+            }}
+            className="flex flex-col"
+            style={{ flexShrink: 0, width: CARD_W, textDecoration: "none" }}
+          >
+            <div className="relative overflow-hidden" style={{ height: 420 }}>
+              <Image
+                src={p.img}
+                alt={p.title}
+                className="w-full h-full object-cover"
+                style={{
+                  filter: hovered === p.uid ? "grayscale(100%) brightness(0.5)" : "none",
+                  transform: hovered === p.uid ? "scale(1.05)" : "scale(1)",
+                  transition: "filter 0.4s ease, transform 0.4s ease",
+                }}
+                draggable={false}
+                fill
+              />
+              <div
+                className="absolute inset-0 flex flex-col justify-end p-6"
+                style={{
+                  opacity: hovered === p.uid ? 1 : 0,
+                  transition: "opacity 0.35s ease",
+                }}
+              />
+            </div>
 
-  if (!BASE_PROJECTS.length) {
-    return (
-      <section className="h-screen w-full flex items-center justify-center bg-stone-300">
-        <span className="text-sm text-black/50">No projects found.</span>
-      </section>
-    );
-  }
+            <span className="mt-3 text-left text-[1.5vw] font-regular tracking-tight text-black leading-tight">
+              {p.title}
+            </span>
+          </a>
+        ))}
+      </div>
+
+      <div className="w-[20vw] px-16 mt-8 flex items-center gap-4">
+        <div className="flex-1 h-px bg-black/40 relative overflow-hidden rounded-full">
+          <div
+            className="absolute left-0 top-0 h-full bg-black rounded-full"
+            style={{ width: `${progress}%`, transition: "width 60ms linear" }}
+          />
+        </div>
+        <span className="text-xs font-mono text-black/60 w-10 text-right tabular-nums">
+          {progress}%
+        </span>
+      </div>
+
+      <div className="words">
+        <GalleryWords
+          link="#"
+          textss="Al-Kousar Properties"
+          typess="page"
+          className="absolute bottom-10 left-5 text-[2vw] font-regular tracking-tight text-black tracking-tight"
+        />
+      </div>
+      <div className="words">
+        <GalleryWords
+          link="#"
+          textss="(Scroll Horizontal)"
+          typess="page"
+          className="absolute bottom-10 right-5 text-[2vw] font-regular tracking-tight text-black tracking-tight"
+        />
+      </div>
+
+      <style>{`div::-webkit-scrollbar{display:none}`}</style>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Mobile: plain stacked list, one project after another, no infinite  */
+/* scroll, no wheel/drag hijacking — just the page's native scroll.    */
+/* ------------------------------------------------------------------ */
+
+function MobileGallery({ BASE_PROJECTS }) {
+  const [pressed, setPressed] = useState(null);
 
   return (
-    <section className="h-screen w-full  bg-stone-100 ">
-      <Nav />
-      <div className="h-screen w-full flex flex-col pt-[10vh] items-center justify-center  overflow-hidden select-none">
-        <div
-          ref={trackRef}
-          data-lenis-prevent
-          className="w-full flex overflow-x-scroll overflow-y-hidden"
-          style={{
-            gap: CARD_GAP,
-            paddingLeft: 64,
-            paddingRight: 64,
-            scrollbarWidth: "none",
-            msOverflowStyle: "none",
-            cursor: "grab",
-            overscrollBehaviorX: "contain",
-          }}
-        >
-          {PROJECTS.map((p) => (
-            <a
-              key={p.uid}
-              href={p.href}
-              onMouseEnter={() => setHovered(p.uid)}
-              onMouseLeave={() => setHovered(null)}
-              onClick={(e) => {
-                if (didDrag.current) e.preventDefault();
-              }}
-              className="flex flex-col"
-              style={{
-                flexShrink: 0,
-                width: CARD_W,
-                textDecoration: "none",
-              }}
+    <div className="flex md:hidden w-full flex-col pt-[12vw]">
+      <div className="px-5 mb-6">
+        <GalleryWords
+          link="#"
+          textss="Projects"
+          typess="page"
+          className="text-[15vw] pt-[5vh]  tracking-tight text-black"
+        />
+      </div>
+      <div className="px-5 mb-6">
+        <GalleryWords
+          link="#"
+          textss="Al-Kousar Properties"
+          typess="page"
+          className="text-[5vw]  font-medium tracking-tight text-black"
+        />
+      </div>
+
+      <div className="w-full flex flex-col">
+        {BASE_PROJECTS.map((p) => (
+          <a
+            key={p.id}
+            href={p.href}
+            onTouchStart={() => setPressed(p.id)}
+            onTouchEnd={() => setPressed(null)}
+            className=" items-center w-full px-5 pt-[5vh]  "
+            style={{ textDecoration: "none" }}
+          >
+            <div
+              className="relative overflow-hidden  bg-green-400"
+              style={{ width: "90vw", height: "40vh" }}
             >
-              {/* Image box — fixed height, everything image-related stays contained here */}
-              <div className="relative overflow-hidden" style={{ height: 420 }}>
-                <Image
-                  src={p.img}
-                  alt={p.title}
-                  className="w-full h-full object-cover"
-                  style={{
-                    filter: hovered === p.uid ? "grayscale(100%) brightness(0.5)" : "none",
-                    transform: hovered === p.uid ? "scale(1.05)" : "scale(1)",
-                    transition: "filter 0.4s ease, transform 0.4s ease",
-                  }}
-                  draggable={false}
-                  fill
-                />
+              <Image
+                src={p.img}
+                alt={p.title}
+                className="w-full h-full object-cover"
+                style={{
+                  filter: pressed === p.id ? "grayscale(100%) brightness(0.6)" : "none",
+                  transition: "filter 0.25s ease",
+                }}
+                draggable={false}
+                fill
+              />
+            </div>
 
-                {/* Hover overlay — keep this if you still want the "View project ↗" hint on hover */}
-                <div
-                  className="absolute inset-0 flex flex-col justify-end p-6"
-                  style={{
-                    opacity: hovered === p.uid ? 1 : 0,
-                    transition: "opacity 0.35s ease",
-                  }}
-                >
-                </div>
-              </div>
-
-              {/* Title — outside the image box, left-aligned, in normal document flow below it */}
-              <span className="mt-3 text-left text-[1.5vw] font-regular tracking-tight text-black leading-tight">
+            <div className="flex flex-col flex-1 min-w-0">
+              <span className="text-[4.5vw] font-regular tracking-tight text-black leading-tight truncate">
                 {p.title}
               </span>
-            </a>
-          ))}
-        </div>
-
-        <div className="w-[20vw] px-16 mt-8 flex items-center gap-4">
-          <div className="flex-1 h-px bg-black/40 relative overflow-hidden rounded-full">
-            <div
-              className="absolute left-0 top-0 h-full bg-black rounded-full"
-              style={{ width: `${progress}%`, transition: "width 60ms linear" }}
-            />
-          </div>
-          <span className="text-xs font-mono text-black/60 w-10 text-right tabular-nums">
-            {progress}%
-          </span>
-        </div>
-
-        <div className="words">
-          <GalleryWords
-            link="#"
-            textss="Al-Kousar Properties"
-            typess="page"
-            className="absolute bottom-10 left-5 text-[2vw] font-regular tracking-tight text-black tracking-tight"
-          />
-        </div>
-        <div className="words">
-          <GalleryWords
-            link="#"
-            textss="(Scroll Horizontal)"
-            typess="page"
-            className="absolute bottom-10 right-5 text-[2vw] font-regular tracking-tight text-black tracking-tight"
-          />
-        </div>
-
-        <style>{`div::-webkit-scrollbar{display:none}`}</style>
+              {/* {p.tag ? (
+                <span className="text-[3vw] text-black/50 mt-1 truncate">{p.tag}</span>
+              ) : null} */}
+            </div>
+          </a>
+        ))}
       </div>
-    </section>
+
+      <div className="px-5 py-8">
+        <GalleryWords
+          link="#"
+          textss="(Scroll Up)"
+          typess="page"
+          className="text-[3.5vw] font-regular tracking-tight text-black/60"
+        />
+      </div>
+    </div>
   );
 }
