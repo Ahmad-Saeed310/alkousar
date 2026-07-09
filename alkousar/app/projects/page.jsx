@@ -564,7 +564,7 @@ function MobileGallery({ BASE_PROJECTS }) {
           link="#"
           textss="Projects"
           typess="page"
-          className="text-[15vw] pt-[5vh]  tracking-tight text-black"
+          className="text-[15vw] pt-[5vh] uppercase  tracking-tight text-black"
         />
       </div>
       <div className="px-5 mb-6">

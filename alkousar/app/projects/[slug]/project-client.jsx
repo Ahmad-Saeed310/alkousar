@@ -175,7 +175,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
         </div> */}
       </div>
 
-      <div className="project-hero h-screen grid grid-cols-7 grid-rows-5">
+      {/* <div className="project-hero h-screen grid grid-cols-7 grid-rows-5">
         <h1 className="col-span-3 row-span-1 row-start-3 col-start-3 px-[5vw] flex items-center justify-center text-[6vw]">
           {project.title}
         </h1>
@@ -253,7 +253,150 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
             />
           </div>
         )}
+      </div> */}
+
+      {/* ── Desktop: unchanged grid ─────────────────────────────────────────── */}
+<div className="hidden md:grid project-hero h-screen grid-cols-7 grid-rows-5">
+  <h1 className="col-span-3 row-span-1 row-start-3 col-start-3 px-[5vw] flex items-center justify-center text-[6vw]">
+    {project.title}
+  </h1>
+
+  <p
+    ref={projectDescriptionRef}
+    id="project-description"
+    className="col-span-2 row-span-2 row-start-4 pl-[2vw] leading-none tracking-tight w-[70%] text-[1.4vw]"
+  >
+    {project.description}
+  </p>
+
+  {project.projectType && (
+    <div className="project-meta-item relative col-span-2 row-span-1 row-start-2 col-start-5">
+      <GalleryWords link="#" textss={project.projectType} typess="page" className="absolute bottom-10" />
+    </div>
+  )}
+  {project.location && (
+    <div className="project-meta-item relative col-span-2 row-span-1 row-start-5 col-start-3 text-[5vw]">
+      <GalleryWords link="#" textss={project.location} typess="page" className="project-meta-value absolute bottom-10" />
+    </div>
+  )}
+  {project.scale && (
+    <div className="project-meta-item relative col-span-2 row-span-1 row-start-4 col-start-5">
+      <GalleryWords link="#" textss={project.scale} typess="page" className="project-meta-value absolute bottom-10" />
+    </div>
+  )}
+  {project.buildTime && (
+    <div className="project-meta-item relative col-span-1 row-span-1 row-start-5 col-start-5">
+      <GalleryWords link="#" textss={project.buildTime} typess="page" className="project-meta-value absolute bottom-10" />
+    </div>
+  )}
+  {project.deliveredAt && (
+    <div className="project-meta-item relative flex flex-col gap-[1vw] col-span-1 row-span-1 row-start-5 col-start-6 text-[1.2vw]">
+      <GalleryWords link="#" textss={project.deliveredAt} typess="page" className="project-meta-value flex absolute bottom-10" />
+    </div>
+  )}
+  {project.teamMembers?.length > 0 && (
+    <div className="project-meta-item relative col-span-2 row-span-1 row-start-4 col-start-3">
+      <GalleryWords link="#" textss={project.teamMembers.join(", ")} typess="page" className="flex absolute bottom-10" />
+    </div>
+  )}
+</div>
+
+{/* ── Mobile: stacked title/description, meta as a sleek flex-row wrap ─── */}
+{/* <div className="flex md:hidden flex-col w-full min-h-screen pt-[26vw] pb-[10vw] px-[6vw]">
+  <h1 className="text-[9vw] leading-[1.05] tracking-tight">
+    {project.title}
+  </h1>
+
+  <p className="mt-[5vw] text-[3.8vw] leading-snug tracking-tight text-black/70 w-full">
+    {project.description}
+  </p>
+
+  <div className="mt-[9vw] flex flex-row flex-wrap gap-x-[6vw] gap-y-[6vw]">
+    {project.projectType && (
+      <div className="flex flex-col gap-[1vw] min-w-[38%]">
+        <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Type</span>
+        <GalleryWords link="#" textss={project.projectType} typess="page" className="relative text-[4vw]" />
       </div>
+    )}
+    {project.location && (
+      <div className="flex flex-col gap-[1vw] min-w-[38%]">
+        <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Location</span>
+        <GalleryWords link="#" textss={project.location} typess="page" className="relative text-[4vw]" />
+      </div>
+    )}
+    {project.scale && (
+      <div className="flex flex-col gap-[1vw] min-w-[38%]">
+        <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Scale</span>
+        <GalleryWords link="#" textss={project.scale} typess="page" className="relative text-[4vw]" />
+      </div>
+    )}
+    {project.buildTime && (
+      <div className="flex flex-col gap-[1vw] min-w-[38%]">
+        <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Build Time</span>
+        <GalleryWords link="#" textss={project.buildTime} typess="page" className="relative text-[4vw]" />
+      </div>
+    )}
+    {project.deliveredAt && (
+      <div className="flex flex-col gap-[1vw] min-w-[38%]">
+        <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Delivered</span>
+        <GalleryWords link="#" textss={project.deliveredAt} typess="page" className="relative text-[4vw]" />
+      </div>
+    )}
+    {project.teamMembers?.length > 0 && (
+      <div className="flex flex-col gap-[1vw] w-full">
+        <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Team</span>
+        <GalleryWords link="#" textss={project.teamMembers.join(", ")} typess="page" className="relative text-[4vw]" />
+      </div>
+    )}
+  </div>
+</div> */}
+{/* ── Mobile: grid-based, same tweak pattern as desktop ─────────────────── */}
+<div className="grid  md:hidden grid-cols-4 grid-rows-7  h-screen w-full min-h-screen pt-[26vw] pb-[10vw] ">
+  <h1 className="   col-start-1 col-span-4 text-center row-start-4  row-span-1 text-[9vw] leading-[1.05] tracking-tight">
+    {project.title}
+  </h1>
+
+  <p className=" col-span-4 row-span-1 row-start-5  text-[3.8vw] leading-snug tracking-tight text-black/70">
+    {project.description}
+  </p>
+
+  {project.projectType && (
+    <div className="  project-meta-item relative col-span-1 row-start-6 flex flex-col gap-[1vw]">
+      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Type</span>
+      <GalleryWords link="#" textss={project.projectType} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+  {project.location && (
+    <div className="project-meta-item relative col-span-2  col-start-3 row-start-6 flex flex-col gap-[1vw]">
+      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Location</span>
+      <GalleryWords link="#" textss={project.location} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+  {project.scale && (
+    <div className="project-meta-item relative col-span-1 col-start-2  row-start-6 flex flex-col gap-[1vw]">
+      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Scale</span>
+      <GalleryWords link="#" textss={project.scale} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+  {project.buildTime && (
+    <div className="project-meta-item relative col-span-2 col-start-3  row-start-7 flex flex-col gap-[1vw]">
+      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Build Time</span>
+      <GalleryWords link="#" textss={project.buildTime} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+  {project.deliveredAt && (
+    <div className="project-meta-item relative col-span-2 col-start-4  row-start-7 flex flex-col gap-[1vw]">
+      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Delivered</span>
+      <GalleryWords link="#" textss={project.deliveredAt} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+  {project.teamMembers?.length > 0 && (
+    <div className="project-meta-item relative col-span-2 col-start-1  row-start-7 flex flex-col gap-[1vw]">
+      <span className="text-[2.6vw] uppercase  tracking-[0.15em] text-black/40">Team</span>
+      <GalleryWords link="#" textss={project.teamMembers.join(", ")} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+</div>
 
       <ProjectImageGrid images={project.images} />
 
