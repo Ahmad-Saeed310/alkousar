@@ -778,7 +778,7 @@ function Animations({ startIntro, playIntro = true }) {
               playIntro={playIntro}
               clickeds={() => console.log("About Us clicked")}
               textss="About Us"
-              className="absolute md:bottom-[5vh] text-[2.5vh] bottom-[2vh]  md:text-[2vw] transition-transform duration-300 hover:scale-80  hover:opacity-70 hover:underline"
+              className="absolute md:bottom-[5vh] text-[2.5vh] bottom-[2vh]  md:text-[2vw] transition-transform transform-3d duration-300 hover:scale-80  hover:opacity-70 hover:underline"
               link="/about"
             />
             <Words
