@@ -352,40 +352,42 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
 </div> */}
 {/* ── Mobile: grid-based, same tweak pattern as desktop ─────────────────── */}
 <div className="grid  md:hidden grid-cols-4 grid-rows-7  h-screen w-full min-h-screen pt-[26vw] pb-[10vw] ">
-  <h1 className="   col-start-1 col-span-4 text-center row-start-3  row-span-1 text-[9vw] leading-[1.05] tracking-tight">
+  <h1 className="   col-start-1 col-span-4 text-center row-start-4  row-span-1 text-[9vw] leading-[1.05] tracking-tight">
     {project.title}
   </h1>
 
   <p className=" col-span-4 row-span-1 row-start-5  text-[3.8vw] leading-snug tracking-tight text-black/70">
     {project.description}
   </p>
+<div className="typeScale col-span-2 row-span-1 row-start-6   flex flex-col gap-[1vw]">
 
   {project.projectType && (
-    <div className="  project-meta-item relative col-span-1 row-start-6 flex flex-col gap-[1vw]">
-      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Type</span>
+    <div className="  project-meta-item relative col-span-1 row-start-6 col-start-1">
+      {/* <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Type</span> */}
       <GalleryWords link="#" textss={project.projectType} typess="page" className="relative text-[4vw]" />
     </div>
   )}
+  {project.scale && (
+    <div className="project-meta-item relative flex flex-col gap-[1vw]">
+      {/* <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Scale</span> */}
+      <GalleryWords link="#" textss={project.scale} typess="page" className="relative text-[4vw]" />
+    </div>
+  )}
+</div>
   {project.location && (
     <div className="project-meta-item relative col-span-2  col-start-3 row-start-6 flex flex-col gap-[1vw]">
       <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Location</span>
       <GalleryWords link="#" textss={project.location} typess="page" className="relative text-[4vw]" />
     </div>
   )}
-  {project.scale && (
-    <div className="project-meta-item relative col-span-1 col-start-2  row-start-6 flex flex-col gap-[1vw]">
-      <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Scale</span>
-      <GalleryWords link="#" textss={project.scale} typess="page" className="relative text-[4vw]" />
-    </div>
-  )}
-  {project.buildTime && (
+  {/* {project.buildTime && (
     <div className="project-meta-item relative col-span-2 col-start-3  row-start-7 flex flex-col gap-[1vw]">
       <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Build Time</span>
       <GalleryWords link="#" textss={project.buildTime} typess="page" className="relative text-[4vw]" />
     </div>
-  )}
+  )} */}
   {project.deliveredAt && (
-    <div className="project-meta-item relative col-span-2 col-start-4  row-start-7 flex flex-col gap-[1vw]">
+    <div className="project-meta-item relative col-span-2 col-start-3  row-start-7 flex flex-col gap-[1vw]">
       <span className="text-[2.6vw] uppercase tracking-[0.15em] text-black/40">Delivered</span>
       <GalleryWords link="#" textss={project.deliveredAt} typess="page" className="relative text-[4vw]" />
     </div>
