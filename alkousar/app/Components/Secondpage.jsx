@@ -13,7 +13,7 @@ function Secondpage() {
         <Scrolltexts
           texts="AL-KOUSAR-PROPERTIES"
           type="heading"
-          className={` md:text-[15vw] pt-[5vh] text-[15vh] flex whitespace-nowrap w-full row-span-1 col-span-2   leading-none`}
+          className={` md:text-[15vw] md:pt-[9vh] pt-[5vh] text-[15vh] flex whitespace-nowrap w-full row-span-1 col-span-2   leading-none`}
         />
         <div className="1st md:col-span-1 md:row-span-2 col-span-2 pl-[5vw] md:pl-0 row-span-2 col-start-1  text-black md:col-start-2 pt-[8vh]">
           <ScrollWords textss={`About`} typess={`subheading`} className={`text-[5vh] `} />

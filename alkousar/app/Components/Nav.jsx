@@ -1,99 +1,3 @@
-// "use client";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { useRef } from "react";
-// import { useGSAP } from "@gsap/react";
-// import gsap from "gsap";
-// import TransitionLink from "../../animates/TransitionLink";
-
-// function Nav({ playIntro = true } = {}) {
-//   const navRef = useRef(null);
-
-//   useGSAP(
-//     () => {
-//       gsap.from(".elems", {
-//         yPercent: 50,
-//         delay: playIntro ? 2.4 : 0,
-//         duration: 1,
-//         opacity: 0,
-//         ease: "power4.out",
-//       });
-//     },
-//     { scope: navRef, dependencies: [playIntro] }
-//   );
-
-//   return (
-//     <div
-//       ref={navRef}
-//       className="w-full h-[10vh] fixed flex items-center justify-between p-[5vh] elems z-50 mix-blend-difference"
-//     >
-//       <TransitionLink
-//         href="/"
-//         className="h-[4vh] w-auto bg-stone-100 mix-blend-normal"
-//       >
-//         <Image
-//           src="/logo.png"
-//           width={100}
-//           height={100}
-//           alt="Logo"
-//           className="h-[4vh] w-auto bg-stone-100 mix-blend-normal"
-//         />
-//       </TransitionLink>
-
-//       <div className="elems flex items-center gap-[5vw] uppercase text-sm text-white">
-//         <TransitionLink
-//           href="/about"
-//           className="group relative block overflow-hidden h-[1.2em] w-fit"
-//         >
-//           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-//             About Us
-//           </span>
-//           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-//             About Us
-//           </span>
-//         </TransitionLink>
-
-//         <TransitionLink
-//           href="/projects"
-//           className="group relative block overflow-hidden h-[1.2em] w-fit"
-//         >
-//           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-//             BUY/SELL
-//           </span>
-//           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-//             BUY/SELL
-//           </span>
-//         </TransitionLink>
-
-//         <TransitionLink
-//           href="/blog"
-//           className="group relative block overflow-hidden h-[1.2em] w-fit"
-//         >
-//           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-//             Blog
-//           </span>
-//           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-//             Blog
-//           </span>
-//         </TransitionLink>
-
-//         <TransitionLink
-//           href="/contact"
-//           className="group relative block overflow-hidden h-[1.2em] w-fit"
-//         >
-//           <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">
-//             Contact
-//           </span>
-//           <span className="pointer-events-none absolute left-0 top-0 block translate-y-full transition-transform duration-500 ease-out group-hover:translate-y-0">
-//             Contact
-//           </span>
-//         </TransitionLink>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Nav;
 
 "use client";
 
@@ -206,6 +110,21 @@ export default function Nav({ playIntro = true }) {
     { dependencies: [menuOpen] }
   );
 
+
+useGSAP(
+  () => {
+    if (!menuOpen) return;
+
+    gsap.from(".upAnimate", {
+      yPercent: 100,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.08,
+      ease: "power4.out",
+    });
+  },
+  { dependencies: [menuOpen] }
+);
   return (
     <>
       {/* ================= Desktop Nav ================= */}
@@ -273,11 +192,11 @@ export default function Nav({ playIntro = true }) {
 
 <div
   ref={menuRef}
-  className="fixed inset-0 z-[60] hidden flex-col bg-black text-white"
+  className="fixed inset-0 z-[60] hidden flex-col bg-stone-100  text-black "
 >
   {/* Top Bar */}
 
-  <div className="h-[12vh] px-6 flex items-center justify-between">
+  <div className="h-[12vh] px-6 flex items-center justify-between text-black">
 
     <TransitionLink href="/">
       <Image
@@ -291,7 +210,7 @@ export default function Nav({ playIntro = true }) {
 
     <button
       onClick={() => setMenuOpen(false)}
-      className="group relative h-10 w-10 flex items-center justify-center"
+      className="group relative h-10 w-10 flex items-center justify-center "
       aria-label="Close menu"
     >
       <span
@@ -299,7 +218,7 @@ export default function Nav({ playIntro = true }) {
           absolute
           w-8
           h-[2px]
-          bg-white
+          bg-black
           rotate-45
           transition-transform
           duration-300
@@ -312,7 +231,7 @@ export default function Nav({ playIntro = true }) {
           absolute
           w-8
           h-[2px]
-          bg-white
+          bg-black
           -rotate-45
           transition-transform
           duration-300
@@ -326,14 +245,14 @@ export default function Nav({ playIntro = true }) {
   {/* Middle */}
 
   <div className="flex-1 flex items-center justify-center">
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col leading-tight  uppercase">
       {links.map((link, index) => (
         <div key={link.href} className="overflow-hidden">
           <TransitionLink
             ref={(el) => (navItemsRef.current[index] = el)}
             href={link.href}
             onClick={() => setMenuOpen(false)}
-            className="block text-[11vw] font-semibold uppercase"
+            className="block text-[8vh] tracking-tighter leading-none font-semibold uppercase upAnimate"
           >
             {link.label}
           </TransitionLink>
@@ -345,7 +264,7 @@ export default function Nav({ playIntro = true }) {
   {/* Bottom */}
 
   <div className="h-[12vh] flex items-center justify-center border-t border-white/10">
-    <p className="text-xs uppercase tracking-[0.35em] text-white/50">
+    <p className="text-xs uppercase tracking-[0.35em] text-black">
       BUILDING TRUST SINCE 2019
     </p>
   </div>
