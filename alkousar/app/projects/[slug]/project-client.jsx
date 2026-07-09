@@ -352,7 +352,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
 </div> */}
 {/* ── Mobile: grid-based, same tweak pattern as desktop ─────────────────── */}
 <div className="grid  md:hidden grid-cols-4 grid-rows-7  h-screen w-full min-h-screen pt-[26vw] pb-[10vw] ">
-  <h1 className="   col-start-1 col-span-4 text-center row-start-4  row-span-1 text-[9vw] leading-[1.05] tracking-tight">
+  <h1 className="   col-start-1 col-span-4 text-center row-start-3  row-span-1 text-[9vw] leading-[1.05] tracking-tight">
     {project.title}
   </h1>
 
