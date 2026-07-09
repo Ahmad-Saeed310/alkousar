@@ -1,28 +1,28 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const logos = [
-  { icon: "⚛️",  label: "React",      bg: "white", color: "#38bdf8" },
-  { icon: "🐍",  label: "Python",     bg: "white", color: "#facc15" },
-  { icon: "🐙",  label: "GitHub",     bg: "white", color: "#a78bfa" },
-  { icon: "🐳",  label: "Docker",     bg: "white", color: "#60a5fa" },
-  { icon: "🎨",  label: "Figma",      bg: "white", color: "#f472b6" },
-  { icon: "🟦",  label: "TypeScript", bg: "white", color: "#818cf8" },
-  { icon: "☁️",  label: "AWS",        bg: "white", color: "#fb923c" },
-  { icon: "📝",  label: "Notion",     bg: "white", color: "#a8a29e" },
-  { icon: "💬",  label: "Slack",      bg: "white", color: "#34d399" },
-  { icon: "▲",   label: "Vercel",     bg: "white", color: "#94a3b8" },
-  { icon: "🐘",  label: "Postgres",   bg: "white", color: "#67e8f9" },
-  { icon: "🔴",  label: "Redis",      bg: "white", color: "#f87171" },
-  { icon: "◈",   label: "GraphQL",    bg: "white", color: "#e879f9" },
-  { icon: "☸️",  label: "Kubernetes", bg: "white", color: "#38bdf8" },
-  { icon: "💳",  label: "Stripe",     bg: "white", color: "#818cf8" },
-  { icon: "🔥",  label: "Svelte",     bg: "white", color: "#fb923c" },
-  { icon: "🌊",  label: "Tailwind",   bg: "white", color: "#2dd4bf" },
-  { icon: "💙",  label: "VS Code",    bg: "white", color: "#60a5fa" },
-  { icon: "🤖",  label: "OpenAI",     bg: "white", color: "#a3e635" },
-  { icon: "📦",  label: "npm",        bg: "white", color: "#f87171" },
+  { icon: "/icons/1.jpg", label: "Trust", bg: "white", color: "#000000" },
+  { icon: "/icons/2.jpg", label: "Transparency", bg: "white", color: "#000000" },
+  { icon: "/icons/3.jpg", label: "Integrity", bg: "white", color: "#000000" },
+  { icon: "/icons/4.jpg", label: "Expertise", bg: "white", color: "#000000" },
+  { icon: "/icons/5.jpg", label: "Commitment", bg: "white", color: "#000000" },
+  { icon: "/icons/6.jpg", label: "Reliability", bg: "white", color: "#000000" },
+  { icon: "/icons/7.jpg", label: "Professionalism", bg: "white", color: "#000000" },
+  { icon: "/icons/8.jpg", label: "Excellence", bg: "white", color: "#000000" },
+  { icon: "/icons/9.jpg", label: "Client First", bg: "white", color: "#000000" },
+  { icon: "/icons/10.jpg", label: "Experience", bg: "white", color: "#000000" },
+  { icon: "/icons/11.jpg", label: "Quality", bg: "white", color: "#000000" },
+  { icon: "/icons/12.jpg", label: "Innovation", bg: "white", color: "#000000" },
+  { icon: "/icons/13.jpg", label: "Security", bg: "white", color: "#000000" },
+  { icon: "/icons/14.jpg", label: "Vision", bg: "white", color: "#000000" },
+  { icon: "/icons/15.jpg", label: "Value", bg: "white", color: "#000000" },
+  { icon: "/icons/16.jpg", label: "Community", bg: "white", color: "#000000" },
+  { icon: "/icons/17.jpg", label: "Partnership", bg: "white", color: "#000000" },
+  { icon: "/icons/18.jpg", label: "Efficiency", bg: "white", color: "#000000" },
+  
 ];
 
 const IDLE_SPEED = 1;      // px/frame when not scrolling
@@ -140,17 +140,24 @@ export default function LogoMarquee() {
           aria-label="Technology logo marquee"
         >
           {[0, 1, 2].flatMap((setIdx) =>
-            logos.map(({ icon, label, bg, color }) => (
+            logos.map(({ icon, label, bg,  }) => (
               <div
                 key={`${setIdx}-${label}`}
-                className="flex h-[30vh] w-[30vh] min-h-[10vh] min-w-[10vh] shrink-0 select-none flex items-center justify-center gap-1.5  border border-gray-200 "
+                className="flex h-[30vh] w-[30vh] min-h-[10vh] min-w-[10vh] shrink-0 select-none flex items-center justify-center gap-1.5 bg-stone-100 border  border-gray-200 "
                 style={{ background: bg }}
                 aria-hidden={setIdx !== 0}
               >
-                <span className="text-2xl leading-none" style={{ color }}>
+                {/* <span className="text-2xl leading-none" style={{ color }}>
                   {icon}
-                </span>
-                <span className="text-[2vw] tracking-tight text-black ">
+                </span> */}
+                <Image
+                src={icon}
+                alt={label}
+                width={100}
+                height={100}
+                className="h-[5vh] w-auto"
+              />
+                <span className="text-[1.7vw] tracking-tight text-black ">
                   {label}
                 </span>
               </div>
