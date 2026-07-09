@@ -84,8 +84,8 @@ import { ImageAnimation, ScrollWords } from "./text";
         heading: "Ranked 1st in DHA Bwp",
         content: "DHA Bahawalpur reviews its authorised dealers every year on trust,professionalism, and how well they serve the community. For 2025, Al-KousarProperties was ranked 1st among every dealer in DHA Bahawalpur —recognition earned through consistent, honest service to the families andinvestors we work with, not just sales numbers. It's a standard we intend to keepearning every year, not something we consider settled.",
         img: [
-            "/House1.webp",
-            "/House2.webp",
+            "/Award.png",
+            "/Award2.png",
 
         ],
         layout: {

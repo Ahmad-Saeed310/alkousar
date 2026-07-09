@@ -143,7 +143,7 @@ export default function LogoMarquee() {
             logos.map(({ icon, label, bg,  }) => (
               <div
                 key={`${setIdx}-${label}`}
-                className="flex h-[30vh] w-[30vh] min-h-[10vh] min-w-[10vh] shrink-0 select-none flex items-center justify-center gap-1.5 bg-stone-100 border  border-gray-200 "
+                className="flex md:h-[30vh] h-[25vh] w-[25vh] md:w-[30vh] md:min-h-[10vh]  md:min-w-[10vh] shrink-0 select-none flex items-center justify-center gap-1.5 bg-stone-100 border  border-gray-200 "
                 style={{ background: bg }}
                 aria-hidden={setIdx !== 0}
               >
@@ -155,9 +155,9 @@ export default function LogoMarquee() {
                 alt={label}
                 width={100}
                 height={100}
-                className="h-[5vh] w-auto"
+                className="md:h-[5vh] h-[6vh] w-auto"
               />
-                <span className="text-[1.7vw] tracking-tight text-black ">
+                <span className="md:text-[1.7vw] text-[3vh] tracking-tight text-black ">
                   {label}
                 </span>
               </div>

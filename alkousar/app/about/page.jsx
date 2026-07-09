@@ -83,27 +83,30 @@ export default function AboutPage() {
           hero) and the /contact hero: Nav as a non-visual first child, then
           content split across the four quadrants. */}
       <section className="h-screen w-full relative bg-stone-100 overflow-hidden">
-        <div className="grid grid-cols-2 grid-rows-2 h-full w-full gap-[1vw]">
+        <div className="grid grid-cols-2 grid-rows-3 h-full w-full gap-[1vw]">
           <Nav />
 
-          <div className="col-span-1 row-span-1 flex flex-col justify-center pl-[5vw]">
+          <div className="col-span-2 row-span-1 flex flex-col justify-center pl-[5vw]">
             <Animateword
               text="About Us"
               typess="page"
-              classname="text-black/50 uppercase tracking-widest"
+              classname="text-black uppercase tracking-widest"
             />
             <Chars
               type="heading"
-              texts="Al-Kousar Properties"
-              className="text-black text-[9vw] md:text-[5vw]"
+              texts={<>
+              Al-Kousar 
+              <br /> Properties
+              </>}
+              className="text-black text-[6vh] figtree font-semibold leading-none md:text-[5vw]"
             />
           </div>
 
-          <div className="col-span-1 row-span-1 relative">
+          <div className="col-span-2 row-span-1 w-full relative">
             <ScrollWords
               textss="DHA Bahawalpur's Authorised Dealer — Reg # 222, and one of the leading real estate agencies in the community."
               typess="subheading"
-              className="absolute bottom-[10vh] left-[5vw] right-[5vw] text-black/70 text-[4.5vw] md:text-[2vw] leading-snug"
+              className=" text-[3vh] w-full px-[5vw] md:text-[2vw] leading-none wrap-normal"
             />
           </div>
 
@@ -135,7 +138,7 @@ export default function AboutPage() {
 
       {/* Who we are — now black, so it's actually distinct from the stone-100
           hero directly above it instead of running into it with no break. */}
-      <section className="w-full bg-black px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw]">
+      {/* <section className="w-full bg-black px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw]">
         <div>
           <ScrollWords
             textss="Who We Are"
@@ -160,7 +163,7 @@ export default function AboutPage() {
             className="text-white/80 text-[4vw] md:text-[1.4vw] leading-snug"
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Achievements — one full section per stat. Parity flipped so this
           opens on stone-100 (Who We Are above is now black) and alternates

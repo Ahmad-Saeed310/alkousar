@@ -131,13 +131,13 @@ import Link from "next/link";
 import { Marquee } from "./text";
 
 const navLinks = [
-  "Home",
-  "About Us",
-  "Our Services",
-  "Deals We Close",
-  "Testimonials",
-  "Contact Us",
+  {name :"Home", to : "/"},
+  {name :"About Us", to : "/about"},
+  {name :"Projects", to : "/projects"},
+  {name :"Blogs", to : "/blog"},
+  {name :"Contact Us", to : "/contact"},
 ];
+
 
 const contactInfo = {
   phone: "0347 7246576",
@@ -148,10 +148,10 @@ const contactInfo = {
 };
 
 const socialLinks = [
-  { label: "FaceBook ➔", href: "#" },
-  { label: "InstaGram ➔", href: "#" },
-  { label: "DHA Bahawalpur ➔", href: "#" },
-  { label: "Whatsapp ➔", href: "#" },
+  { label: "FaceBook ➔", href: "https://www.facebook.com/Alkousarproperties?mibextid=ZbWKwL" },
+  { label: "InstaGram ➔", href: "https://www.instagram.com/alkousarproperties/" },
+  { label: "DHA Bahawalpur ➔", href: "https://dhaplus.com/agencies/al-kousar-properties_478" },
+  { label: "Whatsapp ➔", href: "https://wa.me/923477246576" },
 ];
 
 export default function Footer() {
@@ -176,28 +176,28 @@ export default function Footer() {
 
             {/* Mobile Navigation */}
             <nav className="flex flex-col gap-3 md:hidden">
-              {navLinks.map((link) => (
+              {navLinks.map((links) => (
                 <Link
-                  key={link}
-                  href="/"
+                  key={links.name}
+                  href={links.to}
                   className="text-[2rem] font-semibold leading-none"
                 >
-                  {link}
+                  {links.name }
                 </Link>
               ))}
             </nav>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex md:flex-col text-black">
-              {navLinks.map((link) => (
-                <Link key={link} href="/" className="group w-fit">
+              {navLinks.map((links) => (
+                <Link key={links.name} href={links.to} className="group w-fit">
                   <div className="relative h-12 lg:h-[7vh] overflow-hidden">
                     <span className="block text-4xl lg:text-[3vw] font-semibold transition-transform duration-500 ease-out group-hover:-translate-y-full">
-                      {link}
+                      {links.name}
                     </span>
 
                     <span className="absolute left-0 top-0 block translate-y-full text-4xl lg:text-[3vw] font-semibold transition-transform duration-500 ease-out group-hover:translate-y-0">
-                      {link}
+                      {links.name}
                     </span>
                   </div>
                 </Link>

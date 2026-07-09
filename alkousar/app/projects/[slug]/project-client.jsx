@@ -351,7 +351,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
   </div>
 </div> */}
 {/* ── Mobile: grid-based, same tweak pattern as desktop ─────────────────── */}
-<div className="grid  md:hidden grid-cols-4 grid-rows-7  h-screen w-full min-h-screen pt-[26vw] pb-[10vw] ">
+<div className="grid  md:hidden grid-cols-4 grid-rows-7 px-[2vw]  h-screen w-full min-h-screen pt-[26vw] pb-[10vw] ">
   <h1 className="   col-start-1 col-span-4 text-center row-start-4  row-span-1 text-[9vw] leading-[1.05] tracking-tight">
     {project.title}
   </h1>
@@ -406,7 +406,7 @@ export default function ProjectClient({ project, nextProject, prevProject }) {
         ref={footerRef}
         className="project-footer relative w-screen h-svh flex flex-col items-center justify-center  grid grid-cols-6 grid-rows-5 "
       >
-        <h1 className="col-span-6 items-center text-center row-span-1 row-start-3 px-[5vw] text-[6vw] ">
+        <h1 className="col-span-6 items-center text-center row-span-1 row-start-3 px-[5vw] md:text-[6vw] text-[9vw] ">
           {nextProject.title}
         </h1>
 

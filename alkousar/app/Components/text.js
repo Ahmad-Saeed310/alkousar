@@ -18,7 +18,7 @@ const types = {
     " md:text-[6vw] text-[6vh]  figtree font-black text-black  md:leading-[10vh] leading-[.8] tracking-tight ",
     display: "md:text-[6vw] text-[4vh] figtree   font-bold text-black  md:leading-[10vh] leading-[.8] tracking-tight ",
   subheading: "text-[2vw] figtree font-light text-black  leading-none tracking-tight",
-  page: "text-[1.1vw] font-light text-black leading-none tracking-tight break-keep",
+  page: "md:text-[1.1vw] text-[2vh] font-light text-black leading-none tracking-tight break-keep",
   paragraph: "text-[2vh] font-light text-black",
   small: "text-[4vh] font-light text-black",
   paragraph2: "text-[1.2vw ] font-regular text-black",
@@ -256,7 +256,7 @@ export function Marquee({ text = "Your marquee text goes here ", speed = 10 }) {
         {repeated.map((t, i) => (
           <span
             key={i}
-            className="text-[10vw] font-semibold tracking-tight text-black shrink-0"
+            className="md:text-[10vw] text-[10vh] font-semibold tracking-tight text-black shrink-0"
           >
             {t}
           </span>

@@ -142,7 +142,7 @@ export default function LogoMarqueeleft() {
             logos.map(({ icon, label, bg, color }) => (
               <div
                 key={`${setIdx}-${label}`}
-                className="flex h-[30vh] w-[30vh] min-h-[10vh] min-w-[10vh] shrink-0 select-none flex items-center justify-center gap-1.5  border border-gray-200 "
+                className="flex md:h-[30vh] h-[25vh] w-[25vh] md:w-[30vh] md:min-h-[10vh]  md:min-w-[10vh]  shrink-0 select-none flex items-center justify-center gap-1.5  border border-gray-200 "
                 style={{ background: bg }}
                 aria-hidden={setIdx !== 0}
               >
@@ -151,9 +151,9 @@ export default function LogoMarqueeleft() {
                                 alt={label}
                                 width={100}
                                 height={100}
-                                className="h-[5vh] w-auto"
+                                className="md:h-[5vh] h-[6vh] w-auto"
                               />
-                <span className="text-[2vw] tracking-tight text-black ">
+                <span className="md:text-[2vw] text-[3vh] tracking-tight text-black ">
                   {label}
                 </span>
               </div>
