@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.font{
+   font-family: var(--font-google-sans);  
+}
+.fonts{
+   font-family: var(--font-geist-mono);  
+}
+.fontss{
+   font-family: var(--font-geist-sans);  
+}
+.figtree{
+   font-family: var(--font-figtree);  
+}
+
+/* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+}
+
+.marquee-track.scroll-down {
+  animation: marquee-ltr 28s linear infinite;
+}
+
+.marquee-track.scroll-up {
+  animation: marquee-rtl 28s linear infinite;
+}
+
+.marquee-track.paused {
+  animation-play-state: paused;
+}
+
+.sanss {
+  font-family: var(--font-google-sans);
+}
+
+
+.loader {
+  position: fixed;
+  inset: 0;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  z-index: 9999;
+}
+
+.logo {
+  color: white;
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+
+.track {
+  position: relative;
+  width: 300px;
+  height: 2px;
+  background: rgba(255,255,255,.2);
+}
+
+.progress {
+  width: 100%;
+  height: 100%;
+  background: white;
+  transform: scaleX(0);
+}
+
+.circle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+  background: white;
+
+  top: 50%;
+  left: 0;
+
+  transform: translate(-50%, -50%);
+}
