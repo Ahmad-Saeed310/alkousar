@@ -125,7 +125,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-6">
       <h2 className="text-2xl font-bold text-gray-900">
-        {isEditing ? '✏️ Edit Post' : '➕ New Post'}
+        {isEditing ? ' Edit Post' : ' New Post'}
       </h2>
 
       {error && (
@@ -136,7 +136,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
 
       <div className="space-y-4 pb-6 border-b border-gray-100">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
+          <label className="block text-sm font-semibold text-black mb-2">
             Title <span className="text-red-500">*</span>
           </label>
           <input
@@ -144,7 +144,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
             value={title}
             onChange={e => handleTitleChange(e.target.value)}
             placeholder="e.g. 5 Things to Check Before Buying a Plot in DHA"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
           />
         </div>
 
@@ -157,7 +157,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
             value={slug}
             onChange={e => handleSlugChange(e.target.value)}
             placeholder="5-things-to-check-before-buying-a-plot"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-stone-500"
           />
           <p className="text-xs text-gray-400 mt-1">Used in the URL: /blog/{slug || 'your-slug'}</p>
         </div>
@@ -171,7 +171,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
             onChange={e => setExcerpt(e.target.value)}
             placeholder="One or two sentences shown on the blog listing page"
             rows={2}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500 resize-none"
           />
         </div>
 
@@ -183,7 +183,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
             <button
               type="button"
               onClick={() => setShowPreview(v => !v)}
-              className="text-xs font-medium text-indigo-600 hover:text-indigo-700"
+              className="text-xs font-medium text-stone-900 hover:text-stone-700"
             >
               {showPreview ? '✏️ Edit' : '👁️ Preview'}
             </button>
@@ -202,7 +202,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
                     h2: (props) => <h2 className="text-lg font-bold text-gray-900" {...props} />,
                     h3: (props) => <h3 className="text-base font-bold text-gray-900" {...props} />,
                     p: (props) => <p className="text-sm text-gray-700 leading-relaxed" {...props} />,
-                    a: (props) => <a className="text-indigo-600 underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                    a: (props) => <a className="text-stone-900 underline" target="_blank" rel="noopener noreferrer" {...props} />,
                     ul: (props) => <ul className="list-disc pl-5 text-sm text-gray-700 space-y-1" {...props} />,
                     ol: (props) => <ol className="list-decimal pl-5 text-sm text-gray-700 space-y-1" {...props} />,
                     blockquote: (props) => <blockquote className="border-l-2 border-gray-300 pl-3 italic text-gray-500" {...props} />,
@@ -222,7 +222,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
               onChange={e => setContent(e.target.value)}
               placeholder={'## A short intro\n\nWrite your post in markdown — **bold**, *italic*, [links](https://example.com), lists, and ![captions](image-url) all work.'}
               rows={10}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 font-mono text-sm focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           )}
         </div>
@@ -237,7 +237,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
               value={author}
               onChange={e => setAuthor(e.target.value)}
               placeholder="e.g. Kashif Rehmat"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           </div>
 
@@ -250,7 +250,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
               value={tagsInput}
               onChange={e => setTagsInput(e.target.value)}
               placeholder="Investment, DHA Bahawalpur, Guide"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
             <p className="text-xs text-gray-400 mt-1">Comma-separated</p>
           </div>
@@ -264,7 +264,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
             type="file"
             accept="image/*"
             onChange={e => handleCoverChange(e.target.files?.[0] || null)}
-            className="w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-indigo-50 file:text-indigo-600 file:font-medium hover:file:bg-indigo-100"
+            className="w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-stone-50 file:text-stone-900 file:font-medium hover:file:bg-stone-100"
           />
           {coverPreview && (
             <img src={coverPreview} alt="" className="mt-3 h-32 w-full object-cover rounded-xl border border-gray-100" />
@@ -279,7 +279,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
           <button
             type="button"
             onClick={() => setPublished(!published)}
-            className={`w-12 h-6 rounded-full transition-colors duration-200 ${published ? 'bg-indigo-600' : 'bg-gray-300'}`}
+            className={`w-12 h-6 rounded-full transition-colors duration-200 ${published ? 'bg-stone-900' : 'bg-stone-300'}`}
           >
             <span className={`block w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 mx-0.5 ${published ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
@@ -290,7 +290,7 @@ export default function BlogForm({ onSuccess, editPost, onCancelEdit }: Props) {
         <button
           type="submit"
           disabled={loading}
-          className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold py-3 rounded-xl transition-colors"
+          className="flex-1 bg-stone-900 hover:bg-stone-900 disabled:bg-stone-400 text-white font-semibold py-3 rounded-xl transition-colors"
         >
           {loading ? 'Saving...' : isEditing ? 'Update Post' : 'Publish Post'}
         </button>

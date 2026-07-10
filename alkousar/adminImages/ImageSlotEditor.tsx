@@ -42,7 +42,7 @@ export default function ImageSlotEditor({
       <div className="grid grid-cols-1 sm:grid-cols-[160px_1fr] gap-4">
         {/* Image upload / preview */}
         <div>
-          <div className="border-2 border-dashed border-gray-300 rounded-xl h-32 flex items-center justify-center relative overflow-hidden bg-white hover:border-indigo-400 transition">
+          <div className="border-2 border-dashed border-gray-300 rounded-xl h-32 flex items-center justify-center relative overflow-hidden bg-white hover:border-stone-400 transition">
             <input
               type="file"
               accept="image/*"
@@ -67,21 +67,21 @@ export default function ImageSlotEditor({
             placeholder="Image title"
             value={image.title}
             onChange={e => onChange({ ...image, title: e.target.value })}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-stone-500"
           />
           <input
             type="text"
             placeholder="Short description"
             value={image.description}
             onChange={e => onChange({ ...image, description: e.target.value })}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-stone-500"
           />
           <textarea
             placeholder="Additional text (optional, longer notes)"
             value={image.extra_text}
             onChange={e => onChange({ ...image, extra_text: e.target.value })}
             rows={2}
-            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+            className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-stone-500 resize-none"
           />
         </div>
       </div>
@@ -100,7 +100,7 @@ export default function ImageSlotEditor({
                 className={`
                   flex items-center gap-2 px-4 py-2 rounded-xl border text-sm font-medium transition-all
                   ${isSelected
-                    ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+                    ? 'border-stone-500 bg-stone-50 text-stone-700'
                     : 'border-gray-200 bg-white text-gray-500 hover:border-gray-300 hover:text-gray-700'
                   }
                 `}
@@ -109,7 +109,7 @@ export default function ImageSlotEditor({
                 <span
                   className={`
                     inline-block rounded-sm border-2 shrink-0
-                    ${isSelected ? 'border-indigo-400' : 'border-gray-300'}
+                    ${isSelected ? 'border-stone-400' : 'border-gray-300'}
                     ${option === 'landscape' ? 'w-6 h-4' : 'w-4 h-6'}
                   `}
                 />

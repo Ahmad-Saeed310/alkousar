@@ -222,13 +222,7 @@ function Animateword({ text, classname, typess }) {
       ease: "power4.out",
       stagger: 0.01,
     });
-    // tl.to(split.chars, {
-    //   y: "-20vw",
-    //   duration: 0.5,
-    //   opacity: 1,
-    //   ease: "power2.in",
-    //   stagger: 0.01,
-    // });
+    
   });
 
   return (

@@ -56,16 +56,16 @@ export default function AdminBlogList({ refreshKey, onEdit }: Props) {
 
   if (posts.length === 0) return (
     <div className="text-center py-12 text-gray-400">
-      <p className="text-4xl mb-2">📝</p>
+      
       <p>No posts yet. Write your first one!</p>
     </div>
   )
 
   return (
     <div className="space-y-3">
-      <h3 className="text-lg font-bold text-gray-800 mb-4">All Posts ({posts.length})</h3>
+      <h3 className="text-lg font-bold text-black mb-4">All Posts ({posts.length})</h3>
       {posts.map(post => (
-        <div key={post.id} className="bg-white rounded-xl p-4 border border-gray-100 hover:border-indigo-200 transition-colors">
+        <div key={post.id} className="bg-white rounded-xl p-4 border border-gray-100 transition-colors">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg overflow-hidden border-2 border-white bg-gray-100 flex-shrink-0">
               {post.cover_image_url ? (
@@ -76,7 +76,7 @@ export default function AdminBlogList({ refreshKey, onEdit }: Props) {
             </div>
 
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-gray-900 truncate">{post.title}</p>
+              <p className="font-semibold text-black truncate">{post.title}</p>
               <p className="text-xs text-gray-400 truncate">
                 /blog/{post.slug} ·{' '}
                 {new Date(post.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
@@ -84,7 +84,7 @@ export default function AdminBlogList({ refreshKey, onEdit }: Props) {
             </div>
 
             <span className={`text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0 ${
-              post.published ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+              post.published ? 'bg-green-100 text-black' : 'bg-gray-100 text-gray-500'
             }`}>
               {post.published ? 'Published' : 'Draft'}
             </span>
@@ -92,15 +92,15 @@ export default function AdminBlogList({ refreshKey, onEdit }: Props) {
             <div className="flex items-center gap-2 flex-shrink-0">
               <button
                 onClick={() => togglePublish(post)}
-                className="text-sm px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors font-medium"
+                className="text-sm px-3 py-1.5 rounded-lg bg-stone-50  hover:bg-stone-100 transition-colors font-medium"
               >
-                {post.published ? '🙈 Hide' : '👁️ Show'}
+                {post.published ? ' Hide' : ' Show'}
               </button>
               <button
                 onClick={() => onEdit(post)}
                 className="text-sm px-3 py-1.5 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 transition-colors font-medium"
               >
-                ✏️ Edit
+                Edit
               </button>
               <button
                 onClick={() => deletePost(post.id)}

@@ -49,7 +49,7 @@ export default function AdminProjectList({ refreshKey, onEdit }: Props) {
 
   if (projects.length === 0) return (
     <div className="text-center py-12 text-gray-400">
-      <p className="text-4xl mb-2">📝</p>
+    
       <p>No projects yet. Add your first one!</p>
     </div>
   )
@@ -58,7 +58,7 @@ export default function AdminProjectList({ refreshKey, onEdit }: Props) {
     <div className="space-y-3">
       <h3 className="text-lg font-bold text-gray-800 mb-4">All Projects ({projects.length})</h3>
       {projects.map(project => (
-        <div key={project.id} className="bg-white rounded-xl p-4 border border-gray-100 hover:border-indigo-200 transition-colors">
+        <div key={project.id} className="bg-white rounded-xl p-4 border border-gray-100 hover:border-stone-200 transition-colors">
           <div className="flex items-center gap-4">
             {/* Thumbnail strip */}
             <div className="flex -space-x-3 flex-shrink-0">
@@ -73,7 +73,7 @@ export default function AdminProjectList({ refreshKey, onEdit }: Props) {
             </div>
 
             <div className="flex-1 min-w-0">
-              <p className="font-semibold text-gray-900 truncate">{project.title}</p>
+              <p className="font-semibold text-black truncate">{project.title}</p>
               <p className="text-xs text-gray-400">
                 {project.project_images?.length || 0} image{(project.project_images?.length || 0) !== 1 ? 's' : ''} ·{' '}
                 {new Date(project.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
@@ -81,7 +81,7 @@ export default function AdminProjectList({ refreshKey, onEdit }: Props) {
             </div>
 
             <span className={`text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0 ${
-              project.published ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+              project.published ? 'bg-green-100 text-black' : 'bg-gray-100 text-gray-500'
             }`}>
               {project.published ? 'Published' : 'Draft'}
             </span>
@@ -89,15 +89,15 @@ export default function AdminProjectList({ refreshKey, onEdit }: Props) {
             <div className="flex items-center gap-2 flex-shrink-0">
               <button
                 onClick={() => togglePublish(project)}
-                className="text-sm px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 hover:bg-indigo-100 transition-colors font-medium"
+                className="text-sm px-3 py-1.5 rounded-lg bg-stone-50  hover:bg-stone-100 transition-colors font-medium"
               >
-                {project.published ? '🙈 Hide' : '👁️ Show'}
+                {project.published ? ' Hide' : ' Show'}
               </button>
               <button
                 onClick={() => onEdit(project)}
                 className="text-sm px-3 py-1.5 rounded-lg bg-amber-50 text-amber-700 hover:bg-amber-100 transition-colors font-medium"
               >
-                ✏️ Edit
+                Edit
               </button>
               <button
                 onClick={() => deleteProject(project.id)}

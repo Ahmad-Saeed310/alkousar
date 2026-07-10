@@ -9,7 +9,7 @@ import { ScrollWords, Animateword, Texts } from "../Components/text";
 import ProcessStack from "../Components/ProcessStack";
 import ScrollMarquee from "../Components/LogoMarquee";
 import LogoMarqueeleft from "../Components/LogoMarquee2";
-import ImageAnimation from "../Components/ImageAnimation";
+import ImageAnimation from "../Components/text";
 
 const stats = [
   {
@@ -89,7 +89,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 grid-rows-3 h-full w-full gap-[1vw]">
           <Nav />
 
-          <div className="col-span-2 row-span-1 flex flex-col justify-center bg-indigo-300 pl-[5vw]">
+          <div className="col-span-1 row-span-1 flex flex-col justify-center mt-[5vh] pl-[5vw]">
             <Animateword
               text="About Us"
               typess="page"
@@ -105,7 +105,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="col-span-2 row-span-1 w-full relative bg-green-500">
+          <div className="col-span-1 row-start-2 row-span-1 w-full relative ">
             <ScrollWords
               textss="DHA Bahawalpur's Authorised Dealer — Reg # 222, and one of the leading real estate agencies in the community."
               typess="subheading"
@@ -113,7 +113,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="col-span-1 row-span-1 relative pl-[5vw]">
+          <div className="col-span-1 row-span-1 row-start-3 relative pl-[5vw]">
             <div className="absolute bottom-[8vh] flex flex-col gap-[1vh]">
               <span className="text-black text-[8vw] md:text-[2.6vw] font-black sanss leading-none">
                 1st Position
@@ -122,9 +122,6 @@ export default function AboutPage() {
                 DHA Bahawalpur Dealers Ranking, 2025
               </span>
             </div>
-          </div>
-
-          <div className="col-span-1 row-span-1 relative pr-[5vw]">
             <div className="absolute bottom-[8vh] right-[5vw] text-right flex flex-col gap-[1vh] items-end">
               <Texts
                 type="page"
@@ -136,6 +133,12 @@ export default function AboutPage() {
               </span>
             </div>
           </div>
+
+          <div className="imagess col-span-1 row-span-3  row-start-1 relative bg-amber-300">
+<Image src="/projects/img-1.webp" alt="Al-Kousar Properties" fill className="object-cover" />
+          </div>
+
+          
         </div>
       </section>
 

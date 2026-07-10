@@ -62,19 +62,19 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-indigo-700 text-white sticky top-0 z-10">
+      <header className="bg-stone-900 text-white sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold">Admin Dashboard</h1>
-            <p className="text-indigo-200 text-xs mt-0.5">{user?.email}</p>
+            <p className="text-stone-200 text-xs mt-0.5">{user?.email}</p>
           </div>
           <div className="flex items-center gap-4">
-            <Link href="/" target="_blank" className="text-sm text-indigo-200 hover:text-white transition-colors">
+            <Link href="/" target="_blank" className="text-sm text-stone-200 hover:text-white transition-colors">
               View Public Page
             </Link>
             <button
               onClick={handleLogout}
-              className="text-sm bg-indigo-800 hover:bg-indigo-900 px-4 py-2 rounded-lg transition-colors"
+              className="text-sm bg-stone-800 hover:bg-stone-900 px-4 py-2 rounded-lg transition-colors"
             >
               Sign Out
             </button>
@@ -88,7 +88,7 @@ export default function AdminDashboard() {
             onClick={() => setTab('projects')}
             className={`px-4 py-2 text-sm font-semibold rounded-t-lg transition-colors ${
               tab === 'projects'
-                ? 'bg-white text-indigo-700 border border-b-0 border-gray-200'
+                ? 'bg-white text-stone-900 border border-b-0 border-gray-200'
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
@@ -98,7 +98,7 @@ export default function AdminDashboard() {
             onClick={() => setTab('blog')}
             className={`px-4 py-2 text-sm font-semibold rounded-t-lg transition-colors ${
               tab === 'blog'
-                ? 'bg-white text-indigo-700 border border-b-0 border-gray-200'
+                ? 'bg-white text-stone-900 border border-b-0 border-gray-200'
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >

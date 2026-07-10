@@ -226,7 +226,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 space-y-6">
       <h2 className="text-2xl font-bold text-gray-900">
-        {isEditing ? '✏️ Edit Project' : '➕ New Project'}
+        {isEditing ? ' Edit Project' : ' New Project'}
       </h2>
 
       {error && (
@@ -246,7 +246,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
             value={title}
             onChange={e => setTitle(e.target.value)}
             placeholder="e.g. Downtown Office Renovation"
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
           />
         </div>
 
@@ -259,7 +259,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
             onChange={e => setDescription(e.target.value)}
             placeholder="The full story behind this project — vision, challenges, approach..."
             rows={4}
-            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+            className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500 resize-none"
           />
         </div>
 
@@ -274,7 +274,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               value={projectType}
               onChange={e => setProjectType(e.target.value)}
               placeholder="e.g. Residential, Commercial, Interior"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           </div>
 
@@ -287,7 +287,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               value={buildTime}
               onChange={e => setBuildTime(e.target.value)}
               placeholder="e.g. 8 months"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           </div>
 
@@ -300,7 +300,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               value={deliveredAt}
               onChange={e => setDeliveredAt(e.target.value)}
               placeholder="e.g. 2025 or March 2025"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           </div>
 
@@ -313,7 +313,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               value={scale}
               onChange={e => setScale(e.target.value)}
               placeholder="e.g. 5,200 sq ft"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           </div>
 
@@ -326,7 +326,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
               value={location}
               onChange={e => setLocation(e.target.value)}
               placeholder="e.g. Sector C, DHA Bahawalpur"
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
             />
           </div>
         </div>
@@ -344,7 +344,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
                   value={member}
                   onChange={e => updateTeamMember(idx, e.target.value)}
                   placeholder={`Team member ${idx + 1} name`}
-                  className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-stone-500"
                 />
                 <button
                   type="button"
@@ -360,7 +360,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
           <button
             type="button"
             onClick={addTeamMember}
-            className="mt-2 text-sm font-medium text-indigo-600 hover:text-indigo-700"
+            className="mt-2 text-sm font-medium text-stone-900 hover:text-stone-700"
           >
             + Add team member
           </button>
@@ -375,7 +375,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
           <button
             type="button"
             onClick={() => setPublished(!published)}
-            className={`w-12 h-6 rounded-full transition-colors duration-200 ${published ? 'bg-indigo-600' : 'bg-gray-300'}`}
+            className={`w-12 h-6 rounded-full transition-colors duration-200 ${published ? 'bg-stone-900' : 'bg-gray-300'}`}
           >
             <span className={`block w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 mx-0.5 ${published ? 'translate-x-6' : 'translate-x-0'}`} />
           </button>
@@ -386,7 +386,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
       <div>
         <div className="flex items-center justify-between mb-3">
           <label className="text-sm font-semibold text-gray-700">
-            Number of images: <span className="text-indigo-600">{images.length}</span>
+            Number of images: <span className="text-stone-900">{images.length}</span>
           </label>
           <div className="flex items-center gap-2">
             <button
@@ -433,7 +433,7 @@ export default function ProjectForm({ onSuccess, editProject, onCancelEdit }: Pr
         <button
           type="submit"
           disabled={loading}
-          className="flex-1 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 text-white font-semibold py-3 rounded-xl transition-colors"
+          className="flex-1 bg-stone-900 hover:bg-stone-700 disabled:bg-stone-400 text-white font-semibold py-3 rounded-xl transition-colors"
         >
           {loading ? 'Saving...' : isEditing ? 'Update Project' : 'Publish Project'}
         </button>

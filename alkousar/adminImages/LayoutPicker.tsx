@@ -19,7 +19,7 @@ export default function LayoutPicker({
           onClick={() => onChange(opt.value)}
           className={`flex flex-col items-center gap-1.5 py-3 rounded-xl border-2 transition-colors ${
             value === opt.value
-              ? 'border-indigo-500 bg-indigo-50 text-indigo-700'
+              ? 'border-stone-500 bg-stone-50 text-stone-700'
               : 'border-gray-200 bg-white text-gray-500 hover:border-gray-300'
           }`}
         >
