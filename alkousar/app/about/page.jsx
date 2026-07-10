@@ -9,6 +9,7 @@ import { ScrollWords, Animateword, Texts } from "../Components/text";
 import ProcessStack from "../Components/ProcessStack";
 import ScrollMarquee from "../Components/LogoMarquee";
 import LogoMarqueeleft from "../Components/LogoMarquee2";
+import ImageAnimation from "../Components/ImageAnimation";
 
 const stats = [
   {
@@ -88,7 +89,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 grid-rows-3 h-full w-full gap-[1vw]">
           <Nav />
 
-          <div className="col-span-2 row-span-1 flex flex-col justify-center pl-[5vw]">
+          <div className="col-span-2 row-span-1 flex flex-col justify-center bg-indigo-300 pl-[5vw]">
             <Animateword
               text="About Us"
               typess="page"
@@ -104,7 +105,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="col-span-2 row-span-1 w-full relative">
+          <div className="col-span-2 row-span-1 w-full relative bg-green-500">
             <ScrollWords
               textss="DHA Bahawalpur's Authorised Dealer — Reg # 222, and one of the leading real estate agencies in the community."
               typess="subheading"

@@ -1,14 +1,23 @@
-import type { NextConfig } from "next";
+// import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "jkgbaibsyypetxlvmoqi.supabase.co",
-      },
-    ],
+// const nextConfig: NextConfig = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: "https",
+//         hostname: "jkgbaibsyypetxlvmoqi.supabase.co",
+//       },
+//     ],
+//   },
+// };
+
+// export default nextConfig;
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  turbopack: {
+    root: __dirname,
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

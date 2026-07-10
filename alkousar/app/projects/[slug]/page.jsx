@@ -1,40 +1,4 @@
-// "use client"
-// import projects from "../../projects";
-// import ProjectClient from "./project-client";
-// import { useProjectData } from "../../projects";
 
-
-// export default async function ProjectPage({params}) {
-
-// const { projects, loading } = useProjectData();
-
-//     const {slug} = await params;
-//      console.log("slug =", slug);
-
-//   const project = projects.find((p) => p.slug === slug);
-
-//   console.log("project =", project);
-//     const currentIndex = projects.findIndex((p) => p.slug === slug);
-//     const nextIndex = (currentIndex + 1) % projects.length;
-//     const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
-
-
-//     const nextProject = projects[nextIndex];
-//     const prevProject = projects[prevIndex];
-
-//     console.log("proje =", project);
-
-//     console.log("nextProject =", nextProject);
-//     console.log("prevProject =", prevProject);
-//     return (
-//         <ProjectClient
-//         project={project}
-//         nextProject = {nextProject}
-//         prevProject = {prevProject}
-
-//         />
-//     );
-// }
 "use client";
 import { useParams } from "next/navigation";
 import { useProjectData } from "../../projects"; // adjust path to match File 1's real location
