@@ -132,10 +132,10 @@ function Animationchars({ progress = 0, onComplete }) {
   return (
     <div
       ref={container}
-      className="animation bg-stone-300 h-screen w-full fixed top-0 left-0 z-50"
+      className="animation bg-stone-300 h-screen  w-full fixed top-0 left-0 z-50"
     >
       <div
-        className="text flex items-center justify-center text-black h-full text-5xl font-bold"
+        className="text flex items-center justify-center text-black h-full figtree font-semibold md:text-5xl text-3xl "
         ref={text}
       >
         Al-Kousar Properties

@@ -86,7 +86,7 @@ export default function AboutPage() {
           hero) and the /contact hero: Nav as a non-visual first child, then
           content split across the four quadrants. */}
       <section className="h-screen w-full relative bg-stone-100 overflow-hidden">
-        <div className="grid grid-cols-2 grid-rows-3 h-full w-full gap-[1vw]">
+        <div className="grid md:grid-cols-2 md:grid-rows-3 grid-rows-4 h-full w-full gap-[1vw]">
           <Nav />
 
           <div className="col-span-1 row-span-1 flex flex-col justify-center mt-[5vh] pl-[5vw]">
@@ -98,14 +98,14 @@ export default function AboutPage() {
             <Chars
               type="heading"
               texts={<>
-              Al-Kousar 
-              <br /> Properties
+                Al-Kousar
+                <br /> Properties
               </>}
               className="text-black text-[6vh] figtree font-semibold leading-none md:text-[5vw]"
             />
           </div>
 
-          <div className="col-span-1 row-start-2 row-span-1 w-full relative ">
+          <div className="md:col-span-1 row-start-2 row-span-1 w-full relative ">
             <ScrollWords
               textss="DHA Bahawalpur's Authorised Dealer — Reg # 222, and one of the leading real estate agencies in the community."
               typess="subheading"
@@ -113,7 +113,7 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="col-span-1 row-span-1 row-start-3 relative pl-[5vw]">
+          <div className="col-span-1 row-span-1 row-start-4 relative pl-[5vw]">
             <div className="absolute bottom-[8vh] flex flex-col gap-[1vh]">
               <span className="text-black text-[8vw] md:text-[2.6vw] font-black sanss leading-none">
                 1st Position
@@ -134,11 +134,11 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="imagess col-span-1 row-span-3  row-start-1 relative bg-amber-300">
-<Image src="/projects/img-1.webp" alt="Al-Kousar Properties" fill className="object-cover" />
+          <div className="imagess  md:col-span-1 md:row-span-3 row-span-1  row-start-3 px-[5vw] md:px-0  md:row-start-1 relative bg-amber-300">
+            <Image src="/projects/img-1.webp" alt="Al-Kousar Properties" fill className="object-cover" />
           </div>
 
-          
+
         </div>
       </section>
 
@@ -232,7 +232,7 @@ export default function AboutPage() {
       <section className="w-full bg-black px-[5vw] py-[14vh] grid grid-cols-1 md:grid-cols-2 gap-[6vh] md:gap-[4vw] items-center">
         <div className="relative h-[45vh] md:h-[55vh] w-full bg-white flex items-center justify-center overflow-hidden">
           <span className="text-black text-[16vw] md:text-[7vw] font-black sanss">
-            KR
+           Kashif Rehmat
           </span>
         </div>
 
@@ -383,8 +383,8 @@ export default function AboutPage() {
           </span>
         </div>
       </section>
-<ScrollMarquee />
-<LogoMarqueeleft />
+      <ScrollMarquee />
+      <LogoMarqueeleft />
       <Footer />
     </>
   );

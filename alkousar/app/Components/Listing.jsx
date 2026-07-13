@@ -191,7 +191,7 @@ function ThirsSe() {
                   >
                     {" "}
                     <Image
-                      src="/Apartments.webp"
+                      src="/Projects/img-18.webp"
                       alt=""
                       fill
                       className="object-cover"

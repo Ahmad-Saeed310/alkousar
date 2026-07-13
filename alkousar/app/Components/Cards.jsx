@@ -12,7 +12,7 @@ export default function Cards({ text, title, Images, details }) {
                 <div className="img h-[40vh] w-[40vw] relative  mt-10 ">
                 <Image src={Images} alt={title} className="object-cover " fill />
                 </div>
-                <Text type="paragraph2" texts={details} className="leading-none wrap-normal font-semibold text-black w-full text-normal col-start-2" />
+                <Text type="paragraph2" texts={details} className="leading-none wrap-normal  text-[1.5vw] figtree  font-regular text-black w-full text-normal col-start-2" />
                 </div>
             </div>
         </>

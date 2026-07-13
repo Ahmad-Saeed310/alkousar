@@ -652,8 +652,8 @@ function Animations({ startIntro, playIntro = true }) {
       </div>
 
       {/* ── page ────────────────────────────────────────────────────────────── */}
-      <div className="animates h-[100svh] w-full relative bg-stone-100">
-        <div className="grid grid-cols-2 grid-rows-2 h-full w-full overflow-hidden gap-[1vw] bgAnimate bg-stone-100">
+      <div className="animates h-svh w-full relative bg-stone-100">
+        <div className="grid grid-cols-2 md:grid-rows-2 grid-rows-3 h-full w-full overflow-hidden gap-[1vw] bgAnimate bg-stone-100">
 
 
           <div className="absolute hidden sm:flex h-screen w-full flex items-center pt-[10vh] justify-center gap-[5vw] overflow-hidden ">
@@ -677,7 +677,7 @@ function Animations({ startIntro, playIntro = true }) {
               loading="eager"
             />
             <Image
-              src="/project-4-2.webp"
+              src="/Project/"
               width={100}
               height={100}
               alt=""
@@ -756,8 +756,21 @@ function Animations({ startIntro, playIntro = true }) {
 
             />
           </div>
+          <div className="forVideo md:hidden col-span-1 row-start-2 row-span-1 h-[30vh] w-screen px-[5vw]">
+            <video
+                ref={smallVideoRef}
+                autoPlay
+                loop
+                muted
+                playsInline
+                onClick={openVideo}
+                className=" w-full block"
+                style={{ cursor: "zoom-in", objectFit: "cover" }}
+                src={videoSrc}
+              />
+          </div>
 
-          <div className="md:col-span-1 col-span-2 row-start-2 row-span-1 relative">
+          <div className="md:col-span-1 col-span-2 md:row-start-2 row-start-3 row-span-1 relative">
             <Words
               className="absolute md:bottom-0 bottom-10 leading-none md:text-3vw text-[3vh] font-medium capitalize pl-[5vw] md:p-[5vw]"
               typess="subheading"

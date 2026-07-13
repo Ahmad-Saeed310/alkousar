@@ -6,7 +6,7 @@ const TransitionOverlay = forwardRef(function TransitionOverlay(_, ref) {
   return (
     <div
       ref={ref}
-      className="fixed inset-0 z-[9999] hidden pointer-events-none"
+      className="fixed inset-0 z-9999 hidden pointer-events-none"
     >
       <div className="flex h-screen">
         {Array.from({ length: 5 }).map((_, i) => (
